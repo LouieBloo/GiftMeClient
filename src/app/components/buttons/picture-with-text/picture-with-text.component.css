@@ -1,0 +1,17 @@
+#main{
+    max-width:300px;
+    max-height:243px;
+    width:100%;
+    background-color:#ffffff00;
+    box-shadow: 0 0px 5px rgba(0,0,0,.3);
+}
+
+#mainImg{
+    max-width:152px;
+    max-height:152px;
+    width:100%;
+}
+
+#text{
+    font-size: 2rem;
+}
