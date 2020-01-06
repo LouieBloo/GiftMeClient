@@ -1,0 +1,27 @@
+.modal-header{
+    border:0;
+}
+#searchBox{
+    width:250px;
+    height:40px;
+    font-size:1.25rem;
+}
+#searchIcon{
+    font-size:1.75rem;
+    position: relative;
+    left:33px;
+    top:3px;
+}
+#searchButton{
+    position: relative;
+    right:27px;
+    width:10px;
+}
+#searchButton span{
+    position: relative;
+    left:-7px;
+}
+button{
+    
+    border-radius: 0;
+}

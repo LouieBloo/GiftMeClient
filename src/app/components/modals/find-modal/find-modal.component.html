@@ -1,0 +1,30 @@
+<ng-template #content let-modal>
+    <div class="main">
+        <div class="modal-header">
+            <app-close class="close pl-0 pb-0 pr-1 pt-2" aria-label="Close" (callback)="modal.dismiss('Cross click')">
+            </app-close>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center mb-4">
+                    <i id="searchIcon" class="material-icons">
+                        search
+                    </i>
+                    <input ngbAutofocus id="searchBox" type="text" placeholder="Enter List Code" class="text-center"
+                        maxlength="10">
+                    <button id="searchButton" class="btn btn-primary"><span>→</span></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-2 mb-sm-0">
+                    <app-picture-with-text-small icon="shop" text="Items Claimed" (callback)="findButtonClicked()">
+                    </app-picture-with-text-small>
+                </div>
+                <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                    <app-picture-with-text-small icon="history" text="Recently Visited Lists"
+                        (callback)="findButtonClicked()"></app-picture-with-text-small>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

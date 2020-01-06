@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12 mt-4">
+        <h1 class="text-center primaryFontColor">
+            My Lists
+        </h1>
+        <h4 class="text-center mb-2 mb-sm-4 secondaryFontColor">Create and delete your lists</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div *ngFor="let list of allLists">
+            <app-list-overview-item [list]="list"></app-list-overview-item>
+        </div>
+    </div>
+</div>

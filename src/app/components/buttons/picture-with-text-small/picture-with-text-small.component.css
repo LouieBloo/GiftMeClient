@@ -1,7 +1,7 @@
 #main{
     display:block;
-    max-width:285px;
-    max-height:243px;
+    max-width:200px;
+    height:155px;
     width:100%;
     margin-left:auto;
     margin-right:auto; 
@@ -10,14 +10,15 @@
 }
 
 #mainImg{
-    max-width:152px;
-    max-height:152px;
+    max-width:110px;
+    max-height:110px;
     width:100%;
 }
 
 #text{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
+
 i{
-    font-size:5.8rem;
+    font-size:4rem;
 }

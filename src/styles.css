@@ -1,2 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+.primaryFontColor{
+    color: #4c4c4c;
+}
+.secondaryFontColor{
+    color:#ababab;
+}
+
+.modal-backdrop{
+    animation-name: fadeInHalf;
+    animation-duration: 0.4s;
+}
+.modal{
+    animation-name: fadeIn;
+    animation-duration: 0.35s;
+}
+@keyframes fadeInHalf {
+    0%   {opacity: 0}
+    100% {opacity: 0.5}
+}
+@keyframes fadeIn {
+    0%   {opacity: 0}
+    100% {opacity: 1}
+}

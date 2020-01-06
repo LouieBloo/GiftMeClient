@@ -1,0 +1,10 @@
+i{
+    font-size: 2rem;
+    color:red;
+}
+button{
+    max-width:50px;
+    max-height:50px;
+    background-color:#ffffff00;
+    border:0;
+}
