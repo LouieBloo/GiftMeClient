@@ -13,6 +13,10 @@ import { CloseComponent } from './components/buttons/close/close.component';
 import { PictureWithTextSmallComponent } from './components/buttons/picture-with-text-small/picture-with-text-small.component';
 import { MyListsComponent } from './components/pages/my-lists/my-lists.component';
 import { ListOverviewItemComponent } from './components/lists/list-overview-item/list-overview-item.component';
+import { LoginSignupModalComponent } from './components/modals/login-signup-modal/login-signup-modal.component';
+import { LoginComponent } from './components/users/login/login.component';
+import { RegisterComponent } from './components/users/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,17 @@ import { ListOverviewItemComponent } from './components/lists/list-overview-item
     PictureWithTextSmallComponent,
     MyListsComponent,
     ListOverviewItemComponent,
+    LoginSignupModalComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

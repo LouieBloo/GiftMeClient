@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import{ environment } from '../../../environments/environment';
-import { UserDetails, TokenPayload, TokenResponse, RegisterDetails } from '../../models/auth';
+import { UserDetails, TokenPayload, TokenResponse, RegisterDetails, LoginModel } from '../../models/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -68,21 +68,22 @@ export class HttpService {
   }
 
   public request(method: 'post'|'get'|'patch'|'delete'|'put',url,params?:any): Observable<any>{
+    
     let base;
-    let headers = this.isLoggedIn() ? {headers:{Authorization: `Bearer ${this.getToken()}`}} : null;
+    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization',  `Bearer ${this.getToken()}`);
 
     switch(method){
       case 'post':
-        base = this.http.post(environment.apiUrl + url,params,headers);
+        base = this.http.post(environment.apiUrl + url,params,{headers:headers});
         break;
       case 'get':
-        base = this.http.get(environment.apiUrl + url,headers);
+        base = this.http.get(environment.apiUrl + url,{headers:headers,params:params});
         break;
       case 'patch':
-        base = this.http.patch(environment.apiUrl + url,params,headers);
+        base = this.http.patch(environment.apiUrl + url,params,{headers:headers});
         break;
       case 'delete':
-        base = this.http.delete(environment.apiUrl + url,headers);
+        base = this.http.delete(environment.apiUrl + url,{headers:headers});
         break;
     }
 
@@ -98,7 +99,7 @@ export class HttpService {
     return request;
   }
 
-  public login(user:TokenPayload):Observable<any>{
+  public login(user:LoginModel):Observable<any>{
     return this.request('post','/users/login',user);
   }
 

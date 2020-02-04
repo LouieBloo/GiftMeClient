@@ -1,15 +1,20 @@
 <app-find-modal #findModal></app-find-modal>
 
 <div class="row">
-    <div id="titleRow" class="col-12 mt-2">
-        <h1 class="text-center mb-0 mt-2 primaryFontColor">Gift Me</h1>
-        <h4 class="text-center mb-2 mb-sm-4 secondaryFontColor">A simple gift registry</h4>
-    </div>
-    <div class="col-12 mt-4">
-        <div id="main" class="row">
-            <app-picture-with-text routerLink="/my-lists" class="col-12 col-sm-6 mb-4 mb-sm-0" text="My Lists" icon="format_list_bulleted"></app-picture-with-text>
-            <app-picture-with-text class="col-12 col-sm-6 mt-4 mt-sm-0" (callback)="findButtonClicked()" text="Find Things" icon="search"></app-picture-with-text>
+    <div id="flex" class="col-12 d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div id="titleRow" class="col-12 mt-2">
+                <h1 class="text-center mb-0 mt-2 primaryFontColor">Gift Me</h1>
+                <h4 class="text-center mb-2 mb-sm-4 secondaryFontColor">A simple gift registry</h4>
+            </div>
+            <div class="col-12 mt-4">
+                <div id="main" class="row">
+                    <app-picture-with-text routerLink="/my-lists" class="col-12 col-sm-6 mb-4 mb-sm-0" text="My Lists"
+                        icon="format_list_bulleted"></app-picture-with-text>
+                    <app-picture-with-text class="col-12 col-sm-6 mt-4 mt-sm-0" (callback)="findButtonClicked()" text="Find Things"
+                        icon="search"></app-picture-with-text>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

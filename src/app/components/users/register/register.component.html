@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-12">
+        <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
+            <div class="form-group mb-1">
+                <input formControlName="name" required type="text" class="form-control" aria-describedby="nameHelp"
+                    placeholder="Name" ngbAutofocus>
+                <div *ngIf="name.invalid && (name.dirty)" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">
+                        Name is required.
+                    </div>
+                </div>
+                <div *ngIf="error?.name?.msg" class="alert alert-danger">
+                    {{error.name.msg}}
+                </div>
+            </div>
+            <div class="form-group mb-1">
+                <input formControlName="email" required type="email" class="form-control" aria-describedby="emailHelp"
+                    placeholder="Email">
+
+                <small class="secondaryFontColor mt-0 mb-0">No verification required</small>
+                <div *ngIf="email.invalid && (email.dirty)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                </div>
+                <div *ngIf="error?.email?.msg" class="alert alert-danger">
+                    {{error.email.msg}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input formControlName="password" required type="password" class="form-control" placeholder="Password (8 digit)">
+                <div *ngIf="password.invalid && (password.dirty)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                        Password is required.
+                    </div>
+                </div>
+                <div *ngIf="error?.password?.msg" class="alert alert-danger">
+                    {{error.password.msg}}
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <button id="submitButton" [disabled]="email.invalid || password.invalid" type="submit" class="btn btn-primary">Register</button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -5,6 +5,13 @@
         </h1>
         <h4 class="text-center mb-2 mb-sm-4 secondaryFontColor">Create and delete your lists</h4>
     </div>
+    <div class="col-12">
+        <button (click)="appLoginComponent.open()">Open</button>
+    </div>
+    <div class="col-12">
+        <app-login-signup-modal #appLoginComponent></app-login-signup-modal>
+    </div>
+
 </div>
 <div class="row">
     <div class="col-12">
