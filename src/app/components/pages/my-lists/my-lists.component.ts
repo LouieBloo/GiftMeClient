@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {List} from '../../../models/list';
+import { HttpService } from 'src/app/services/http-service/http.service';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-my-lists',
@@ -10,7 +12,7 @@ export class MyListsComponent implements OnInit {
 
   allLists : List[] = [{name:"list test this is real"}];
 
-  constructor() {
+  constructor(public auth:HttpService,public eventService:EventService) {
   }
 
   ngOnInit() {

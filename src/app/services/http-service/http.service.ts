@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import{ environment } from '../../../environments/environment';
@@ -14,6 +14,7 @@ export class HttpService {
 
   private token: string;
   private _id:string;
+  public userDetailsSubject: BehaviorSubject<UserDetails> = new BehaviorSubject(this.getUserDetails());
 
   constructor(private http: HttpClient,private router: Router) { }
 
@@ -23,6 +24,7 @@ export class HttpService {
 
     localStorage.setItem('_id',_id);
     this._id = _id;
+    this.userDetailsSubject.next(this.getUserDetails());
   }
 
   private getToken():string{
@@ -43,6 +45,7 @@ export class HttpService {
     this.token = '';
     window.localStorage.removeItem('jwtToken');
     this.router.navigateByUrl('/login');
+    this.userDetailsSubject.next(this.getUserDetails());
   }
 
   public getUserDetails():UserDetails{

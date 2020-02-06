@@ -1,16 +1,16 @@
 <div class="row">
-    <div class="col-12 mt-4">
+    <div class="col-12 mt-2">
         <h1 class="text-center primaryFontColor">
             My Lists
         </h1>
-        <h4 class="text-center mb-2 mb-sm-4 secondaryFontColor">Create and delete your lists</h4>
+        <h5 class="text-center secondaryFontColor">Create and delete your lists</h5>
     </div>
+
+   
     <div class="col-12">
-        <button (click)="appLoginComponent.open()">Open</button>
+        <button (click)="eventService.loginModalEvent.next(false)" >Open</button>
     </div>
-    <div class="col-12">
-        <app-login-signup-modal #appLoginComponent></app-login-signup-modal>
-    </div>
+   
 
 </div>
 <div class="row">
@@ -20,3 +20,5 @@
         </div>
     </div>
 </div>
+
+<button (click)="auth.logout()">logout</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http-service/http.service';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   get email() { return this.formData.get('email'); }
   get password() { return this.formData.get('password'); }
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
+  @ViewChild("emailInput",null) emailInput:ElementRef;
 
   constructor(private formBuilder: FormBuilder, private auth: HttpService, private router: Router) {
     this.formData = this.formBuilder.group({

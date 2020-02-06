@@ -1,0 +1,21 @@
+<div id="main" class="d-flex justify-content-end align-items-center mt-2">
+    <div *ngIf="activeUser; then loggedIn else notLoggedIn"></div>
+    <ng-template #loggedIn>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h6 class="mb-0 mr-0 mt-2 mt-sm-4 mr-sm-4">
+                    <button class="btn" (click)="appLoginComponent.open('registerTab')"><i class="material-icons mr-2 d-inline">face</i>{{activeUser.name | titlecase}}</button></h6>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #notLoggedIn>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h6 *ngIf="firstTimeLoad" class="mb-0 mr-0 mt-2 mt-sm-4 mr-sm-4"> <button class="btn" (click)="appLoginComponent.open('registerTab')">Register</button></h6>
+                <h6 *ngIf="!firstTimeLoad" class="mb-0 mr-0 mt-2 mt-sm-4 mr-sm-4"> <button class="btn" (click)="appLoginComponent.open('loginTab')">Login</button></h6>
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<app-login-signup-modal #appLoginComponent></app-login-signup-modal>

@@ -5,13 +5,28 @@
             </app-close>
         </div>
         <div class="modal-body pt-0 mb-1">
-            <ngb-tabset [activeId]="'loginTab'" [justify]="'center'" [destroyOnHide]="false">
+
+            <div class="row mt-4 mb-4">
+                <div class="col-12">
+                    <div *ngIf="activeTabId =='registerTab'; then registerHeader else loginHeader"></div>
+                    <ng-template #registerHeader >
+                        <h3 class="primaryFontColor text-center">Lets get you signed up!</h3>
+                        <h5 class="secondaryFontColor text-center">You need an account to save...</h5>
+                    </ng-template>
+                    <ng-template #loginHeader>
+                        <h3 class="primaryFontColor text-center">Welcome back!</h3>
+                        <h5 class="secondaryFontColor text-center">You look great today</h5>
+                    </ng-template>
+                </div>
+            </div>
+
+            <ngb-tabset [activeId]="activeTabId" [justify]="'center'" [destroyOnHide]="true" (tabChange)="onTabChange($event)">
                 <ngb-tab title="Register" id="registerTab">
                     <ng-template ngbTabContent>
                         <app-register (finishCallback)="modal.dismiss('Cross click')"></app-register>
                     </ng-template>
                 </ngb-tab>
-               
+
                 <ngb-tab title="Login" id="loginTab">
                     <ng-template ngbTabContent>
                         <app-login (finishCallback)="modal.dismiss('Cross click')"></app-login>

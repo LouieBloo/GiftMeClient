@@ -3,6 +3,21 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 
+/****** Main theme ******/
+
+/*** Background Colors ***/
+.primaryBGColor{
+    background-color:#dce3ff;
+}
+.secondaryBGColor{
+    
+}
+.btn{
+    border: 1px solid #ababab;
+    color: #4c4c4c;
+}
+
+/*** Fonts ***/
 .primaryFontColor{
     color: #4c4c4c;
 }
@@ -10,24 +25,28 @@
     color:#ababab;
 }
 
+i{
+    vertical-align: middle;
+}
 
+/*** Tabs ***/
 #ngb-tab-0{
     font-size:18px;
 }
 #ngb-tab-1{
     font-size:18px;
 }
-
 .tab-content {
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     padding: 10px;
 }
-
 .nav-tabs {
     margin-bottom: 0;
 }
+
+/*** Modal ***/
 .modal-backdrop{
     animation-name: fadeInHalf;
     animation-duration: 0.4s;

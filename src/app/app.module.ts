@@ -17,6 +17,7 @@ import { LoginSignupModalComponent } from './components/modals/login-signup-moda
 import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileDisplayComponent } from './components/users/profile-display/profile-display.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginSignupModalComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileDisplayComponent,
   ],
   imports: [
     BrowserModule,

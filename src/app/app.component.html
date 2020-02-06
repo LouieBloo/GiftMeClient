@@ -1,3 +1,8 @@
 <div [@routeAnimations]="prepareRoute(outlet)">
+    <div class="row">
+        <div class="col-12">
+            <app-profile-display></app-profile-display>
+        </div>
+    </div>
     <router-outlet #outlet="outlet"></router-outlet>
 </div>
