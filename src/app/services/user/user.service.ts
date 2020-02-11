@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginModel } from 'src/app/models/auth';
-import { HttpService } from '../http-service/http.service';
+import { AuthService } from '../auth-service/auth.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private auth:HttpService) { }
+  constructor(private auth:AuthService) { }
 
   
 }

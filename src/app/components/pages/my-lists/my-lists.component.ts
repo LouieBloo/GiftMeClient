@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {List} from '../../../models/list';
-import { HttpService } from 'src/app/services/http-service/http.service';
+import { WishList } from '../../../models/wish-list';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
+import { WishListService } from 'src/app/services/wish-list/wish-list.service';
 
 @Component({
   selector: 'app-my-lists',
@@ -10,12 +11,47 @@ import { EventService } from 'src/app/services/event/event.service';
 })
 export class MyListsComponent implements OnInit {
 
-  allLists : List[] = [{name:"list test this is real"}];
+  allLists: WishList[] = [];
 
-  constructor(public auth:HttpService,public eventService:EventService) {
+  viewingOwnLists:boolean = true;
+
+  constructor(public auth: AuthService, public eventService: EventService,private wishListService:WishListService) {
   }
 
   ngOnInit() {
+    this.getLists();
+  }
+
+  getLists(){
+    let params = null;
+    if(!this.viewingOwnLists){
+      params = "whatever";
+    }
+    this.wishListService.get(params).subscribe(result=>{
+      if(result && result.length > 0){
+        this.allLists = result;
+      }else{
+        this.allLists = [];
+      }
+    },error=>{
+      console.error(error);
+    })
+  }
+
+  createList(){
+    this.wishListService.create({name:"Test 123123"}).subscribe(result=>{
+      this.getLists();
+    },error=>{
+      console.log(error);
+    })
+  }
+
+  listDeleted = (list:WishList)=>{
+    this.wishListService.delete(list._id).subscribe(result=>{
+      this.getLists();
+    },error=>{
+      console.error(error);
+    });
   }
 
 }

@@ -18,6 +18,7 @@ import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileDisplayComponent } from './components/users/profile-display/profile-display.component';
+import { UserAccountComponent } from './components/modals/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProfileDisplayComponent } from './components/users/profile-display/prof
     LoginComponent,
     RegisterComponent,
     ProfileDisplayComponent,
+    UserAccountComponent,
   ],
   imports: [
     BrowserModule,

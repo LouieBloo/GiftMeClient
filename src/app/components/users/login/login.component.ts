@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from 'src/app/services/http-service/http.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
   @ViewChild("emailInput",null) emailInput:ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private auth: HttpService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {
     this.formData = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', [Validators.required]]

@@ -1,0 +1,15 @@
+<ng-template #content let-modal>
+    <div class="main">
+        <div class="modal-header">
+            <app-close class="close pl-0 pb-0 pr-1 pt-2" aria-label="Close" (callback)="modal.dismiss('Cross click')">
+            </app-close>
+        </div>
+        <div class="modal-body pt-0 mb-1">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="btn btn-danger" type="button" (click)="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

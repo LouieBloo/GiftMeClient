@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { List } from 'src/app/models/list';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { WishList } from 'src/app/models/wish-list';
 
 @Component({
   selector: 'app-list-overview-item',
@@ -8,12 +8,16 @@ import { List } from 'src/app/models/list';
 })
 export class ListOverviewItemComponent implements OnInit {
 
-  @Input() list:string;
-  @Input() test:string;
+  @Input() list:WishList;
+  @Input() viewingOwnLists:boolean;
+  @Input() deleteCallback: any;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  delete(){
+    this.deleteCallback(this.list);
+  }
 }

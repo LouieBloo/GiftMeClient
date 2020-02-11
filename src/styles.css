@@ -10,12 +10,20 @@
     background-color:#dce3ff;
 }
 .secondaryBGColor{
-    
 }
 .btn{
     border: 1px solid #ababab;
     color: #4c4c4c;
 }
+.btn-danger{
+    border: 1px solid #ababab;
+    color: white;
+    background-color:#df2d2d;
+}
+/* .shadow{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+} */
 
 /*** Fonts ***/
 .primaryFontColor{

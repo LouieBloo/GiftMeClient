@@ -1,0 +1,14 @@
+li{
+    list-style-type: circle;
+}
+.doubleButtons{
+    width:100%;
+}
+
+#main{
+    max-height:275px;
+}
+#listSize{
+    max-height: 168px;
+    overflow:hidden;
+}

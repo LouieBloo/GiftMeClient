@@ -1,5 +1,28 @@
-<div class="row">
+<div class="row shadow mr-1 ml-1" id="main">
     <div class="col-12">
-        <p>{{list.name}}s</p>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h4 class="text-center primaryFontColor"><u>{{list.name}}</u></h4>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <ul id="listSize">
+                    <div *ngFor="let items of list.items">
+                        <li class="secondaryFontColor">{{items.name | titlecase}}</li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="row" *ngIf="viewingOwnLists">
+            <div class="col-12 p-0 btn-group  d-flex align-items-end">
+                <button type="button" class="btn doubleButtons"><i class="material-icons">
+                        edit
+                        </i> Edit </button>
+                <button type="button" class="btn btn-danger doubleButtons" (click)="delete()"><i class="material-icons">
+                        delete_forever
+                    </i> Delete</button>
+            </div>
+        </div>
     </div>
 </div>

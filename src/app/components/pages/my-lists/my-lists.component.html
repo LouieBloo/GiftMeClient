@@ -5,20 +5,18 @@
         </h1>
         <h5 class="text-center secondaryFontColor">Create and delete your lists</h5>
     </div>
-
-   
-    <div class="col-12">
-        <button (click)="eventService.loginModalEvent.next(false)" >Open</button>
-    </div>
-   
-
 </div>
 <div class="row">
     <div class="col-12">
-        <div *ngFor="let list of allLists">
-            <app-list-overview-item [list]="list"></app-list-overview-item>
+        <button type="button" class="btn" (click)="createList()">Create List</button>
+    </div>
+</div>
+<div class="row mt-2 mt-sm-4" id="listRow">
+    <div class="col-12">
+        <div class="row  d-flex justify-content-center">
+            <div class="col-12 col-sm-4" *ngFor="let list of allLists">
+                <app-list-overview-item viewingOwnLists="viewingOwnLists" [list]="list" [deleteCallback]="listDeleted"></app-list-overview-item>
+            </div>
         </div>
     </div>
 </div>
-
-<button (click)="auth.logout()">logout</button>

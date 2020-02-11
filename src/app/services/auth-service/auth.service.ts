@@ -10,7 +10,7 @@ import { UserDetails, TokenPayload, TokenResponse, RegisterDetails, LoginModel }
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class AuthService {
 
   private token: string;
   private _id:string;
@@ -44,7 +44,7 @@ export class HttpService {
   public logout():void{
     this.token = '';
     window.localStorage.removeItem('jwtToken');
-    this.router.navigateByUrl('/login');
+    //this.router.navigateByUrl('/login');
     this.userDetailsSubject.next(this.getUserDetails());
   }
 
