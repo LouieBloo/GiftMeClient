@@ -16,9 +16,11 @@ import { ListOverviewItemComponent } from './components/lists/list-overview-item
 import { LoginSignupModalComponent } from './components/modals/login-signup-modal/login-signup-modal.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProfileDisplayComponent } from './components/users/profile-display/profile-display.component';
 import { UserAccountComponent } from './components/modals/user-account/user-account.component';
+import { ListPageComponent } from './components/pages/list-page/list-page.component';
+import { EditableTextComponent } from './components/app/editable-text/editable-text.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { UserAccountComponent } from './components/modals/user-account/user-acco
     RegisterComponent,
     ProfileDisplayComponent,
     UserAccountComponent,
+    ListPageComponent,
+    EditableTextComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { UserAccountComponent } from './components/modals/user-account/user-acco
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

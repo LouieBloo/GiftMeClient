@@ -1,0 +1,2 @@
+<input #input type="text" class="text-center" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor,'width.px':width}" [(ngModel)]="text" (click)="$event.target.select()" (input)="textChanged()" >
+<span #hiddenText [ngStyle]="{'font-size': fontSize,'color':fontColor}" class="text-center" style="visibility: hidden; white-space:pre; position:absolute;">{{input.value}}</span>

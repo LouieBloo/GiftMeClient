@@ -1,0 +1,14 @@
+#address{
+    color:green;
+}
+label{
+    font-size:1.1rem;
+}
+#finishDate{
+    width:150px;
+    font-size:1.1rem;
+    border:0px;
+}
+.btn{
+    border:1px solid #ced4da;
+}

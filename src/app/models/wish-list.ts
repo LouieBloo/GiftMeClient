@@ -4,6 +4,7 @@ export interface WishList {
     owner?:WishListUser;
     items?:WishListItem[];
     dateCreated?:Date;
+    finishDate?:Date;
 }
 
 export interface WishListItem{

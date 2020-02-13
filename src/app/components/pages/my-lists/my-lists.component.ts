@@ -39,7 +39,7 @@ export class MyListsComponent implements OnInit {
   }
 
   createList(){
-    this.wishListService.create({name:"Test 123123"}).subscribe(result=>{
+    this.wishListService.create({name:"Default List Name"}).subscribe(result=>{
       this.getLists();
     },error=>{
       console.log(error);

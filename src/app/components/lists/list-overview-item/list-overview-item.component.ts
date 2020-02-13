@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WishList } from 'src/app/models/wish-list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-overview-item',
@@ -12,7 +13,7 @@ export class ListOverviewItemComponent implements OnInit {
   @Input() viewingOwnLists:boolean;
   @Input() deleteCallback: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,4 +21,5 @@ export class ListOverviewItemComponent implements OnInit {
   delete(){
     this.deleteCallback(this.list);
   }
+
 }
