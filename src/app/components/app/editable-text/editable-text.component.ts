@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-editable-text',
@@ -14,32 +14,29 @@ export class EditableTextComponent implements OnInit {
   @Input('minWidthInput') minWidthInput:number;
   @Input('editable') editable:boolean;
 
-  @ViewChild('hiddenText',{static:true}) textEl: ElementRef;
+  @ViewChild('input',{static:false}) textEl: ElementRef;
 
-  text:string;
-  private changeTimer:any;
+  @Input('text') text:string;
   minWidth: number = 150;
   width: number;
+  editing:boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-    this.text = this.defaultText;
     this.minWidth = this.minWidthInput;
-    this.updateWidth();
+  }
+
+  clicked(){
+    this.editing = true;
+    setTimeout(()=>{
+      this.textEl.nativeElement.select();
+    })
   }
 
   finishEditing(){
+    this.editing = false;
     this.finishCallback(this.text);
   }
 
-  textChanged(){
-    this.updateWidth();
-    clearTimeout(this.changeTimer);
-    this.changeTimer = setTimeout(()=>this.finishEditing(),500);
-  }
-
-  updateWidth(){
-    setTimeout(() => this.width = Math.max(this.minWidth, this.textEl.nativeElement.offsetWidth));
-  }
 }

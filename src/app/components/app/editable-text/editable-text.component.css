@@ -5,3 +5,6 @@ input{
 .editableText{
     text-decoration: underline;
 }
+span{
+    display: inline;
+}

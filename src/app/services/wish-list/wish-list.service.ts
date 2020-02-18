@@ -13,6 +13,10 @@ export class WishListService {
   public create(list:WishList):Observable<any>{
     return this.auth.request('post','/wishlist',list);
   }
+
+  public edit(list:WishList):Observable<any>{
+    return this.auth.request('patch','/wishlist/' + list._id,list);
+  }
   
   public get(owner?:string):Observable<any>{
     if(owner){
@@ -20,6 +24,10 @@ export class WishListService {
     }else{
       return this.auth.request('get','/wishlist');
     }
+  }
+
+  public getSingle(id:string):Observable<any>{
+      return this.auth.request('get','/wishlist/' + id);
   }
 
   public delete(id:string):Observable<any>{

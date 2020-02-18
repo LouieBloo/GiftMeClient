@@ -1,10 +1,14 @@
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+
 export interface WishList {
     _id?:string;
     name?:string;
     owner?:WishListUser;
     items?:WishListItem[];
+    address?:Date;
     dateCreated?:Date;
-    finishDate?:Date;
+    finishDate?:any;
+    datePickerDate?:NgbDate;
 }
 
 export interface WishListItem{

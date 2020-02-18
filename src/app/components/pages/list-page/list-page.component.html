@@ -2,21 +2,20 @@
     <div class="col-12 mt-2">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <app-editable-text default="Click To Edit Title" finishCallback="" fontSize="2.5rem" fontColor="#4c4c4c"
-                    [editable]="editable" [minWidthInput]="250"></app-editable-text>
+                <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited" fontSize="2rem" fontColor="#4c4c4c"
+                    [editable]="editable" [minWidthInput]="10"></app-editable-text>
             </div>
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center">
-                <label for="address" class="mb-0 mr-2 secondaryFontColor">Address: </label>
-                <app-editable-text id="address" default="Click To Edit Address" finishCallback="" fontSize="1.25rem"
-                    fontColor="#ababab" [editable]="editable" [minWidthInput]="200"></app-editable-text>
+                <app-editable-text id="address" default="Click To Edit Address" [finishCallback]="addressEdited" fontSize="1rem"
+                    fontColor="#ababab"  [(text)]="list.address"[editable]="editable" [minWidthInput]="10"></app-editable-text>
             </div>
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center">
-                <label for="finishDate" class="mb-0 mr-2 secondaryFontColor">Completion Date: </label>
-                <input class="form-control text-center" placeholder="yyyy-mm-dd" id="finishDate" name="finishDate" [(ngModel)]="list.finishDate"
+                <label for="finishDate" class="secondaryFontColor mb-0">Completion Date:</label>
+                <input class="form-control text-center" placeholder="yyyy-mm-dd" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
                     (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker" (click)="finishDatePicker.toggle()" >
                 <div class="ml-1">
                     <button class="btn" (click)="finishDatePicker.toggle()" type="button"><i
@@ -27,3 +26,4 @@
             </div>
         </div>
     </div>
+</div>

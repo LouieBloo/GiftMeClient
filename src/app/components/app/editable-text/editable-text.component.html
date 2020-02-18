@@ -1,2 +1,10 @@
-<input #input type="text" class="text-center" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor,'width.px':width}" [(ngModel)]="text" (click)="$event.target.select()" (input)="textChanged()" >
-<span #hiddenText [ngStyle]="{'font-size': fontSize,'color':fontColor}" class="text-center" style="visibility: hidden; white-space:pre; position:absolute;">{{input.value}}</span>
+<input *ngIf="editing" #input type="text" class="text-center" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor}" [(ngModel)]="text" (focusout)="finishEditing()" (keydown.enter)="finishEditing()" >
+<h6 *ngIf="!editing" [ngStyle]="{'font-size': fontSize,'color':fontColor}" [ngClass]="{'editableText':editable}" class="text-center" (click)="clicked()">
+    <div *ngIf="text; then showText else showDefault"></div>
+    <ng-template #showText>
+        {{text}}
+    </ng-template>
+    <ng-template #showDefault>
+        {{defaultText}}
+    </ng-template>
+</h6>

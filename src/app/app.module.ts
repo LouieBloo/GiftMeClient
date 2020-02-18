@@ -21,6 +21,7 @@ import { ProfileDisplayComponent } from './components/users/profile-display/prof
 import { UserAccountComponent } from './components/modals/user-account/user-account.component';
 import { ListPageComponent } from './components/pages/list-page/list-page.component';
 import { EditableTextComponent } from './components/app/editable-text/editable-text.component';
+import { NotifierModule } from "angular-notifier";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EditableTextComponent } from './components/app/editable-text/editable-t
     NgbModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NotifierModule.withConfig({position:{vertical:{position:"bottom"}},behaviour:{autoHide:2000}})
   ],
   providers: [],
   bootstrap: [AppComponent]
