@@ -7,8 +7,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12">
-        <button type="button" class="btn" (click)="createList()">Create List</button>
+    <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
+        <button type="button" id="createListButton" class="btn d-flex justify-content-center align-items-center" (click)="createList()">
+            <i class="material-icons mr-2">
+                add_circle_outline
+            </i>
+            <h4 class="primaryFontColor mb-0 d-inline pb-1">Create List</h4>
+        </button>
     </div>
 </div>
 <div class="row mt-2 mt-sm-4" id="listRow">

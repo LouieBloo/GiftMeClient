@@ -1,29 +1,49 @@
-<div class="row">
-    <div class="col-12 mt-2">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited" fontSize="2rem" fontColor="#4c4c4c"
-                    [editable]="editable" [minWidthInput]="10"></app-editable-text>
-            </div>
+<div *ngIf="loading; then loadingView else mainView"></div>
+<ng-template #loadingView>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <app-loading-spinner></app-loading-spinner>
         </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <app-editable-text id="address" default="Click To Edit Address" [finishCallback]="addressEdited" fontSize="1rem"
-                    fontColor="#ababab"  [(text)]="list.address"[editable]="editable" [minWidthInput]="10"></app-editable-text>
+    </div>
+</ng-template>
+<ng-template #mainView>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
+                        fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" [minWidthInput]="10"></app-editable-text>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <label for="finishDate" class="secondaryFontColor mb-0">Completion Date:</label>
-                <input class="form-control text-center" placeholder="yyyy-mm-dd" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
-                    (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker" (click)="finishDatePicker.toggle()" >
-                <div class="ml-1">
-                    <button class="btn" (click)="finishDatePicker.toggle()" type="button"><i
-                            class="material-icons">
-                            calendar_today
-                        </i></button>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <app-editable-text id="address" default="Click To Edit Address" [finishCallback]="addressEdited"
+                        fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable"
+                        [minWidthInput]="10"></app-editable-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <label for="finishDate" class="secondaryFontColor mb-0">Completion Date:</label>
+                    <input class="form-control text-center pr-0" placeholder="yyyy-mm-dd" id="finishDate" name="finishDate"
+                        [(ngModel)]="list.datePickerDate" (dateSelect)="finishDateChanged()" ngbDatepicker
+                        #finishDatePicker="ngbDatepicker" (click)="finishDatePicker.toggle()">
+                    <div class="">
+                        <button id="calendarButton" class="primaryFontColor" (click)="finishDatePicker.toggle()" type="button"><i
+                                class="material-icons">
+                                calendar_today
+                            </i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div *ngIf="!loading" class="row">
+        <div class="col-12">
+            <app-lists-scroll-container *ngIf="list?._id" [list]="list"></app-lists-scroll-container>
+        </div>
+    </div>
+
+
+</ng-template>

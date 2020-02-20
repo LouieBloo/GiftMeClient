@@ -3,3 +3,16 @@
     margin-left:auto;
     margin-right:auto;
 }
+
+#createListButton{
+    width:250px;
+    height:60px;
+    background-color:#ffffff00;
+    box-shadow: 0 0px 5px rgba(0,0,0,.3);
+}
+#createListButton h4{
+    font-size: 1.75rem;
+}
+#createListButton i{
+    font-size:2rem;
+}

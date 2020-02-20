@@ -15,6 +15,7 @@ export class ListPageComponent implements OnInit {
 
   list:WishList = {};
   editable:boolean = true;
+  loading:boolean = true;
 
   constructor(private notifierService: NotifierService,private wishListService:WishListService,private route: ActivatedRoute) { }
 
@@ -28,8 +29,9 @@ export class ListPageComponent implements OnInit {
           this.list.datePickerDate = new NgbDate(parsed.getFullYear(),parsed.getMonth()+1,parsed.getDate());
         }
 
+        this.loading = false;
       },error=>{
-
+        this.loading = false;
       })
    });
     

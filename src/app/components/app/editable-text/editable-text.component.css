@@ -1,9 +1,11 @@
 input{
     border:0px;
+    width: 360px;
 }
 
 .editableText{
     text-decoration: underline;
+
 }
 span{
     display: inline;

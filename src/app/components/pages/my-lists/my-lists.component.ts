@@ -3,6 +3,7 @@ import { WishList } from '../../../models/wish-list';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { WishListService } from 'src/app/services/wish-list/wish-list.service';
+import { SearchParameter } from 'src/app/models/auth';
 
 @Component({
   selector: 'app-my-lists',
@@ -23,9 +24,9 @@ export class MyListsComponent implements OnInit {
   }
 
   getLists(){
-    let params = null;
+    let params:SearchParameter = {sort:{dateCreated:-1}};
     if(!this.viewingOwnLists){
-      params = "whatever";
+      params.owner = "69"
     }
     this.wishListService.get(params).subscribe(result=>{
       if(result && result.length > 0){

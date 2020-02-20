@@ -5,10 +5,15 @@ label{
     font-size:1.1rem;
 }
 #finishDate{
-    width:150px;
+    width:115px;
     font-size:1.1rem;
     border:0px;
+    cursor: pointer;
 }
 .btn{
     border:1px solid #ced4da;
+}
+#calendarButton{
+    border:none;
+    background:none;
 }

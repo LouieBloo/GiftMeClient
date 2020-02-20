@@ -22,6 +22,9 @@ import { UserAccountComponent } from './components/modals/user-account/user-acco
 import { ListPageComponent } from './components/pages/list-page/list-page.component';
 import { EditableTextComponent } from './components/app/editable-text/editable-text.component';
 import { NotifierModule } from "angular-notifier";
+import { ListsScrollContainerComponent } from './components/lists/lists-scroll-container/lists-scroll-container.component';
+import { ListSingleComponent } from './components/lists/list-single/list-single.component';
+import { LoadingSpinnerComponent } from './components/app/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { NotifierModule } from "angular-notifier";
     UserAccountComponent,
     ListPageComponent,
     EditableTextComponent,
+    ListsScrollContainerComponent,
+    ListSingleComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
