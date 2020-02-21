@@ -13,14 +13,14 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
-                        fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" [minWidthInput]="10"></app-editable-text>
+                        fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" width="360px" ></app-editable-text>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <app-editable-text id="address" default="Click To Edit Address" [finishCallback]="addressEdited"
-                        fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable"
-                        [minWidthInput]="10"></app-editable-text>
+                        fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable" width="360px"
+                        ></app-editable-text>
                 </div>
             </div>
             <div class="row">
@@ -41,7 +41,7 @@
     </div>
     <div *ngIf="!loading" class="row">
         <div class="col-12">
-            <app-lists-scroll-container *ngIf="list?._id" [list]="list"></app-lists-scroll-container>
+            <app-list-item-container *ngIf="list?._id" [list]="list"></app-list-item-container>
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-<input *ngIf="editing" #input type="text" class="text-center" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor}" [(ngModel)]="text" (focusout)="finishEditing()" (keydown.enter)="finishEditing()" >
+<input *ngIf="editing" #input type="text" class="text-center" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor,'width':width}" [(ngModel)]="text" (focusout)="finishEditing()" (keydown.enter)="finishEditing()" >
 <h6 *ngIf="!editing" [ngStyle]="{'font-size': fontSize,'color':fontColor}" [ngClass]="{'editableText':editable}" class="text-center" (click)="clicked()">
     <div *ngIf="text; then showText else showDefault"></div>
     <ng-template #showText>

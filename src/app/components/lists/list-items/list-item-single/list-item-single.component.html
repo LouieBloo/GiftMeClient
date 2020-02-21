@@ -1,0 +1,36 @@
+<div class="row shadow pt-4 pb-4">
+    <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center">
+        <i class="material-icons primaryFontColor" id="icon">
+            card_giftcard
+        </i>
+    </div>
+    <div class="col-12 col-sm-6 ">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <app-editable-text default="Click To Edit Name" [text]="item.name" [finishCallback]="nameEdited"
+                    fontSize="1.2rem" fontColor="#4c4c4c" [editable]="editable" width="250px"></app-editable-text>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <app-editable-text default="Click To Edit Description" [finishCallback]="descriptionEdited" fontSize="1rem"
+                    fontColor="#ababab" [(text)]="item.description" [editable]="editable" width="250px"></app-editable-text>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center flex-column">
+        <button>Link</button>
+        <button>Claim</button>
+
+    </div>
+</div>
+
+
+<!-- <h5>_id: {{item._id}}</h5>
+<h5>owner: {{item.owner}}</h5>
+<h5>name: </h5>
+
+<h5>desc: {{item.description}}</h5>
+<h5>list id: {{item.listId}}</h5>
+<h5>claimed User id: {{item.claimedUser}}</h5> -->

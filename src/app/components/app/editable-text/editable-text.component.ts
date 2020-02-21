@@ -11,20 +11,18 @@ export class EditableTextComponent implements OnInit {
   @Input('finishCallback') finishCallback:any;
   @Input('fontSize') fontSize:string;
   @Input('fontColor') fontColor:string;
-  @Input('minWidthInput') minWidthInput:number;
+  @Input('width') width:number;
   @Input('editable') editable:boolean;
 
   @ViewChild('input',{static:false}) textEl: ElementRef;
 
   @Input('text') text:string;
   minWidth: number = 150;
-  width: number;
   editing:boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-    this.minWidth = this.minWidthInput;
   }
 
   clicked(){

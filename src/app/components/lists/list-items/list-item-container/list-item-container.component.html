@@ -1,0 +1,13 @@
+<button type="button" (click)="createItem()">create item</button>
+
+<div class="row mt-4">
+    <div class="col-12" id="itemRow">
+        <div *ngFor="let item of list.items">
+            <div class="row mb-4 ml-1 mr-1">
+                <div class="col-12">
+                    <app-list-item-single [(item)]="item" [(editable)]="editable"></app-list-item-single>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
