@@ -26,11 +26,11 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <label for="finishDate" class="secondaryFontColor mb-0">Completion Date:</label>
-                    <input class="form-control text-center pr-0" placeholder="yyyy-mm-dd" id="finishDate" name="finishDate"
+                    <input [readOnly]="!editable" class="form-control text-center pr-0" placeholder="yyyy-mm-dd" id="finishDate" name="finishDate"
                         [(ngModel)]="list.datePickerDate" (dateSelect)="finishDateChanged()" ngbDatepicker
-                        #finishDatePicker="ngbDatepicker" (click)="finishDatePicker.toggle()">
+                        #finishDatePicker="ngbDatepicker" (click)="editable && finishDatePicker.toggle()">
                     <div class="">
-                        <button id="calendarButton" class="primaryFontColor" (click)="finishDatePicker.toggle()" type="button"><i
+                        <button id="calendarButton" class="primaryFontColor" (click)="editable && finishDatePicker.toggle()" type="button"><i
                                 class="material-icons">
                                 calendar_today
                             </i></button>
@@ -41,7 +41,7 @@
     </div>
     <div *ngIf="!loading" class="row">
         <div class="col-12">
-            <app-list-item-container *ngIf="list?._id" [list]="list"></app-list-item-container>
+            <app-list-item-container *ngIf="list?._id" [list]="list" [editable]="editable"></app-list-item-container>
         </div>
     </div>
 

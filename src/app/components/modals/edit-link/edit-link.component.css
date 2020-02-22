@@ -1,0 +1,12 @@
+.modal-header{
+    border:0;
+}
+#url{
+    width:225px;
+}
+#desc{
+    font-size:0.8rem;
+}
+#saveButton{
+    width:175px;
+}

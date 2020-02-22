@@ -31,7 +31,7 @@ export class WishListItemService {
   }
 
   public delete(id:string):Observable<any>{
-    return this.auth.request('delete','/wishlist/item'+id);
+    return this.auth.request('delete','/wishlist/item/'+id);
   }
 
   public claim(item:WishListItem):Observable<any>{

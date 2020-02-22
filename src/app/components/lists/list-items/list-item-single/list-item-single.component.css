@@ -1,3 +1,19 @@
 #icon{
     font-size:3rem;
 }
+#editLinkButton{
+    background: none;
+    border:none;
+}
+#noEditLinkButton{
+    background: none;
+    border:none;
+}
+#deleteButton{
+    color:red;
+    position: absolute;
+    right:-15px;
+    top:-15px;
+    font-size:2rem;
+    cursor: pointer;
+}

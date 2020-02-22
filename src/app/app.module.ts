@@ -25,6 +25,8 @@ import { NotifierModule } from "angular-notifier";
 import { LoadingSpinnerComponent } from './components/app/loading-spinner/loading-spinner.component';
 import { ListItemSingleComponent } from './components/lists/list-items/list-item-single/list-item-single.component';
 import { ListItemContainerComponent } from './components/lists/list-items/list-item-container/list-item-container.component';
+import { EditLinkComponent } from './components/modals/edit-link/edit-link.component';
+import { EditIconComponent } from './components/modals/edit-icon/edit-icon.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ListItemContainerComponent } from './components/lists/list-items/list-i
     LoadingSpinnerComponent,
     ListItemSingleComponent,
     ListItemContainerComponent,
+    EditLinkComponent,
+    EditIconComponent,
   ],
   imports: [
     BrowserModule,

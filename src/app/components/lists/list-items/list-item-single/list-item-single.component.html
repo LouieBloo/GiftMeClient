@@ -1,4 +1,7 @@
 <div class="row shadow pt-4 pb-4">
+    <i *ngIf="editable" id="deleteButton" (click)="deleteItem()" class="material-icons">
+        delete_forever
+    </i>
     <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center">
         <i class="material-icons primaryFontColor" id="icon">
             card_giftcard
@@ -19,13 +22,21 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center flex-column">
-        <button>Link</button>
-        <button>Claim</button>
+    <div *ngIf="editable; then editButtons else noEditButtons"></div>
+    <ng-template #editButtons>
+        <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center flex-column">
+            <button id="editLinkButton" class="themeFontColor" (click)="linkModal.open()"><u>{{item.link ? 'Edit Link'
+                    : 'Add Link'}}</u></button>
+        </div>
+    </ng-template>
+    <ng-template #noEditButtons>
+        <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center flex-column">
+            <h6>no edit buttons</h6>
+        </div>
+    </ng-template>
 
-    </div>
 </div>
-
+<app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>
 
 <!-- <h5>_id: {{item._id}}</h5>
 <h5>owner: {{item.owner}}</h5>

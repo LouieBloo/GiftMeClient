@@ -45,11 +45,7 @@ export class ListPageComponent implements OnInit {
 
   addressEdited =  (address:Date)=>{
     if(address == this.list.address){return;}
-    if(!address){
-      delete(this.list.address);
-    }else{
-      this.list.address = address;
-    }
+    this.list.address = address;
     this.flushEditsToServer();
   }
 

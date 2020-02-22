@@ -21,6 +21,11 @@
     color: white;
     background-color:#df2d2d;
 }
+.btn-success{
+    border: 1px solid #ababab;
+    color: white;
+    background-color:#47c5ff;
+}
 
 /*** Fonts ***/
 .primaryFontColor{
@@ -28,6 +33,9 @@
 }
 .secondaryFontColor{
     color:#ababab;
+}
+.themeFontColor{
+    color:#47c5ff;
 }
 
 i{

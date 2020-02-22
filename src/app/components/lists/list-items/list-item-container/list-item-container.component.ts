@@ -10,8 +10,7 @@ import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-i
 export class ListItemContainerComponent implements OnInit {
 
   @Input('list') list : WishList = null;
-  editable:boolean = true;
-
+  @Input('editable') editable:boolean;
   constructor() { }
 
   ngOnInit() {
@@ -19,6 +18,12 @@ export class ListItemContainerComponent implements OnInit {
 
   createItem(){
     this.list.items.push({listId:this.list._id});
+  }
+
+  itemDeleted = (item:WishListItem)=>{
+    this.list.items = this.list.items.filter((element)=>{
+      return element != item;
+    })
   }
 
 }

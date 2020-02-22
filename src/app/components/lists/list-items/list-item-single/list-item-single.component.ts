@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { WishListItem } from 'src/app/models/wish-list';
 import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-item.service';
 import { NotifierService } from 'angular-notifier';
+import { EditLinkComponent } from 'src/app/components/modals/edit-link/edit-link.component';
 
 @Component({
   selector: 'app-list-item-single',
@@ -10,56 +11,79 @@ import { NotifierService } from 'angular-notifier';
 })
 export class ListItemSingleComponent implements OnInit {
 
-  @Input('item') item:WishListItem
-  @Input('editable') editable:boolean;
+  @Input('item') item: WishListItem
+  @Input('editable') editable: boolean;
+  @Input('deleteCallback') deleteCallback:any;
 
-  constructor(private wishListItemService:WishListItemService,private notifierService: NotifierService) { }
+  @ViewChild('linkModal', null) linkModal: EditLinkComponent;
+
+  constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService) { }
 
   ngOnInit() {
   }
 
-  nameEdited = (name:string)=>{
-    if(name == this.item.name){return;}
+  nameEdited = (name: string) => {
+    if (name == this.item.name) { return; }
     this.item.name = name;
-    if(this.item._id){
-      this.updateItem();  
-    }else{
+    if (this.item._id) {
+      this.updateItem();
+    } else {
       this.createItem();
     }
   }
 
-  descriptionEdited = (description:string)=>{
-    if(description == this.item.description){return;}
-    if(!description){
-      delete(this.item.description)
-    }else{
-      this.item.description = description;
-    }
-    this.updateItem();  
+  descriptionEdited = (description: string) => {
+    if (description == this.item.description) { return; }
+    this.item.description = description;
+    this.updateItem();
   }
 
-  createItem(){
-    this.wishListItemService.create(this.item).subscribe(result=>{
-      if(result && result._id){
+  linkEdited = ()=> {
+    this.updateItem();
+  }
+
+  createItem() {
+    this.wishListItemService.create(this.item).subscribe(result => {
+      if (result && result._id) {
         this.item = result;
         this.notifierService.notify("success", "Item Created");
       }
-    },error=>{
-      console.log("Error creating item: ",error)
+    }, error => {
+      console.log("Error creating item: ", error)
     })
   }
 
-  updateItem(){
-    if(!this.item._id){return;}
-
-    this.wishListItemService.edit(this.item).subscribe(result=>{
-      if(result && result._id){
+  updateItem() {
+    if (!this.item._id) { return; }
+    this.wishListItemService.edit(this.item).subscribe(result => {
+      if (result && result._id) {
         this.item = result;
         this.notifierService.notify("success", "Item Updated");
       }
-    },error=>{
-      console.log("Error creating item: ",error)
+    }, error => {
+      console.log("Error creating item: ", error)
+      let message:string = "Failed to save item: ";
+      if(error.error.error.link){
+        message += error.error.error.link.msg;
+      }else if(error.error.error.icon){
+        message += error.error.error.icon.msg;
+      }
+      this.notifierService.notify("error", message);
     })
+  }
+
+  deleteItem(){
+    if(this.item._id){
+      this.wishListItemService.delete(this.item._id).subscribe(result=>{
+        this.notifierService.notify("success","Item Deleted");
+        this.deleteCallback(this.item);
+      },error=>{
+        console.error("error deleting item: ",error);
+        this.notifierService.notify("error","Error deleting item: " + error.error);
+      })
+    }else{
+      this.deleteCallback(this.item);
+    }
   }
 
 }

@@ -26,6 +26,7 @@ export class EditableTextComponent implements OnInit {
   }
 
   clicked(){
+    if(!this.editable){return;}
     this.editing = true;
     setTimeout(()=>{
       this.textEl.nativeElement.select();
