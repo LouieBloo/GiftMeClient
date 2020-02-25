@@ -1,0 +1,10 @@
+.modal-header{
+    border:0;
+}
+.icons{
+    font-size:4rem;
+    cursor: pointer;
+    border: 1px solid #ababab;
+    border-radius:15px;
+}
+

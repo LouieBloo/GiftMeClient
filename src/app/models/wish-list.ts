@@ -18,6 +18,7 @@ export interface WishListItem{
     link?: string;
     listId?: string;
     description?: string;
+    icon?:string;
     claimedUser?:WishListUser;
     dateCreated?:Date;
     dateClaimed?:Date;

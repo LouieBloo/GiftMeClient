@@ -1,11 +1,19 @@
-<button type="button" (click)="createItem()">create item</button>
-
+<div class="row">
+    <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
+        <button type="button" id="createListButton" class="btn d-flex justify-content-center align-items-center" (click)="createItem()">
+            <i class="material-icons mr-2">
+                add_circle_outline
+            </i>
+            <h4 class="primaryFontColor mb-0 d-inline pb-1">Create Item</h4>
+        </button>
+    </div>
+</div>
 <div class="row mt-4">
     <div class="col-12" id="itemRow">
-        <div *ngFor="let item of list.items">
+        <div *ngFor="let item of list.items; let index = index;">
             <div class="row mb-4 ml-1 mr-1">
                 <div class="col-12">
-                    <app-list-item-single [(item)]="item" [(editable)]="editable" [deleteCallback]="itemDeleted"></app-list-item-single>
+                    <app-list-item-single [(item)]="item" [index]="index" [(editable)]="editable" [deleteCallback]="itemDeleted"></app-list-item-single>
                 </div>
             </div>
         </div>

@@ -1,1 +1,22 @@
-<p>edit-icon works!</p>
+<ng-template #content let-modal>
+    <div class="main">
+        <div class="modal-header">
+            <app-close class="close pl-0 pb-0 pr-1 pt-2" aria-label="Close" (callback)="modal.dismiss('Cross click')">
+            </app-close>
+        </div>
+        <div class="modal-body pt-0 mb-2">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="primaryFontColor text-center">Choose Your Favorite!</h5>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div *ngFor="let icon of allIcons" class="col-4 text-center colorSwap">
+                    <i class="material-icons primaryFontColor icons p-2 mt-3" (click)="iconClicked(icon);">
+                        {{icon}}
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

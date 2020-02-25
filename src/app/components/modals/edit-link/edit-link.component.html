@@ -18,14 +18,14 @@
                         <label for="urlInput" class="primaryFontColor mb-0">
                             <h6 class="mb-0 mr-2">Url:</h6>
                         </label>
-                        <input name="url" id="url" type="text" class="text-center" [(ngModel)]="item.link" ngbAutofocus pattern="^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$">
+                        <input name="url" id="url" type="text" class="text-center" [(ngModel)]="item.link" ngbAutofocus (keydown.enter)="saveButton.click()" (click)="finishEditing()" pattern="^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$">
                         <div *ngIf="urlInput.invalid && urlInput.dirty"><h6 class="text-danger text-center">Invalid URL</h6></div>
                     </form>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 d-flex justify-content-center">
-                    <button type="text" class="btn btn-success" id="saveButton" (click)="finishEditing()">Save</button>
+                    <button #saveButton type="text" class="btn btn-success" id="saveButton" (click)="finishEditing()" [disabled]="urlInput.invalid && urlInput.dirty">Save</button>
                 </div>
             </div>
         </div>

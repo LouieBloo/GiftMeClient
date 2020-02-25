@@ -26,6 +26,10 @@
     color: white;
     background-color:#47c5ff;
 }
+.colorSwap :hover{
+    color:#47c5ff;
+    transition: 0.2s;
+}
 
 /*** Fonts ***/
 .primaryFontColor{

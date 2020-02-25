@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { WishListItem } from 'src/app/models/wish-list';
 import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-item.service';
 import { NotifierService } from 'angular-notifier';
 import { EditLinkComponent } from 'src/app/components/modals/edit-link/edit-link.component';
+import { EditIconComponent } from 'src/app/components/modals/edit-icon/edit-icon.component';
 
 @Component({
   selector: 'app-list-item-single',
@@ -11,11 +12,13 @@ import { EditLinkComponent } from 'src/app/components/modals/edit-link/edit-link
 })
 export class ListItemSingleComponent implements OnInit {
 
-  @Input('item') item: WishListItem
+  @Input() item: WishListItem;
+  @Input() index: any;
   @Input('editable') editable: boolean;
   @Input('deleteCallback') deleteCallback:any;
 
   @ViewChild('linkModal', null) linkModal: EditLinkComponent;
+  @ViewChild('iconModal', null) iconModal: EditIconComponent;
 
   constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService) { }
 
@@ -39,6 +42,10 @@ export class ListItemSingleComponent implements OnInit {
   }
 
   linkEdited = ()=> {
+    this.updateItem();
+  }
+
+  iconEdited = ()=>{
     this.updateItem();
   }
 
@@ -76,13 +83,13 @@ export class ListItemSingleComponent implements OnInit {
     if(this.item._id){
       this.wishListItemService.delete(this.item._id).subscribe(result=>{
         this.notifierService.notify("success","Item Deleted");
-        this.deleteCallback(this.item);
+        this.deleteCallback(this.item,this.index);
       },error=>{
         console.error("error deleting item: ",error);
         this.notifierService.notify("error","Error deleting item: " + error.error);
       })
     }else{
-      this.deleteCallback(this.item);
+      this.deleteCallback(this.item,this.index);
     }
   }
 

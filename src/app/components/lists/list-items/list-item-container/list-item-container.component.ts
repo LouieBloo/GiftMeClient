@@ -20,10 +20,8 @@ export class ListItemContainerComponent implements OnInit {
     this.list.items.push({listId:this.list._id});
   }
 
-  itemDeleted = (item:WishListItem)=>{
-    this.list.items = this.list.items.filter((element)=>{
-      return element != item;
-    })
+  itemDeleted = (item:WishListItem,index:any)=>{
+    this.list.items.splice(index,1);
   }
 
 }

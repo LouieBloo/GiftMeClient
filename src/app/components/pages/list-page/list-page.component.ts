@@ -49,6 +49,11 @@ export class ListPageComponent implements OnInit {
     this.flushEditsToServer();
   }
 
+  finishDateChanged(){
+    this.list.finishDate = new Date(this.list.datePickerDate.year,this.list.datePickerDate.month-1,this.list.datePickerDate.day,0,0,0,0);
+    this.flushEditsToServer();
+  }
+
   flushEditsToServer(){
     this.wishListService.edit(this.list).subscribe(result=>{
       this.notifierService.notify("success", "List Updated");
@@ -61,11 +66,6 @@ export class ListPageComponent implements OnInit {
       }
       this.notifierService.notify("error", message);
     })
-  }
-
-  finishDateChanged(){
-    this.list.finishDate = new Date(this.list.datePickerDate.year,this.list.datePickerDate.month-1,this.list.datePickerDate.day,0,0,0,0);
-    this.flushEditsToServer();
   }
 
 }

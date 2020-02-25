@@ -3,11 +3,21 @@
         delete_forever
     </i>
     <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center">
-        <i class="material-icons primaryFontColor" id="icon">
-            card_giftcard
-        </i>
+        <div *ngIf="editable">
+            <button type="button" id="editIconButton" class="btn colorSwap" (click)="iconModal.open()">
+                <i class="material-icons primaryFontColor" id="icon">
+                    {{item.icon ? item.icon : 'card_giftcard'}}
+                </i>
+                <h6 class="mb-0">Edit Icon</h6>
+            </button>
+        </div>
+        <div *ngIf="!editable">
+            <i class="material-icons primaryFontColor" id="icon">
+                {{item.icon ? item.icon : 'card_giftcard'}}
+            </i>
+        </div>
     </div>
-    <div class="col-12 col-sm-6 ">
+    <div class="col-12 col-sm-6 mt-3 mt-sm-2">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 <app-editable-text default="Click To Edit Name" [text]="item.name" [finishCallback]="nameEdited"
@@ -24,7 +34,7 @@
     </div>
     <div *ngIf="editable; then editButtons else noEditButtons"></div>
     <ng-template #editButtons>
-        <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center flex-column">
+        <div class="col-12 col-sm-3 mt-4 mt-sm-0 d-flex justify-content-center align-items-center flex-column">
             <button id="editLinkButton" class="themeFontColor" (click)="linkModal.open()"><u>{{item.link ? 'Edit Link'
                     : 'Add Link'}}</u></button>
         </div>
@@ -37,6 +47,7 @@
 
 </div>
 <app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>
+<app-edit-icon #iconModal [(item)]="item" [finishCallback]="iconEdited"></app-edit-icon>
 
 <!-- <h5>_id: {{item._id}}</h5>
 <h5>owner: {{item.owner}}</h5>
