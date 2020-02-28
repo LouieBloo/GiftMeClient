@@ -24,7 +24,7 @@ export class MyListsComponent implements OnInit {
   }
 
   getLists(){
-    let params:SearchParameter = {sort:{dateCreated:-1}};
+    let params:SearchParameter = {sort:{dateCreated:-1},owner:this.auth.getUserID()};
     if(!this.viewingOwnLists){
       params.owner = "69"
     }

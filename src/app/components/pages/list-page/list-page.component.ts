@@ -5,6 +5,7 @@ import { WishListService } from 'src/app/services/wish-list/wish-list.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-list-page',
@@ -14,10 +15,10 @@ import * as moment from 'moment';
 export class ListPageComponent implements OnInit {
 
   list:WishList = {};
-  editable:boolean = true;
+  editable:boolean = false;
   loading:boolean = true;
 
-  constructor(private notifierService: NotifierService,private wishListService:WishListService,private route: ActivatedRoute) { }
+  constructor(private notifierService: NotifierService,private wishListService:WishListService,private route: ActivatedRoute,private auth:AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -28,7 +29,9 @@ export class ListPageComponent implements OnInit {
           let parsed = new Date(this.list.finishDate);
           this.list.datePickerDate = new NgbDate(parsed.getFullYear(),parsed.getMonth()+1,parsed.getDate());
         }
-
+        if(this.list.owner && this.list.owner._id == this.auth.getUserID()){
+          this.editable = true;
+        }
         this.loading = false;
       },error=>{
         this.loading = false;
@@ -66,6 +69,21 @@ export class ListPageComponent implements OnInit {
       }
       this.notifierService.notify("error", message);
     })
+  }
+
+  copyMessage(val: string){
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this.notifierService.notify("success", "Share Link Copied To Clipboard");
   }
 
 }

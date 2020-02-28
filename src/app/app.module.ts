@@ -61,7 +61,7 @@ import { IconPickerComponent } from './components/modal/icon-picker/icon-picker.
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    NotifierModule.withConfig({position:{vertical:{position:"bottom"}},behaviour:{autoHide:2000}})
+    NotifierModule.withConfig({position:{vertical:{position:"bottom"}},behaviour:{autoHide:2000}}),
   ],
   providers: [],
   bootstrap: [AppComponent]

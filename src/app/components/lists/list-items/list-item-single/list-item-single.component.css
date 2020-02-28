@@ -17,8 +17,8 @@
 #deleteButton{
     color:red;
     position: absolute;
-    right:-15px;
-    top:-15px;
+    right:0px;
+    top:0px;
     font-size:2rem;
     cursor: pointer;
 }

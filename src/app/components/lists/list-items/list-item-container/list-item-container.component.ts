@@ -17,7 +17,7 @@ export class ListItemContainerComponent implements OnInit {
   }
 
   createItem(){
-    this.list.items.push({listId:this.list._id});
+    this.list.items.unshift({listId:this.list._id});
   }
 
   itemDeleted = (item:WishListItem,index:any)=>{

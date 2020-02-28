@@ -41,6 +41,9 @@
 .themeFontColor{
     color:#47c5ff;
 }
+.themeFontColorMuted{
+    color:#399cca;
+}
 
 i{
     vertical-align: middle;
@@ -79,4 +82,8 @@ i{
 @keyframes fadeIn {
     0%   {opacity: 0}
     100% {opacity: 1}
+}
+
+.pageShadow{
+    box-shadow: 0 0px 7px 0px #7a7a7a;
 }
