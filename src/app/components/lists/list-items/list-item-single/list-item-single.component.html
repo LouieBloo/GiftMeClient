@@ -1,4 +1,4 @@
-<div class="row shadow pt-4 pb-4">
+<div class="row shadow pt-4 pb-3 pb-sm-4">
     <i *ngIf="editable" id="deleteButton" (click)="deleteItem()" class="material-icons">
         delete_forever
     </i>
@@ -40,8 +40,16 @@
         </div>
     </ng-template>
     <ng-template #noEditButtons>
-        <div class="col-12 col-sm-3 d-flex justify-content-center align-items-center flex-column">
-            <h6>no edit buttons</h6>
+        <div class="col-12 col-sm-3 mt-4 mt-sm-0">
+            <div class="row">
+                <div class="col-6 col-sm-12 d-flex justify-content-center align-items-center">
+                    <a id="editLinkButton" *ngIf="item.link" class="themeFontColor" href="{{item.link}}" target="_blank"><u>Link</u></a>
+                    <p *ngIf="!item.link" class="secondaryFontColor mb-0">No Link</p>
+                </div>
+                <div class="col-6 col-sm-12 mt-0 mt-sm-2 d-flex justify-content-center align-items-center">
+                    <button id="claimButton" class="btn btn-success" (click)="linkModal.open()">Claim</button>
+                </div>
+            </div>
         </div>
     </ng-template>
 

@@ -48,4 +48,5 @@ export class ProfileDisplayComponent implements OnInit {
       this.appLoginComponent.open(showRegister ? 'registerTab' : 'loginTab');
     }
   }
+
 }

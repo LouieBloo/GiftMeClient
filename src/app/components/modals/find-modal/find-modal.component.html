@@ -10,9 +10,11 @@
                     <i id="searchIcon" class="material-icons">
                         search
                     </i>
-                    <input ngbAutofocus id="searchBox" type="text" placeholder="Enter List Code" class="text-center"
-                        maxlength="10">
-                    <button id="searchButton" class="btn btn-primary"><span>→</span></button>
+                    <form  (ngSubmit)="searchForList()">
+                        <input ngbAutofocus [(ngModel)]="listIdInputValue" name="listIdInputValue" id="searchBox" type="text" placeholder="Enter List Code"
+                            class="text-center" maxlength="24">
+                        <button id="searchButton" class="btn btn-primary"><span>→</span></button>
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -21,8 +23,7 @@
                     </app-picture-with-text-small>
                 </div>
                 <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-                    <app-picture-with-text-small icon="history" text="Recently Visited Lists"
-                        (callback)="findButtonClicked()"></app-picture-with-text-small>
+                    <app-picture-with-text-small icon="history" text="Recently Visited Lists" (callback)="findButtonClicked()"></app-picture-with-text-small>
                 </div>
             </div>
         </div>

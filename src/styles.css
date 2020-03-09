@@ -22,7 +22,7 @@
     background-color:#df2d2d;
 }
 .btn-success{
-    border: 1px solid #ababab;
+    border: 1px solid #ffffff;
     color: white;
     background-color:#47c5ff;
 }
@@ -86,4 +86,8 @@ i{
 
 .pageShadow{
     box-shadow: 0 0px 7px 0px #7a7a7a;
+}
+
+notifier-container ul{
+    margin-bottom:0px;
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { Router } from '@angular/router';
+import { UserDetails } from 'src/app/models/auth';
+import { FindModalComponent } from '../find-modal/find-modal.component';
 
 @Component({
   selector: 'app-user-account',
@@ -10,10 +13,13 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 export class UserAccountComponent implements OnInit {
 
   @ViewChild('content',null) input: ElementRef;
+  @ViewChild('findModal',null) findModal:FindModalComponent;
+  activeUser:UserDetails;
 
-  constructor(private modalService: NgbModal,public auth:AuthService) { }
+  constructor(private modalService: NgbModal,public auth:AuthService,private router:Router) { }
 
   ngOnInit() {
+    this.activeUser = this.auth.getUserDetails();
   }
 
   open(){
@@ -23,5 +29,15 @@ export class UserAccountComponent implements OnInit {
   logout(){
     this.auth.logout();
     this.modalService.dismissAll();
+  }
+
+  goHomeClicked = ()=>{
+    this.router.navigateByUrl('/');
+    this.modalService.dismissAll();
+  }
+
+  findThingsClicked = ()=>{
+    this.modalService.dismissAll();
+    this.findModal.open();
   }
 }
