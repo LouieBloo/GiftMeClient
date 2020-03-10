@@ -27,6 +27,10 @@ export class WishListService {
     }
   }
 
+  public getExists(id:string):Observable<any>{
+    return this.auth.request('get','/wishlist/' + id + '/exists');
+  }
+
   public getSingle(id:string):Observable<any>{
       return this.auth.request('get','/wishlist/' + id);
   }

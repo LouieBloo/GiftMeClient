@@ -14,43 +14,53 @@ export class MyListsComponent implements OnInit {
 
   allLists: WishList[] = [];
 
-  viewingOwnLists:boolean = true;
+  viewingOwnLists: boolean = true;
 
-  constructor(public auth: AuthService, public eventService: EventService,private wishListService:WishListService) {
+  constructor(public auth: AuthService, public eventService: EventService, private wishListService: WishListService) {
   }
 
   ngOnInit() {
     this.getLists();
   }
 
-  getLists(){
-    let params:SearchParameter = {sort:{dateCreated:-1},owner:this.auth.getUserID()};
-    
-    this.wishListService.get(params).subscribe(result=>{
-      if(result && result.length > 0){
+  getLists() {
+    let params: SearchParameter = { sort: { dateCreated: -1 }, owner: this.auth.getUserID() };
+
+    this.wishListService.get(params).subscribe(result => {
+      if (result && result.length > 0) {
         this.allLists = result;
-      }else{
+      } else {
         this.allLists = [];
       }
-    },error=>{
+    }, error => {
       console.error(error);
     })
   }
 
-  createList(){
-    this.wishListService.create({name:"Default List Name"}).subscribe(result=>{
+  createList() {
+    // this.allLists.unshift({});
+    this.wishListService.create({}).subscribe(result=>{
       this.getLists();
     },error=>{
       console.log(error);
     })
   }
 
-  listDeleted = (list:WishList)=>{
-    this.wishListService.delete(list._id).subscribe(result=>{
-      this.getLists();
-    },error=>{
-      console.error(error);
-    });
+  listDeleted = (list: WishList) => {
+    if (list._id) {
+      this.wishListService.delete(list._id).subscribe(result => {
+        this.getLists();
+      }, error => {
+        console.error(error);
+      });
+    } else {
+      for(let i = 0; i < this.allLists.length;i++){
+        if(this.allLists[i] == list){
+          this.allLists.splice(i,1);
+        }
+      }
+    }
+
   }
 
 }

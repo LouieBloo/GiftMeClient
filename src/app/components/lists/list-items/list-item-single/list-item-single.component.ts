@@ -4,6 +4,7 @@ import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-i
 import { NotifierService } from 'angular-notifier';
 import { EditLinkComponent } from 'src/app/components/modals/edit-link/edit-link.component';
 import { EditIconComponent } from 'src/app/components/modals/edit-icon/edit-icon.component';
+import { ClaimModalComponent } from 'src/app/components/modals/claim-modal/claim-modal.component';
 
 @Component({
   selector: 'app-list-item-single',
@@ -19,6 +20,7 @@ export class ListItemSingleComponent implements OnInit {
 
   @ViewChild('linkModal', null) linkModal: EditLinkComponent;
   @ViewChild('iconModal', null) iconModal: EditIconComponent;
+  @ViewChild('claimModal',null) claimModal:ClaimModalComponent;
 
   constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService) { }
 
@@ -91,6 +93,11 @@ export class ListItemSingleComponent implements OnInit {
     }else{
       this.deleteCallback(this.item,this.index);
     }
+  }
+
+
+  claimButtonClicked(){
+    this.claimModal.open();
   }
 
 }

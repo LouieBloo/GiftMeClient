@@ -28,6 +28,7 @@ import { ListItemContainerComponent } from './components/lists/list-items/list-i
 import { EditLinkComponent } from './components/modals/edit-link/edit-link.component';
 import { EditIconComponent } from './components/modals/edit-icon/edit-icon.component';
 import { IconPickerComponent } from './components/modal/icon-picker/icon-picker.component';
+import { ClaimModalComponent } from './components/modals/claim-modal/claim-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { IconPickerComponent } from './components/modal/icon-picker/icon-picker.
     EditLinkComponent,
     EditIconComponent,
     IconPickerComponent,
+    ClaimModalComponent,
   ],
   imports: [
     BrowserModule,

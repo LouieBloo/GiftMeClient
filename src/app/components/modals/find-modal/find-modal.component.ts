@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { WishListService } from 'src/app/services/wish-list/wish-list.service';
 
 @Component({
   selector: 'app-find-modal',
@@ -9,21 +10,29 @@ import { Router } from '@angular/router';
 })
 export class FindModalComponent implements OnInit {
 
-  @ViewChild('content',null) input: ElementRef;
-  listIdInputValue:any;
+  @ViewChild('content', null) input: ElementRef;
+  listIdInputValue: any;
+  findError: string;
 
-  constructor(private modalService: NgbModal,private router:Router) { }
+  constructor(private modalService: NgbModal, private router: Router, private wishListService: WishListService) { }
 
   ngOnInit() {
   }
 
-  open(){
+  open() {
+    this.listIdInputValue = null;
     this.modalService.open(this.input, { centered: true });
   }
 
-  searchForList(){
-    this.router.navigateByUrl('/wishlists/' + this.listIdInputValue);
-    this.modalService.dismissAll();
+  searchForList() {
+    this.findError = null;
+    this.wishListService.getExists(this.listIdInputValue).subscribe(response => {
+      this.router.navigateByUrl('/wishlists/' + this.listIdInputValue);
+      this.modalService.dismissAll();
+    }, error => {
+      this.findError = "List not found"
+    })
+
   }
 
 }

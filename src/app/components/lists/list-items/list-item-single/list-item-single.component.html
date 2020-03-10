@@ -47,7 +47,7 @@
                     <p *ngIf="!item.link" class="secondaryFontColor mb-0">No Link</p>
                 </div>
                 <div class="col-6 col-sm-12 mt-0 mt-sm-2 d-flex justify-content-center align-items-center">
-                    <button id="claimButton" class="btn btn-success" (click)="linkModal.open()">Claim</button>
+                    <button id="claimButton" class="btn btn-success" (click)="claimButtonClicked()">Claim</button>
                 </div>
             </div>
         </div>
@@ -56,3 +56,4 @@
 </div>
 <app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>
 <app-edit-icon #iconModal [(item)]="item" [finishCallback]="iconEdited"></app-edit-icon>
+<app-claim-modal #claimModal [(item)]="item" ></app-claim-modal>

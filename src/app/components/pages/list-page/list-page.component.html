@@ -1,4 +1,3 @@
-
 <div *ngIf="loading; then loadingView else mainView"></div>
 <ng-template #loadingView>
     <div class="row">
@@ -9,19 +8,25 @@
 </ng-template>
 <ng-template #mainView>
 
-    <div class="row pr-2 pl-2">
+    <div class="row ">
         <div class="col-12" id="main">
             <div class="row" id="copyListIdDiv">
                 <div class="col-12">
-                    <button class="btn themeFontColorMuted" id="copyListIdButton" (click)="copyMessage(list._id)"><i class="material-icons">
+                    <button class="btn themeFontColorMuted" id="copyListIdButton" (click)="copyMessage(list._id)"><i
+                            class="material-icons">
                             mobile_screen_share
-                            </i> Share List</button>
+                        </i> Share List</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 mt-2">
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-center">
+            <div class="row shadow" id="shadowRow">
+                <div class="col-12 pb-2">
+                    <div class="row mb-1 ">
+                        <div class="col-12" id="listOwnerName">
+                            <p class="themeFontColorMuted mb-0 ml-2"><i class="material-icons mr-2">face</i>{{editable ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-center mt-2">
                             <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
                                 fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" width="360px"></app-editable-text>
                         </div>
@@ -32,9 +37,9 @@
                                 fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable" width="360px"></app-editable-text>
                         </div>
                     </div>
-                    <div class="row" *ngIf="editable || list.finishDate">
+                    <div class="row mt-4 mb-2" *ngIf="editable || list.finishDate">
                         <div class="col-12 d-flex justify-content-center align-items-center">
-                            <label for="finishDate" class="secondaryFontColor mb-0">Completion Date:</label>
+                            <label for="finishDate" class="secondaryFontColor mb-0">Finish Date:</label>
                             <input [readOnly]="!editable" class="form-control text-center pr-0" [ngClass]="{'readOnlyDate':!editable}"
                                 placeholder="yyyy-mm-dd" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
                                 (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker"
@@ -49,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row shadow mt-3">
                 <div class="col-12">
                     <app-list-item-container *ngIf="list?._id" [list]="list" [editable]="editable"></app-list-item-container>
                 </div>

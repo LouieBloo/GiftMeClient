@@ -19,7 +19,7 @@ export class EditIconComponent implements OnInit {
   constructor(private modalService: NgbModal,private iconService:IconsService) { }
 
   ngOnInit() {
-    this.iconService.get().subscribe(result=>{
+    this.iconService.get(result=>{
       this.allIcons = result;
     })
   }
