@@ -47,7 +47,19 @@
                     <p *ngIf="!item.link" class="secondaryFontColor mb-0">No Link</p>
                 </div>
                 <div class="col-6 col-sm-12 mt-0 mt-sm-2 d-flex justify-content-center align-items-center">
-                    <button id="claimButton" class="btn btn-success" (click)="claimButtonClicked()">Claim</button>
+                    <div *ngIf="isItemClaimed(); then claimed else notClaimed"></div>
+                    <ng-template #claimed>
+                        <div *ngIf="isItemClaimedByMe(); then byMe else notByMe"></div>
+                        <ng-template #byMe>
+                            <button id="" class="btn claimButton" (click)="unClaimButtonClicked()">Un-Claim</button>
+                        </ng-template>
+                        <ng-template #notByMe>
+                            <p>Claimed by {{item.claimedUser.name}}</p>
+                        </ng-template>
+                    </ng-template>
+                    <ng-template #notClaimed>
+                        <button id="" class="btn btn-success claimButton" (click)="claimButtonClicked()">Claim</button>
+                    </ng-template>
                 </div>
             </div>
         </div>
@@ -56,4 +68,4 @@
 </div>
 <app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>
 <app-edit-icon #iconModal [(item)]="item" [finishCallback]="iconEdited"></app-edit-icon>
-<app-claim-modal #claimModal [(item)]="item" ></app-claim-modal>
+<app-claim-modal #claimModal [(item)]="item"></app-claim-modal>

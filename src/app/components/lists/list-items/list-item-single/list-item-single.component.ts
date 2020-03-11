@@ -5,6 +5,7 @@ import { NotifierService } from 'angular-notifier';
 import { EditLinkComponent } from 'src/app/components/modals/edit-link/edit-link.component';
 import { EditIconComponent } from 'src/app/components/modals/edit-icon/edit-icon.component';
 import { ClaimModalComponent } from 'src/app/components/modals/claim-modal/claim-modal.component';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-list-item-single',
@@ -21,10 +22,12 @@ export class ListItemSingleComponent implements OnInit {
   @ViewChild('linkModal', null) linkModal: EditLinkComponent;
   @ViewChild('iconModal', null) iconModal: EditIconComponent;
   @ViewChild('claimModal',null) claimModal:ClaimModalComponent;
+  userId:string;
 
-  constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService) { }
+  constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService,private auth:AuthService) { }
 
   ngOnInit() {
+    this.userId = this.auth.getUserDetails()._id;
   }
 
   nameEdited = (name: string) => {
@@ -95,9 +98,20 @@ export class ListItemSingleComponent implements OnInit {
     }
   }
 
-
   claimButtonClicked(){
     this.claimModal.open();
+  }
+
+  unClaimButtonClicked(){
+    //this.claimModal.open();
+  }
+
+  isItemClaimed(){
+    return this.item.claimedUser;
+  }
+
+  isItemClaimedByMe(){
+    return this.isItemClaimed() && this.item.claimedUser._id == this.userId;
   }
 
 }

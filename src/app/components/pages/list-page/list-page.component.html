@@ -20,11 +20,7 @@
             </div>
             <div class="row shadow" id="shadowRow">
                 <div class="col-12 pb-2">
-                    <div class="row mb-1 ">
-                        <div class="col-12" id="listOwnerName">
-                            <p class="themeFontColorMuted mb-0 ml-2"><i class="material-icons mr-2">face</i>{{editable ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
-                        </div>
-                    </div>
+
                     <div class="row mt-4">
                         <div class="col-12 d-flex justify-content-center mt-2">
                             <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
@@ -39,17 +35,24 @@
                     </div>
                     <div class="row mt-4 mb-2" *ngIf="editable || list.finishDate">
                         <div class="col-12 d-flex justify-content-center align-items-center">
-                            <label for="finishDate" class="secondaryFontColor mb-0">Finish Date:</label>
-                            <input [readOnly]="!editable" class="form-control text-center pr-0" [ngClass]="{'readOnlyDate':!editable}"
-                                placeholder="yyyy-mm-dd" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
+                            <label for="finishDate" class="secondaryFontColor mb-0">Finishing:</label>
+
+                            <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0" [ngClass]="{'readOnlyDate':!editable}"
+                                placeholder="dd-mm-yyyy" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
                                 (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker"
                                 (click)="editable && finishDatePicker.toggle()">
                             <div class="">
-                                <button id="calendarButton" class="primaryFontColor" (click)="editable && finishDatePicker.toggle()"
+                                <button id="calendarButton" class="primaryFontColor pl-0" (click)="editable && finishDatePicker.toggle()"
                                     type="button"><i class="material-icons">
                                         calendar_today
                                     </i></button>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-1 ">
+                        <div class="col-12 d-flex justify-content-center" id="listOwnerName">
+                            <p class="themeFontColorMuted mb-0 ml-2"><i class="material-icons mr-2">face</i>{{editable
+                                ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
                         </div>
                     </div>
                 </div>

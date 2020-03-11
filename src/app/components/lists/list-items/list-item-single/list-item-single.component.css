@@ -22,6 +22,6 @@
     font-size:2rem;
     cursor: pointer;
 }
-#claimButton{
+.claimButton{
     width:125px;
 }

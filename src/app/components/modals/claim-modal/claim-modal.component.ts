@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { WishListItem } from 'src/app/models/wish-list';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-item.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-claim-modal',
@@ -14,7 +15,7 @@ export class ClaimModalComponent implements OnInit {
   @Input('item') item:WishListItem;
   //@Input('finishCallback') finishCallback:any;
 
-  constructor(private modalService: NgbModal,private wishListItemService:WishListItemService) { }
+  constructor(private modalService: NgbModal,private wishListItemService:WishListItemService,private notifierService: NotifierService) { }
 
   ngOnInit() {
   }
@@ -26,8 +27,12 @@ export class ClaimModalComponent implements OnInit {
   claim(){
     this.wishListItemService.claim(this.item).subscribe(result=>{
       console.log(result);
+      this.item.claimedUser = result.claimedUser;
+      this.notifierService.notify("success","Item Claimed!");
+      this.finishEditing();
     },error=>{
       console.log("Error: ",error);
+      this.notifierService.notify("error","Error claiming item: " + error.error);
     })
   }
 
