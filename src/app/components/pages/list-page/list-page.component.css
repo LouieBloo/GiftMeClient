@@ -20,7 +20,7 @@ label{
 #calendarButton i{
     font-size:1.25rem;
     position: relative;
-    right: 7px;
+    right:-10px;
     top:-1px;
 }
 #main{
@@ -38,5 +38,5 @@ label{
     top:-48px;
 }
 #shadowRow{
-    box-shadow: 0 1rem 0.5rem rgba(0,0,0,.15)!important;
+    box-shadow: 0px 9px 18px -12px rgba(0,0,0,0.75)!important;
 }

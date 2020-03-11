@@ -33,31 +33,37 @@
                                 fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable" width="360px"></app-editable-text>
                         </div>
                     </div>
-                    <div class="row mt-4 mb-2" *ngIf="editable || list.finishDate">
-                        <div class="col-12 d-flex justify-content-center align-items-center">
-                            <label for="finishDate" class="secondaryFontColor mb-0">Finishing:</label>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="row" *ngIf="editable || list.finishDate">
+                                <div class="col-12 d-flex justify-content-start align-items-center">
+                                    <!-- <label for="finishDate" class="secondaryFontColor mb-0">Finishing:</label> -->
+                                    <div class="">
+                                        <button id="calendarButton" class="primaryFontColor pl-0" (click)="editable && finishDatePicker.toggle()"
+                                            type="button"><i class="material-icons">
+                                                calendar_today
+                                            </i></button>
+                                    </div>
+                                    <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0" [ngClass]="{'readOnlyDate':!editable}"
+                                        placeholder="dd-mm-yyyy" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
+                                        (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker"
+                                        (click)="editable && finishDatePicker.toggle()">
 
-                            <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0" [ngClass]="{'readOnlyDate':!editable}"
-                                placeholder="dd-mm-yyyy" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
-                                (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker"
-                                (click)="editable && finishDatePicker.toggle()">
-                            <div class="">
-                                <button id="calendarButton" class="primaryFontColor pl-0" (click)="editable && finishDatePicker.toggle()"
-                                    type="button"><i class="material-icons">
-                                        calendar_today
-                                    </i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mb-1 ">
-                        <div class="col-12 d-flex justify-content-center" id="listOwnerName">
-                            <p class="themeFontColorMuted mb-0 ml-2"><i class="material-icons mr-2">face</i>{{editable
-                                ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
+                        <div class="col-6">
+                            <div class="row h-100">
+                                <div class="col-12 d-flex justify-content-end align-items-center" id="listOwnerName">
+                                    <p class="themeFontColorMuted mb-0 mr-1"><i class="material-icons mr-2">face</i>{{editable
+                                        ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row shadow mt-3">
+            <div class="row shadow">
                 <div class="col-12">
                     <app-list-item-container *ngIf="list?._id" [list]="list" [editable]="editable"></app-list-item-container>
                 </div>
