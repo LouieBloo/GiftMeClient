@@ -38,7 +38,7 @@ export class AuthService {
     if(!this._id){
       this._id = localStorage.getItem('_id');
     }
-    return this._id;
+    return this._id && this.isLoggedIn() ? this._id : null;
   }
 
   public logout():void{

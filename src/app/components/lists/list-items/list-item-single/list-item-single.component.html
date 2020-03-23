@@ -51,10 +51,15 @@
                     <ng-template #claimed>
                         <div *ngIf="isItemClaimedByMe(); then byMe else notByMe"></div>
                         <ng-template #byMe>
-                            <button id="" class="btn claimButton" (click)="unClaimButtonClicked()">Un-Claim</button>
+                            <button id="" class="btn claimButton themeFontColorMuted" (click)="claimButtonClicked()">Un-Claim</button>
                         </ng-template>
                         <ng-template #notByMe>
-                            <p>Claimed by {{item.claimedUser.name}}</p>
+                            <div triggers="click" [autoClose]="true" ngbTooltip="{{item.claimedUser && item.claimedUser.name ? 'This item has already been claimed by someone' : 'Log in or create an account to find out who claimed this item'}}">
+                                <p class="text-warning d-flex align-items-center mb-0"><span class="material-icons mr-1">
+                                        warning
+                                    </span> {{item.claimedUser.name ? 'Claimed by ' + item.claimedUser.name :
+                                    'Claimed'}}</p>
+                            </div>
                         </ng-template>
                     </ng-template>
                     <ng-template #notClaimed>

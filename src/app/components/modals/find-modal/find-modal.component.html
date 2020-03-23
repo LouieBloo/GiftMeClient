@@ -4,32 +4,44 @@
             <app-close class="close pl-0 pb-0 pr-1 pt-2" aria-label="Close" (callback)="modal.dismiss('Cross click')">
             </app-close>
         </div>
-        <div class="modal-body">
-
+        <div class="modal-body pt-1">
             <div class="row">
+                <div class="col-12">
+                    <h5 class="primaryFontColor text-center">Find Lists and Items</h5>
+                    <h6 id="desc" class="secondaryFontColor text-center mt-1">If you know your friends list Id</h6>
+                </div>
+            </div>
+            <div class="row mt-2">
                 <div class="col-12">
                     <h6 class="text-center text-danger" *ngIf="findError">{{findError}}</h6>
                 </div>
-                <div class="col-12 d-flex justify-content-center align-items-center mb-4">
-                    <i id="searchIcon" class="material-icons">
-                        search
-                    </i>
-                    <form  (ngSubmit)="searchForList()">
-                        <input ngbAutofocus [(ngModel)]="listIdInputValue" name="listIdInputValue" id="searchBox" type="text" placeholder="Enter List Code"
-                            class="text-center" maxlength="24">
-                        <button id="searchButton" class="btn btn-primary"><span>→</span></button>
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <form (ngSubmit)="searchForList()">
+                        <input ngbAutofocus [(ngModel)]="listIdInputValue" name="listIdInputValue" id="searchBox" type="text"
+                            placeholder="Paste List Id" class="text-center" maxlength="24">
+                        <div class="row mt-2">
+                            <div class="col-12 d-flex justify-content-center">
+                                <button id="searchButton" class="btn btn-success"><i id="searchIcon" class="material-icons">
+                                        search
+                                    </i>Search</button>
+                            </div>
+                        </div>
                     </form>
-                    
                 </div>
-                
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <h6 id="desc" class="secondaryFontColor text-center">Find other items and lists</h6>
+                </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-6 mb-2 mb-sm-0">
-                    <app-picture-with-text-small icon="shop" text="Items Claimed" (callback)="findButtonClicked()">
+                <div class="col-6 ">
+                    <app-picture-with-text-small icon="card_giftcard " text="Claimed" (callback)="findButtonClicked()">
                     </app-picture-with-text-small>
                 </div>
-                <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-                    <app-picture-with-text-small icon="history" text="Recently Visited Lists" (callback)="findButtonClicked()"></app-picture-with-text-small>
+                <div class="col-6 ">
+                    <app-picture-with-text-small icon="history" text="Recent Lists" (callback)="findButtonClicked()"></app-picture-with-text-small>
                 </div>
             </div>
         </div>

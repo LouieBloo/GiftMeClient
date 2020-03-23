@@ -7,13 +7,13 @@
         <div class="modal-body pt-0 mb-1">
             <div class="row">
                 <div class="col-12">
-                    <h5 class="primaryFontColor text-center mb-0">Claim Item</h5>
-                    <p id="desc" class="secondaryFontColor text-center">Claim this item so others know not to buy it</p>
+                    <h5 class="primaryFontColor text-center mb-0">{{item.claimedUser ? 'Un-claim Item' : 'Claim Item'}}</h5>
+                    <p id="desc" class="secondaryFontColor text-center">{{item.claimedUser ? 'You will NOT buy this item' : 'Claim this item so others do not buy it'}}</p>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-12 d-flex justify-content-center">
-                    <button class="btn btn-success btn-width mr-1" type="button" (click)="claim()">Claim</button>
+                    <button class="btn btn-success btn-width mr-1" type="button" (click)="item.claimedUser ? unClaim() : claim()">{{item.claimedUser ? 'Un-Claim' : 'Claim'}}</button>
                     <button class="btn btn-danger btn-width ml-1" type="button" (click)="modal.dismiss('Cross click')">Back</button>
                 </div>
             </div>

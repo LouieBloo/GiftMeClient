@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-12 mt-2">
         <h1 class="text-center primaryFontColor">
-            My Lists
+            {{editable ? 'My Lists' : userName + '\'s Lists'}}
         </h1>
-        <h5 class="text-center secondaryFontColor">Create and delete your lists</h5>
+        <h5 class="text-center secondaryFontColor" *ngIf="editable">Create and delete your lists</h5>
     </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="editable">
     <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
         <button type="button" id="createListButton" class="btn d-flex justify-content-center align-items-center" (click)="createList()">
             <i class="material-icons mr-2">
@@ -20,7 +20,7 @@
     <div class="col-12">
         <div class="row  d-flex justify-content-center">
             <div class="col-12 col-sm-4" *ngFor="let list of allLists">
-                <app-list-overview-item viewingOwnLists="viewingOwnLists" [list]="list" [deleteCallback]="listDeleted"></app-list-overview-item>
+                <app-list-overview-item [editable]="editable" [list]="list" [deleteCallback]="listDeleted"></app-list-overview-item>
             </div>
         </div>
     </div>

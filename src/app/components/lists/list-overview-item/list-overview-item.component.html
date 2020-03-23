@@ -14,15 +14,27 @@
                 </ul>
             </div>
         </div>
-        <div class="row" *ngIf="viewingOwnLists">
-            <div class="col-12 p-0 btn-group  d-flex align-items-end">
-                <button type="button" [routerLink]="'/wishlists/' + list._id" class="btn doubleButtons"><i class="material-icons">
-                        edit
+        <div *ngIf="editable; then editButtons else viewButtons"></div>
+        <ng-template #editButtons>
+            <div class="row">
+                <div class="col-12 p-0 btn-group  d-flex align-items-end">
+                    <button type="button" [routerLink]="'/wishlists/' + list._id" class="btn doubleButtons"><i class="material-icons">
+                            edit
                         </i> Edit </button>
-                <button type="button" class="btn btn-danger doubleButtons" (click)="delete()"><i class="material-icons">
-                        delete_forever
-                    </i> Delete</button>
+                    <button type="button" class="btn btn-danger doubleButtons" (click)="delete()"><i class="material-icons">
+                            delete_forever
+                        </i> Delete</button>
+                </div>
             </div>
-        </div>
+        </ng-template>
+        <ng-template #viewButtons>
+            <div class="row">
+                <div class="col-12 p-0 btn-group  d-flex align-items-end">
+                    <button type="button" [routerLink]="'/wishlists/' + list._id" class="btn doubleButtons themeFontColorMuted"><i class="material-icons">
+                            remove_red_eye
+                        </i> View </button>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

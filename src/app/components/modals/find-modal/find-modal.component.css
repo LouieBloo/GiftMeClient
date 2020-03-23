@@ -3,20 +3,14 @@
 }
 #searchBox{
     width:250px;
-    height:40px;
+    /* height:40px; */
     font-size:1.25rem;
 }
 #searchIcon{
-    font-size:1.75rem;
-    position: relative;
-    left:33px;
-    top:3px;
+    font-size:1.5rem;
 }
 #searchButton{
-    position: relative;
-    right:27px;
-    width:10px;
-    top:-5px;
+    width:120px;
     color:white;
 }
 #searchButton span{

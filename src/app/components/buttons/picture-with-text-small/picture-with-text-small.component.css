@@ -1,18 +1,19 @@
 #main{
     display:block;
     max-width:200px;
-    height:135px;
+    /* height:100px; */
     width:100%;
     margin-left:auto;
     margin-right:auto; 
-    background-color:#ffffff00;
-    box-shadow: 0 0px 5px rgba(0,0,0,.3);
+    /* background-color:#ffffff00;
+    box-shadow: 0 0px 5px rgba(0,0,0,.3); */
 }
 
 #mainImg{
-    max-width:110px;
-    max-height:110px;
-    width:100%;
+    /* max-width:75px;
+    max-height:75px;
+    width:100%; */
+    font-size:3.3rem;
 }
 
 #text{

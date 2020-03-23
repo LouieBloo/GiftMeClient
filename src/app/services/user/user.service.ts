@@ -10,5 +10,7 @@ export class UserService {
 
   constructor(private auth:AuthService) { }
 
-  
+  public get(userId:string):Observable<any>{
+      return this.auth.request('get','/users/'+userId);
+  }
 }

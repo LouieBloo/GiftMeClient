@@ -1,13 +1,13 @@
-<button id="main" class="col-12" (click)="clicked()">
+<button id="main" class="col-12 btn pt-2 pb-0 pb-sm-3 pt-sm-3" (click)="clicked()">
     <div class="row">
         <div class="col-12 col-6-md">
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-12">
-                    <img *ngIf="pictureUrl" id="mainImg" [src]="pictureUrl" alt="Button Picture">
-                    <i *ngIf="icon" class="material-icons primaryFontColor">{{icon}}</i>
+                    <!-- <img *ngIf="pictureUrl" id="mainImg" [src]="pictureUrl" alt="Button Picture"> -->
+                    <i *ngIf="icon" id="mainImg" class="material-icons primaryFontColor">{{icon}}</i>
                 </div>
             </div>
-            <div class="row mb-2">
+            <div class="row mb-0 mt-1">
                 <div class="col-12">
                     <h4 id="text" class="primaryFontColor">{{text}}</h4>
                 </div>

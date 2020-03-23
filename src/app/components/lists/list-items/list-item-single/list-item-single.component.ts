@@ -27,7 +27,7 @@ export class ListItemSingleComponent implements OnInit {
   constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService,private auth:AuthService) { }
 
   ngOnInit() {
-    this.userId = this.auth.getUserDetails()._id;
+    this.userId = this.auth.getUserDetails() ? this.auth.getUserDetails()._id : null;
   }
 
   nameEdited = (name: string) => {
@@ -111,7 +111,7 @@ export class ListItemSingleComponent implements OnInit {
   }
 
   isItemClaimedByMe(){
-    return this.isItemClaimed() && this.item.claimedUser._id == this.userId;
+    return this.isItemClaimed() && this.item.claimedUser._id && this.item.claimedUser._id == this.userId;
   }
 
 }

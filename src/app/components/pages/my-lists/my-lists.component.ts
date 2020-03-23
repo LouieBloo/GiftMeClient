@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { WishListService } from 'src/app/services/wish-list/wish-list.service';
 import { SearchParameter } from 'src/app/models/auth';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-my-lists',
@@ -14,21 +16,42 @@ export class MyListsComponent implements OnInit {
 
   allLists: WishList[] = [];
 
-  viewingOwnLists: boolean = true;
+  editable: boolean = true;
+  userName:string = "Loading...";
 
-  constructor(public auth: AuthService, public eventService: EventService, private wishListService: WishListService) {
+  constructor(public auth: AuthService, public eventService: EventService, private wishListService: WishListService,private route: ActivatedRoute,private userService:UserService) {
   }
 
   ngOnInit() {
-    this.getLists();
+    this.route.queryParams.subscribe(params => {
+      if(params.owner){
+        this.getLists(params.owner)
+        this.userService.get(params.owner).subscribe(user=>{
+          this.userName = user.name;
+        },error=>{
+          console.error("Error getting user: ",error);
+          this.userName = "Failed to Load"
+        })
+      }
+      else{
+        this.getLists()
+      }
+    });
   }
 
-  getLists() {
-    let params: SearchParameter = { sort: { dateCreated: -1 }, owner: this.auth.getUserID() };
-
+  getLists(ownerId:string = null) {
+    if(ownerId == this.auth.getUserID() || !ownerId){
+      this.editable = true;
+      ownerId = this.auth.getUserID();
+    }else{
+      this.editable = false;
+    }
+    console.log(this.editable)
+    let params: SearchParameter = { sort: { dateCreated: -1 }, owner: ownerId };
     this.wishListService.get(params).subscribe(result => {
       if (result && result.length > 0) {
         this.allLists = result;
+
       } else {
         this.allLists = [];
       }

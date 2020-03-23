@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class ListOverviewItemComponent implements OnInit {
 
   @Input() list:WishList;
-  @Input() viewingOwnLists:boolean;
+  @Input() editable:boolean;
   @Input() deleteCallback: any;
 
   constructor(private router: Router) { }

@@ -5,6 +5,7 @@
         {{text}}
     </ng-template>
     <ng-template #showDefault>
-        {{defaultText}}
+        <div *ngIf="editable">{{defaultText}}</div>
+        <div *ngIf="!editable"></div>
     </ng-template>
 </h6>

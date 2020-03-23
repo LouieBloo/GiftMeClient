@@ -26,7 +26,6 @@ export class ClaimModalComponent implements OnInit {
 
   claim(){
     this.wishListItemService.claim(this.item).subscribe(result=>{
-      console.log(result);
       this.item.claimedUser = result.claimedUser;
       this.notifierService.notify("success","Item Claimed!");
       this.finishEditing();
@@ -35,6 +34,18 @@ export class ClaimModalComponent implements OnInit {
       this.notifierService.notify("error","Error claiming item: " + error.error);
     })
   }
+
+  unClaim(){
+    this.wishListItemService.unclaim(this.item).subscribe(result=>{
+      this.item.claimedUser = null;
+      this.notifierService.notify("success","Item Un-Claimed!");
+      this.finishEditing();
+    },error=>{
+      console.log("Error: ",error);
+      this.notifierService.notify("error","Error un-claiming item: " + error.error);
+    })
+  }
+
 
   finishEditing(){
     //this.finishCallback();
