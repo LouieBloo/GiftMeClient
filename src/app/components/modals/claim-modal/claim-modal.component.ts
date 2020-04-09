@@ -3,6 +3,8 @@ import { WishListItem } from 'src/app/models/wish-list';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-item.service';
 import { NotifierService } from 'angular-notifier';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-claim-modal',
@@ -15,7 +17,7 @@ export class ClaimModalComponent implements OnInit {
   @Input('item') item:WishListItem;
   //@Input('finishCallback') finishCallback:any;
 
-  constructor(private modalService: NgbModal,private wishListItemService:WishListItemService,private notifierService: NotifierService) { }
+  constructor(private modalService: NgbModal,private wishListItemService:WishListItemService,private notifierService: NotifierService,private auth: AuthService,private eventService: EventService) { }
 
   ngOnInit() {
   }
@@ -24,15 +26,23 @@ export class ClaimModalComponent implements OnInit {
     this.modalService.open(this.input, { centered: true });
   }
 
-  claim(){
-    this.wishListItemService.claim(this.item).subscribe(result=>{
-      this.item.claimedUser = result.claimedUser;
-      this.notifierService.notify("success","Item Claimed!");
-      this.finishEditing();
-    },error=>{
-      console.log("Error: ",error);
-      this.notifierService.notify("error","Error claiming item: " + error.error);
-    })
+  claim = ()=>{
+    //if logged in handle normally
+    if(this.auth.isLoggedIn()){
+      this.wishListItemService.claim(this.item).subscribe(result=>{
+        this.item.claimedUser = result.claimedUser;
+        this.notifierService.notify("success","Item Claimed!");
+        this.finishEditing();
+      },error=>{
+        console.log("Error: ",error);
+        this.notifierService.notify("error","Error claiming item: " + error.error);
+      })
+    }
+    //if not logged in show login modal
+    else{
+      this.modalService.dismissAll();
+      this.eventService.loginModalEvent.next({callback:this.claim,showRegister:true});
+    }
   }
 
   unClaim(){

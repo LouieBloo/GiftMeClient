@@ -55,7 +55,7 @@
                         </ng-template>
                         <ng-template #notByMe>
                             <div triggers="click" [autoClose]="true" ngbTooltip="{{item.claimedUser && item.claimedUser.name ? 'This item has already been claimed by someone' : 'Log in or create an account to find out who claimed this item'}}">
-                                <p class="text-warning d-flex align-items-center mb-0"><span class="material-icons mr-1">
+                                <p class="text-warning d-flex align-items-center mb-0 text-center"><span class="material-icons mr-1">
                                         warning
                                     </span> {{item.claimedUser.name ? 'Claimed by ' + item.claimedUser.name :
                                     'Claimed'}}</p>

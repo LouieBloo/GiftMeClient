@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { LoginSignupModalComponent } from '../../modals/login-signup-modal/login-signup-modal.component';
 import { EventService } from 'src/app/services/event/event.service';
 import { UserAccountComponent } from '../../modals/user-account/user-account.component';
+import { setDefaultService } from 'selenium-webdriver/chrome';
 
 @Component({
   selector: 'app-profile-display',
@@ -17,6 +18,8 @@ export class ProfileDisplayComponent implements OnInit {
   firstTimeLoad:boolean = true;
   firstTimeLoadStorageName:string = "hasViewedApp"
 
+  userLoggedInOrRegisteredCallback:any;
+
   @ViewChild('appLoginComponent',{static:true}) appLoginComponent:LoginSignupModalComponent;
   @ViewChild('appUserAccount',{static:true}) userAccountComponent:UserAccountComponent;
 
@@ -26,6 +29,13 @@ export class ProfileDisplayComponent implements OnInit {
     //so we always know the state of the user
     this.auth.userDetailsSubject.subscribe(user=>{
       this.activeUser = user;
+
+      //So we can do actions after we log in or register automatically, such as claiming an item
+      //this should probably be in a service or something 
+      if(this.userLoggedInOrRegisteredCallback){
+        this.userLoggedInOrRegisteredCallback();
+        this.userLoggedInOrRegisteredCallback = null;
+      }      
     })
 
     //first time using app should show register instead of login
@@ -37,7 +47,8 @@ export class ProfileDisplayComponent implements OnInit {
 
     //so other components can open the login or register modal
     this.eventService.loginModalEvent.subscribe(event=>{
-      this.click(event);
+      this.userLoggedInOrRegisteredCallback = event.callback;
+      this.click(event.showRegister);
     })
   }
 

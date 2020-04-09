@@ -19,10 +19,10 @@ export class UserAccountComponent implements OnInit {
   constructor(private modalService: NgbModal,public auth:AuthService,private router:Router) { }
 
   ngOnInit() {
-    this.activeUser = this.auth.getUserDetails();
   }
 
   open(){
+    this.activeUser = this.auth.getUserDetails();
     this.modalService.open(this.input, { centered: true });
   }
 

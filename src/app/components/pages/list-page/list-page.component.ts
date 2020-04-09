@@ -21,6 +21,13 @@ export class ListPageComponent implements OnInit {
   constructor(private notifierService: NotifierService,private wishListService:WishListService,private route: ActivatedRoute,private auth:AuthService) { }
 
   ngOnInit() {
+    this.auth.userDetailsSubject.subscribe(user=>{
+      console.log("POPPED")
+      this.load();
+    })
+  }
+
+  load(){
     this.route.params.subscribe(params => {
       this.wishListService.getSingle(params['id']).subscribe(result=>{
         this.list = result[0];
@@ -29,15 +36,12 @@ export class ListPageComponent implements OnInit {
           let parsed = new Date(this.list.finishDate);
           this.list.datePickerDate = new NgbDate(parsed.getFullYear(),parsed.getMonth()+1,parsed.getDate());
         }
-        if(this.list.owner && this.list.owner._id == this.auth.getUserID()){
-          this.editable = true;
-        }
+        this.editable = this.list.owner && this.list.owner._id == this.auth.getUserID() ? true : false;
         this.loading = false;
       },error=>{
         this.loading = false;
       })
    });
-    
   }
 
   nameEdited = (name:string)=>{

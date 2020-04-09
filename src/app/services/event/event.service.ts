@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { LoginModalEvent } from 'src/app/models/event';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Subject } from 'rxjs';
 export class EventService {
 
 
-  public loginModalEvent: Subject<boolean> = new Subject();
+  public loginModalEvent: Subject<LoginModalEvent> = new Subject();
 
   constructor() { }
 }
