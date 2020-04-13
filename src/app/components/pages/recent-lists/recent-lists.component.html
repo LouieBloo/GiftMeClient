@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-12 mt-2">
+        <h1 class="text-center primaryFontColor">
+            Recent Lists
+        </h1>
+        <h5 class="text-center secondaryFontColor">You have visited these lists recently</h5>
+    </div>
+</div>
+<div class="row listRow mt-3">
+    <div class="col-12">
+        <div class="row d-flex justify-content-center">
+            <div *ngFor="let list of recentLists" class="col-12 col-sm-4 listItemSize">
+                <app-recent-list-item [list]=list></app-recent-list-item>
+            </div>
+        </div>
+    </div>
+</div>

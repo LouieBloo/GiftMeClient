@@ -18,42 +18,54 @@ export class MyListsComponent implements OnInit {
 
   editable: boolean = true;
   userName:string = "Loading...";
+  getParams:any;
+
+  createListOnLoginOrRegister:boolean = false;
 
   constructor(public auth: AuthService, public eventService: EventService, private wishListService: WishListService,private route: ActivatedRoute,private userService:UserService) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if(params.owner){
-        this.getLists(params.owner)
-        this.userService.get(params.owner).subscribe(user=>{
-          this.userName = user.name;
-        },error=>{
-          console.error("Error getting user: ",error);
-          this.userName = "Failed to Load"
-        })
-      }
-      else{
-        this.getLists()
-      }
+      this.getParams = params;
+      this.auth.userDetailsSubject.subscribe(user=>{
+        this.load();
+      })
     });
   }
 
-  getLists(ownerId:string = null) {
+  load = ()=>{
+    if(this.getParams.owner){
+      this.getLists(this.getParams.owner);
+      this.userService.get(this.getParams.owner).subscribe(user=>{
+        this.userName = user.name;
+      },error=>{
+        console.error("Error getting user: ",error);
+        this.userName = "Failed to Load"
+      })
+    }
+    else{
+      this.getLists();
+    }
+  }
+
+  getLists(ownerId:string = null,createList:boolean = false) {
     if(ownerId == this.auth.getUserID() || !ownerId){
       this.editable = true;
       ownerId = this.auth.getUserID();
     }else{
       this.editable = false;
     }
-    console.log(this.editable)
     let params: SearchParameter = { sort: { dateCreated: -1 }, owner: ownerId };
     this.wishListService.get(params).subscribe(result => {
       if (result && result.length > 0) {
         this.allLists = result;
-
       } else {
         this.allLists = [];
+      }
+      if(this.createListOnLoginOrRegister){
+        this.createList();
+        this.createListOnLoginOrRegister = false;
       }
     }, error => {
       console.error(error);
@@ -61,12 +73,16 @@ export class MyListsComponent implements OnInit {
   }
 
   createList() {
-    // this.allLists.unshift({});
-    this.wishListService.create({}).subscribe(result=>{
-      this.getLists();
-    },error=>{
-      console.log(error);
-    })
+    if(this.auth.isLoggedIn()){
+      this.wishListService.create({}).subscribe(result=>{
+        this.getLists();
+      },error=>{
+        console.log(error);
+      })
+    }else{
+      this.createListOnLoginOrRegister = true;
+      this.eventService.loginModalEvent.next({callback:null,showRegister:true});
+    }
   }
 
   listDeleted = (list: WishList) => {

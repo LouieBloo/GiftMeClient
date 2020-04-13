@@ -29,6 +29,7 @@ export class UserAccountComponent implements OnInit {
   logout(){
     this.auth.logout();
     this.modalService.dismissAll();
+    this.router.navigateByUrl('/');
   }
 
   goHomeClicked = ()=>{

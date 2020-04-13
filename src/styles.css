@@ -26,6 +26,10 @@
     color: white;
     background-color:#47c5ff;
 }
+.btn-themeMuted{
+    border: 1px solid #399cca;;
+    color: #399cca;
+}
 .colorSwap :hover{
     color:#47c5ff;
     transition: 0.2s;

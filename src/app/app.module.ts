@@ -29,6 +29,8 @@ import { EditLinkComponent } from './components/modals/edit-link/edit-link.compo
 import { EditIconComponent } from './components/modals/edit-icon/edit-icon.component';
 import { IconPickerComponent } from './components/modal/icon-picker/icon-picker.component';
 import { ClaimModalComponent } from './components/modals/claim-modal/claim-modal.component';
+import { RecentListsComponent } from './components/pages/recent-lists/recent-lists.component';
+import { RecentListItemComponent } from './components/lists/recent-list-item/recent-list-item.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { ClaimModalComponent } from './components/modals/claim-modal/claim-modal
     EditIconComponent,
     IconPickerComponent,
     ClaimModalComponent,
+    RecentListsComponent,
+    RecentListItemComponent,
   ],
   imports: [
     BrowserModule,

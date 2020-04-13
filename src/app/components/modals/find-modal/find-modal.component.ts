@@ -24,6 +24,11 @@ export class FindModalComponent implements OnInit {
     this.modalService.open(this.input, { centered: true });
   }
 
+  recentListButtonClicked(){
+    this.router.navigateByUrl('/engagement/wishlists');
+    this.modalService.dismissAll();
+  }
+
   searchForList() {
     this.findError = null;
     this.wishListService.getExists(this.listIdInputValue).subscribe(response => {

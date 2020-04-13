@@ -22,7 +22,6 @@ export class ListPageComponent implements OnInit {
 
   ngOnInit() {
     this.auth.userDetailsSubject.subscribe(user=>{
-      console.log("POPPED")
       this.load();
     })
   }

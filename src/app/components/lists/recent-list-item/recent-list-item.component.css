@@ -1,0 +1,14 @@
+#listName{
+    margin-top:50px;
+    margin-bottom:50px;
+}
+#main{
+    max-height:275px;
+}
+#listSize{
+    max-height: 168px;
+    overflow:hidden;
+}
+#viewButton{
+    border-radius:0;
+}
