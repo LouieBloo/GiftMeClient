@@ -10,6 +10,8 @@ export class PictureWithTextSmallComponent implements OnInit {
   @Input() pictureUrl :string;
   @Input() text :string;
   @Input() icon :string;
+  @Input() fontColor :string;
+  @Input() borderColor :string;
   @Output() callback: EventEmitter<any> = new EventEmitter();
 
   constructor() { }

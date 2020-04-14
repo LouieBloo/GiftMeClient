@@ -1,17 +1,28 @@
+
 <div class="row">
     <div class="col-12 mt-2">
         <h1 class="text-center primaryFontColor">
             Recent Lists
         </h1>
-        <h5 class="text-center secondaryFontColor">You have visited these lists recently</h5>
+        <h5 class="text-center secondaryFontColor">You have <span class="themeFontColorMuted" >visited</span> these lists recently</h5>
     </div>
 </div>
-<div class="row listRow mt-3">
-    <div class="col-12">
-        <div class="row d-flex justify-content-center">
-            <div *ngFor="let list of recentLists" class="col-12 col-sm-4 listItemSize">
-                <app-recent-list-item [list]=list></app-recent-list-item>
+<div *ngIf="loading; then loadingView else mainView"></div>
+<ng-template #loadingView>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</ng-template>
+<ng-template #mainView>
+    <div class="row listRow mt-3">
+        <div class="col-12">
+            <div class="row d-flex justify-content-center">
+                <div *ngFor="let list of recentLists" class="col-12 col-sm-4 listItemSize">
+                    <app-recent-list-item [list]=list></app-recent-list-item>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

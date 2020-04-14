@@ -2,8 +2,10 @@
     <div class="col-12">
         <div class="row mt-2">
             <div class="col-12">
-                <p class="themeFontColorMuted mb-0 mr-1"><i class="material-icons mr-2">face</i>{{list.owner.name
-                    + '\'s List' | titlecase}}</p>
+                <a [routerLink]="'/wishlists/owner/' + list.owner._id">
+                    <p class="themeFontColorMuted mb-0 mr-1"><i class="material-icons mr-2">face</i>{{list.owner.name
+                        + '\'s List' | titlecase}}</p>
+                </a>
             </div>
         </div>
         <div class="row" id="listName">
@@ -13,7 +15,8 @@
         </div>
         <div class="row">
             <div class="col-12 pl-0 pr-0">
-                <button id="viewButton" type="button" [routerLink]="'/wishlists/' + list._id" class="btn w-100 themeFontColorMuted btn-themeMuted"><i class="material-icons">
+                <button id="viewButton" type="button" [routerLink]="'/wishlists/' + list._id" class="btn w-100 themeFontColorMuted btn-themeMuted"><i
+                        class="material-icons">
                         visibility
                     </i> View </button>
             </div>

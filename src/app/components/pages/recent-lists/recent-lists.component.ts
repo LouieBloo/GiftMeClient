@@ -10,6 +10,7 @@ import { WishList } from 'src/app/models/wish-list';
 export class RecentListsComponent implements OnInit {
 
   recentLists:WishList[];
+  loading:boolean = true;
 
   constructor(private engagementService:EngagementService) { }
 
@@ -18,8 +19,10 @@ export class RecentListsComponent implements OnInit {
       if(result){
         this.recentLists = result;
       }
+      this.loading = false;
     },error=>{
       console.error("Error fetching recent lists: ",error);
+      this.loading = false;
     })
   }
 

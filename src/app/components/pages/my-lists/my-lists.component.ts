@@ -19,6 +19,7 @@ export class MyListsComponent implements OnInit {
   editable: boolean = true;
   userName:string = "Loading...";
   getParams:any;
+  loading:boolean = true;
 
   createListOnLoginOrRegister:boolean = false;
 
@@ -26,7 +27,7 @@ export class MyListsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.getParams = params;
       this.auth.userDetailsSubject.subscribe(user=>{
         this.load();
@@ -35,9 +36,10 @@ export class MyListsComponent implements OnInit {
   }
 
   load = ()=>{
-    if(this.getParams.owner){
-      this.getLists(this.getParams.owner);
-      this.userService.get(this.getParams.owner).subscribe(user=>{
+    this.loading = true;
+    if(this.getParams.id){
+      this.getLists(this.getParams.id);
+      this.userService.get(this.getParams.id).subscribe(user=>{
         this.userName = user.name;
       },error=>{
         console.error("Error getting user: ",error);
@@ -67,8 +69,10 @@ export class MyListsComponent implements OnInit {
         this.createList();
         this.createListOnLoginOrRegister = false;
       }
+      this.loading = false;
     }, error => {
       console.error(error);
+      this.loading = false;
     })
   }
 

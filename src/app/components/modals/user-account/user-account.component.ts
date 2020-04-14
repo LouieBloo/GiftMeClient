@@ -41,4 +41,14 @@ export class UserAccountComponent implements OnInit {
     this.modalService.dismissAll();
     this.findModal.open();
   }
+
+  recentListButtonClicked(){
+    this.router.navigateByUrl('/engagement/wishlists');
+    this.modalService.dismissAll();
+  }
+
+  myListButtonClicked(){
+    this.router.navigateByUrl('/wishlists');
+    this.modalService.dismissAll();
+  }
 }
