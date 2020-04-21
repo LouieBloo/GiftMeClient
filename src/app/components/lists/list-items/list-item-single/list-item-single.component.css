@@ -2,9 +2,12 @@
     font-size:3rem;
 }
 #editLinkButton{
-    background: none;
-    border:none;
-    font-size:1.2rem;
+    color:inherit;
+    text-decoration: inherit;
+
+}
+#editLinkButton2{
+    border:none;   
 }
 #noEditLinkButton{
     background: none;
@@ -15,13 +18,20 @@
     border:none;
 }
 #deleteButton{
-    color:red;
+    color:#ff6767;
     position: absolute;
-    right:0px;
-    top:0px;
+    right:-7px;
+    top:-15px;
     font-size:2rem;
     cursor: pointer;
 }
+#mainRow{
+    box-shadow: 0px 0px 7px 0px #C7C7C7;
+}
 .claimButton{
     width:125px;
+}
+.leftAlignedText{
+    position: relative;
+    left:0px;
 }

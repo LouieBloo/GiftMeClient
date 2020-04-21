@@ -63,12 +63,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row shadow">
+            <div class="row">
                 <div class="col-12">
                     <app-list-item-container *ngIf="list?._id" [list]="list" [editable]="editable"></app-list-item-container>
                 </div>
             </div>
-            <span (click)="editable = !editable">Switch</span>
+            <!-- <span (click)="editable = !editable">Switch</span> -->
         </div>
     </div>
 </ng-template>

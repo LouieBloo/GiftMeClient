@@ -8,10 +8,10 @@
         </button>
     </div>
 </div>
-<div class="row mt-4 mb-4">
+<div class="row mt-2 mb-4">
     <div class="col-12" id="itemRow">
         <div *ngFor="let item of list.items; let index = index;">
-            <div class="row mb-1">
+            <div class="row mb-3">
                 <div class="col-12">
                     <app-list-item-single [(item)]="item" [index]="index" [(editable)]="editable" [deleteCallback]="itemDeleted"></app-list-item-single>
                 </div>

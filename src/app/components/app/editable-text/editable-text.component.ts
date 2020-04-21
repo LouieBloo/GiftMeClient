@@ -13,6 +13,9 @@ export class EditableTextComponent implements OnInit {
   @Input('fontColor') fontColor:string;
   @Input('width') width:number;
   @Input('editable') editable:boolean;
+  @Input('hyphen') hyphen:boolean;
+  @Input('text-align') textAlign:string;
+  
 
   @ViewChild('input',{static:false}) textEl: ElementRef;
 

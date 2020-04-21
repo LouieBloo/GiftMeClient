@@ -1,5 +1,5 @@
 <div id="main" class="d-flex justify-content-end align-items-center mt-0 mb-2">
-    <div *ngIf="activeUser; then loggedIn else notLoggedIn"></div>
+    <div *ngIf="this.auth.isLoggedIn(); then loggedIn else notLoggedIn"></div>
     <ng-template #loggedIn>
         <div class="row">
             <div class="col-12 text-center">

@@ -27,8 +27,11 @@
     background-color:#47c5ff;
 }
 .btn-themeMuted{
-    border: 1px solid #399cca;;
+    border: 1px solid #399cca;
     color: #399cca;
+}
+.btn-themeWarning{
+    border: 1px solid #ffd042;
 }
 .colorSwap :hover{
     color:#47c5ff;
@@ -90,6 +93,11 @@ i{
 
 .pageShadow{
     box-shadow: 0 0px 7px 0px #7a7a7a;
+}
+
+.doubleButtons{
+    width:100%;
+    border-radius:0;
 }
 
 notifier-container ul{
