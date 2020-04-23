@@ -38,5 +38,5 @@ label{
     top:-48px;
 }
 #shadowRow{
-    box-shadow: 0px 9px 18px -12px rgba(0,0,0,0.75)!important;
+    /* box-shadow: 0px 9px 18px -12px rgba(0,0,0,0.75)!important; */
 }

@@ -16,6 +16,7 @@ export class ListPageComponent implements OnInit {
 
   list:WishList = {};
   editable:boolean = false;
+  isMyList:boolean = false;
   loading:boolean = true;
 
   constructor(private notifierService: NotifierService,private wishListService:WishListService,private route: ActivatedRoute,private auth:AuthService) { }
@@ -35,7 +36,9 @@ export class ListPageComponent implements OnInit {
           let parsed = new Date(this.list.finishDate);
           this.list.datePickerDate = new NgbDate(parsed.getFullYear(),parsed.getMonth()+1,parsed.getDate());
         }
-        this.editable = this.list.owner && this.list.owner._id == this.auth.getUserID() ? true : false;
+        this.isMyList = this.list.owner && (this.list.owner._id == this.auth.getUserID());
+        //dont set editable to isMyList as we want them to be different references
+        this.editable = this.list.owner && (this.list.owner._id == this.auth.getUserID());
         this.loading = false;
       },error=>{
         this.loading = false;
@@ -72,6 +75,13 @@ export class ListPageComponent implements OnInit {
       }
       this.notifierService.notify("error", message);
     })
+  }
+
+  toggleEditable(){
+    if(this.editable){
+      this.notifierService.notify("success", "List Saved!"); 
+    }
+    this.editable = !this.editable;
   }
 
   copyMessage(val: string){

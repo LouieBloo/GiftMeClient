@@ -1,6 +1,18 @@
 #icon{
     font-size:3rem;
 }
+.smallIcon{
+    /* font-size:1.1rem; */
+}
+#claimBanner{
+    position: relative;
+    top:15px;
+    font-weight: 500;
+}
+.popupTextSize{
+    font-size:1.2rem;
+    font-weight: 500
+}
 #editLinkButton{
     color:inherit;
     text-decoration: inherit;
@@ -20,13 +32,13 @@
 #deleteButton{
     color:#ff6767;
     position: absolute;
-    right:-7px;
-    top:-15px;
+    right:5px;
+    top:-35px;
     font-size:2rem;
     cursor: pointer;
 }
 #mainRow{
-    box-shadow: 0px 0px 7px 0px #C7C7C7;
+    /* box-shadow: 0px 0px 7px 0px #C7C7C7; */
 }
 .claimButton{
     width:125px;
@@ -34,4 +46,20 @@
 .leftAlignedText{
     position: relative;
     left:0px;
+}
+.itemMenuIcon{
+    /* position: relative; */
+    /* left:10px; */
+    background: none;
+    border:none;
+}
+.itemMenuIcon span{
+    font-size: 2rem;
+}
+.dropdown-toggle::after {
+    display:none;
+}
+#editIconText{
+    font-size:1rem;
+    display: block;
 }

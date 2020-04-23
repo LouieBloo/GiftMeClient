@@ -45,13 +45,18 @@
 .secondaryFontColor{
     color:#ababab;
 }
+.disabledFontColor{
+    color:#cfcfcf;
+}
 .themeFontColor{
     color:#47c5ff;
 }
 .themeFontColorMuted{
     color:#399cca;
 }
-
+.bold{
+    font-weight: 500;
+}
 i{
     vertical-align: middle;
 }

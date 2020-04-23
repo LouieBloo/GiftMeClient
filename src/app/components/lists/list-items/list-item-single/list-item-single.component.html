@@ -1,27 +1,10 @@
-<div id="mainRow" class="row pt-1">
-    <i *ngIf="editable" id="deleteButton" (click)="deleteItem()" class="material-icons">
+<div id="mainRow" class="row pt-2 pb-2">
+    <!-- <i *ngIf="editable" id="deleteButton" (click)="deleteItem()" class="material-icons">
         delete_forever
-    </i>
-    <div class="col-12 ">
-        <div class="row pl-2 pt-3">
-            <div class="col-10 mt-sm-2 pl-3 pt-1">
-                <div class="row">
-                    <div class="col-12 pl-2">
-                        <app-editable-text default="Click To Edit Name" [text]="item.name" [finishCallback]="nameEdited"
-                            fontSize="1.3rem" fontColor="#4c4c4c" [editable]="editable" width="250px" [text-align]="left"
-                            class="leftAlignedText" [hyphen]="true"></app-editable-text>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 pl-4">
-                        <app-editable-text default="Click To Edit Description" [finishCallback]="descriptionEdited"
-                            fontSize="1.1rem" fontColor="#ababab" [(text)]="item.description" [editable]="editable"
-                            width="250px" [text-align]="left" class="leftAlignedText"></app-editable-text>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2 d-flex justify-content-center align-items-center">
+    </i> -->
+    <div class="col-12 pl-4">
+        <div class="row">
+            <div class="col-2 d-flex justify-content-center align-items-center ">
                 <div *ngIf="editable">
                     <button type="button" id="editIconButton" class="btn colorSwap " (click)="iconModal.open()">
                         <i class="material-icons primaryFontColor" id="icon">
@@ -36,9 +19,89 @@
                     </i>
                 </div>
             </div>
+            <div class="col-8 pr-0 d-flex flex-column justify-content-center mt-sm-2 ">
+                <div class="row">
+                    <div class="col-12">
+                        <app-editable-text default="Click To Edit Name" [text]="item.name" [finishCallback]="nameEdited"
+                            fontSize="1.3rem" fontColor="#4c4c4c" [editable]="editable" width="250px" [text-align]="left"
+                            class="leftAlignedText" [hyphen]="false"></app-editable-text>
+                    </div>
+                </div>
+                <div class="row" *ngIf="editable || item.description">
+                    <div class="col-12 ">
+                        <app-editable-text default="Click To Edit Description" [finishCallback]="descriptionEdited"
+                            fontSize="1.1rem" fontColor="#ababab" [(text)]="item.description" [editable]="editable"
+                            width="250px" [text-align]="left" class="leftAlignedText"></app-editable-text>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2  d-flex justify-content-center align-items-center">
+                <div ngbDropdown container="body" class="">
+                    <!--Dropdown Toggle Button-->
+                    <button type="button" class="colorSwap itemMenuIcon" ngbDropdownToggle id="dropdownBasic1">
+                        <span class="material-icons themeFontColorMuted">
+                            playlist_add
+                        </span>
+                    </button>
+                    <!--Not editable menu-->
+                    <div *ngIf="!editable" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <div *ngIf="isItemClaimed(); then claimed else notClaimed"></div>
+                        <ng-template #claimed>
+                            <div *ngIf="isItemClaimedByMe(); then byMe else notByMe"></div>
+                            <ng-template #byMe>
+                                <button ngbDropdownItem id="" class="themeFontColorMuted popupTextSize d-flex align-items-center"
+                                    (click)="claimButtonClicked()"><span class="material-icons smallIcon mr-2">how_to_vote</span>Un-Claim</button>
+                            </ng-template>
+                            <ng-template #notByMe>
+                                <div ngbDropdownItem class="disabledFontColor popupTextSize" triggers="click"
+                                    [autoClose]="true" ngbTooltip="{{item.claimedUser && item.claimedUser.name ? 'This item has already been claimed by someone' : 'Log in or create an account to find out who claimed this item'}}">
+                                    <span class="material-icons smallIcon mr-2">how_to_vote</span>
+                                    {{item.claimedUser.name ? 'Claimed By Another' : 'Claimed By Another'}}
+                                </div>
+                            </ng-template>
+                        </ng-template>
+                        <!--Show claim button-->
+                        <ng-template #notClaimed>
+                            <button ngbDropdownItem id="" class="themeFontColorMuted d-flex align-items-center popupTextSize"
+                                (click)="claimButtonClicked()"><span class="material-icons smallIcon mr-2">how_to_vote</span>
+                                Claim</button>
+                        </ng-template>
+                        <!--URL Button-->
+                        <div ngbDropdownItem>
+                            <a id="editLinkButton" *ngIf="item.link" class="popupTextSize  d-flex align-items-center"
+                                href="{{item.link}}" target="_blank"><span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u
+                                    class="themeFontColorMuted">Visit Link</u></a>
+                            <div *ngIf="!item.link" class="disabledFontColor popupTextSize d-flex align-items-center"><span
+                                    class="material-icons smallIcon mr-2">language</span> No Link</div>
+                        </div>
+                    </div>
+                    <!--Editable Menu-->
+                    <div *ngIf="editable" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem id="editLinkButton2" class="btn btn-themeMuted popupTextSize d-flex align-items-center"
+                            (click)="linkModal.open()">
+                            <span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u class="themeFontColorMuted ">{{item.link
+                                ? 'Edit Link'
+                                : 'Add Link'}}</u></button>
+                        <button ngbDropdownItem id="editLinkButton2" class="btn btn-themeMuted popupTextSize d-flex align-items-center"
+                            (click)="linkModal.open()">
+                            <span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u class="themeFontColorMuted ">{{item.link
+                                ? 'Edit Link'
+                                : 'Add Link'}}</u></button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="row" id="claimBanner" *ngIf="isItemClaimedByMe()">
+            <div class="col-12 text-center d-flex justify-content-center align-items-center themeFontColorMuted"
+                (click)="claimButtonClicked()">
+                <span class="material-icons themeFontColorMuted mr-2">
+                    redeem
+                </span> You will buy this gift
+            </div>
+        </div>
+
     </div>
-    <div *ngIf="editable; then editButtons else noEditButtons"></div>
+    <!-- <div *ngIf="editable; then editButtons else noEditButtons"></div>
     <ng-template #editButtons>
         <div class="col-12 mt-1 mt-sm-0 mb-2 d-flex justify-content-center align-items-center flex-column">
             <button id="editLinkButton2" class="btn btn-themeMuted " (click)="linkModal.open()"><u class="themeFontColorMuted">{{item.link ? 'Edit Link'
@@ -73,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </ng-template>
+    </ng-template> -->
 
 </div>
 <app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>

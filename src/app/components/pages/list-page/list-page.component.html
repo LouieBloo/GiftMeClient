@@ -12,13 +12,23 @@
         <div class="col-12" id="main">
             <div class="row" id="copyListIdDiv">
                 <div class="col-12">
-                    <button class="btn themeFontColorMuted" id="copyListIdButton" (click)="copyMessage(list._id)"><i
-                            class="material-icons">
+                    <button class="btn themeFontColorMuted bold d-flex align-items-center" id="copyListIdButton" (click)="copyMessage(list._id)"><i
+                            class="material-icons mr-2">
                             mobile_screen_share
-                        </i> Share List</button>
+                        </i> Share List
+                    </button>
+                </div>
+
+            </div>
+            <div class="row" *ngIf="isMyList">
+                <div class="col-12">
+                    <button class="btn  bold d-flex align-items-center" (click)="toggleEditable()" [ngClass]="{'themeFontColorMuted':!editable,'text-success':editable}"><i class="material-icons mr-2">
+                            {{editable ? 'save' : 'create'}}
+                        </i> {{editable ? 'Save' : 'Edit'}}
+                    </button>
                 </div>
             </div>
-            <div class="row shadow" id="shadowRow">
+            <div class="row" id="shadowRow">
                 <div class="col-12 pb-2">
 
                     <div class="row mt-4">
@@ -44,7 +54,7 @@
                                                 calendar_today
                                             </i></button>
                                     </div>
-                                    <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0" [ngClass]="{'readOnlyDate':!editable}"
+                                    <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0 bold" [ngClass]="{'readOnlyDate':!editable}"
                                         placeholder="dd-mm-yyyy" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
                                         (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker"
                                         (click)="editable && finishDatePicker.toggle()">
@@ -55,7 +65,7 @@
                         <div class="col-6">
                             <div class="row h-100">
                                 <div class="col-12 d-flex justify-content-end align-items-center" id="listOwnerName">
-                                    <p class="themeFontColorMuted mb-0 mr-1"><i class="material-icons mr-2">face</i>{{editable
+                                    <p class="themeFontColorMuted mb-0 mr-1 bold"><i class="material-icons mr-2">face</i>{{editable
                                         ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
                                 </div>
                             </div>
@@ -63,12 +73,13 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="col-12">
                     <app-list-item-container *ngIf="list?._id" [list]="list" [editable]="editable"></app-list-item-container>
                 </div>
             </div>
-            <!-- <span (click)="editable = !editable">Switch</span> -->
+
         </div>
     </div>
 </ng-template>

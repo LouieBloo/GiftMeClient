@@ -1,14 +1,19 @@
 <div class="row" *ngIf="editable">
-    <div class="col-12 mt-4 mb-2 d-flex justify-content-center">
-        <button type="button" id="createListButton" class="btn d-flex justify-content-center align-items-center" (click)="createItem()">
+    <div class="col-12 mt-2 mb-2 d-flex justify-content-center">
+        <button type="button" id="createListButton" class="btn d-flex justify-content-center align-items-center"
+            (click)="createItem()">
             <i class="material-icons mr-2">
                 add_circle_outline
             </i>
             <h4 class="primaryFontColor mb-0 d-inline pb-1">Create Item</h4>
         </button>
     </div>
+    <div class="col-12">
+        <hr>
+    </div>
 </div>
-<div class="row mt-2 mb-4">
+
+<div class="row mb-4">
     <div class="col-12" id="itemRow">
         <div *ngFor="let item of list.items; let index = index;">
             <div class="row mb-3">
@@ -16,6 +21,7 @@
                     <app-list-item-single [(item)]="item" [index]="index" [(editable)]="editable" [deleteCallback]="itemDeleted"></app-list-item-single>
                 </div>
             </div>
+            <hr>
         </div>
     </div>
 </div>
