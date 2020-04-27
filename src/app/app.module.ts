@@ -31,6 +31,7 @@ import { IconPickerComponent } from './components/modal/icon-picker/icon-picker.
 import { ClaimModalComponent } from './components/modals/claim-modal/claim-modal.component';
 import { RecentListsComponent } from './components/pages/recent-lists/recent-lists.component';
 import { RecentListItemComponent } from './components/lists/recent-list-item/recent-list-item.component';
+import { DeleteModalComponent } from './components/modals/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { RecentListItemComponent } from './components/lists/recent-list-item/rec
     ClaimModalComponent,
     RecentListsComponent,
     RecentListItemComponent,
+    DeleteModalComponent,
   ],
   imports: [
     BrowserModule,

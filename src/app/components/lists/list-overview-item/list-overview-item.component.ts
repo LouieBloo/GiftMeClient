@@ -13,12 +13,14 @@ export class ListOverviewItemComponent implements OnInit {
   @Input() editable:boolean;
   @Input() deleteCallback: any;
 
+
   constructor(private router: Router) { }
 
   ngOnInit() {
+
   }
 
-  delete(){
+  delete = ()=>{
     this.deleteCallback(this.list);
   }
 

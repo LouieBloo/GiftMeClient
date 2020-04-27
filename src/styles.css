@@ -61,6 +61,10 @@ i{
     vertical-align: middle;
 }
 
+.noBorder{
+    border:none; 
+}
+
 /*** Tabs ***/
 #ngb-tab-0{
     font-size:18px;

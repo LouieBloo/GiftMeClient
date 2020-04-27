@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import{ environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-list-page',
@@ -85,6 +86,7 @@ export class ListPageComponent implements OnInit {
   }
 
   copyMessage(val: string){
+    val = environment.appUrl + "/wishlists/" + val;
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';

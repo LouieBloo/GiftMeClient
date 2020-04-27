@@ -1,0 +1,22 @@
+<ng-template #content let-modal>
+    <div class="main">
+        <div class="modal-header">
+            <app-close class="close pl-0 pb-0 pr-1 pt-2" aria-label="Close" (callback)="modal.dismiss('Cross click')">
+            </app-close>
+        </div>
+        <div class="modal-body pt-0 mb-1">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="primaryFontColor text-center mb-0">Are you sure?</h5>
+                    <p id="desc" class="secondaryFontColor text-center">This action cannot be un-done</p>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12 d-flex justify-content-center">
+                    <button class="btn btn-success btn-width ml-1" type="button" (click)="modal.dismiss('Cross click')">Back</button>
+                    <button class="btn btn-danger btn-width mr-1" type="button" (click)="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

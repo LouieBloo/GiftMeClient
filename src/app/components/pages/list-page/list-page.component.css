@@ -40,3 +40,7 @@ label{
 #shadowRow{
     /* box-shadow: 0px 9px 18px -12px rgba(0,0,0,0.75)!important; */
 }
+#listOwnerName{
+    position: relative;
+    top:10px;
+}

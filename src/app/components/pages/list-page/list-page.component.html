@@ -12,8 +12,8 @@
         <div class="col-12" id="main">
             <div class="row" id="copyListIdDiv">
                 <div class="col-12">
-                    <button class="btn themeFontColorMuted bold d-flex align-items-center" id="copyListIdButton" (click)="copyMessage(list._id)"><i
-                            class="material-icons mr-2">
+                    <button class="btn themeFontColorMuted bold d-flex align-items-center" id="copyListIdButton"
+                        (click)="copyMessage(list._id)"><i class="material-icons mr-2">
                             mobile_screen_share
                         </i> Share List
                     </button>
@@ -22,7 +22,8 @@
             </div>
             <div class="row" *ngIf="isMyList">
                 <div class="col-12">
-                    <button class="btn  bold d-flex align-items-center" (click)="toggleEditable()" [ngClass]="{'themeFontColorMuted':!editable,'text-success':editable}"><i class="material-icons mr-2">
+                    <button class="btn  bold d-flex align-items-center" (click)="toggleEditable()" [ngClass]="{'themeFontColorMuted':!editable,'text-success':editable}"><i
+                            class="material-icons mr-2">
                             {{editable ? 'save' : 'create'}}
                         </i> {{editable ? 'Save' : 'Edit'}}
                     </button>
@@ -33,13 +34,13 @@
 
                     <div class="row mt-4">
                         <div class="col-12 d-flex justify-content-center mt-2">
-                            <app-editable-text default="Click To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
+                            <app-editable-text default="Tap To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
                                 fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" width="360px"></app-editable-text>
                         </div>
                     </div>
                     <div class="row" *ngIf="editable || list.address">
                         <div class="col-12 d-flex justify-content-center align-items-center">
-                            <app-editable-text id="address" default="Click To Edit Address" [finishCallback]="addressEdited"
+                            <app-editable-text id="address" default="Tap To Edit Address" [finishCallback]="addressEdited"
                                 fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable" width="360px"></app-editable-text>
                         </div>
                     </div>
@@ -54,20 +55,21 @@
                                                 calendar_today
                                             </i></button>
                                     </div>
-                                    <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0 bold" [ngClass]="{'readOnlyDate':!editable}"
-                                        placeholder="dd-mm-yyyy" id="finishDate" name="finishDate" [(ngModel)]="list.datePickerDate"
-                                        (dateSelect)="finishDateChanged()" ngbDatepicker #finishDatePicker="ngbDatepicker"
-                                        (click)="editable && finishDatePicker.toggle()">
+                                    <input [readOnly]="!editable" class="form-control text-center pl-0 pr-0 bold"
+                                        [ngClass]="{'readOnlyDate':!editable}" placeholder="dd-mm-yyyy" id="finishDate"
+                                        name="finishDate" [(ngModel)]="list.datePickerDate" (dateSelect)="finishDateChanged()"
+                                        ngbDatepicker #finishDatePicker="ngbDatepicker" (click)="editable && finishDatePicker.toggle()">
 
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="row h-100">
-                                <div class="col-12 d-flex justify-content-end align-items-center" id="listOwnerName">
-                                    <p class="themeFontColorMuted mb-0 mr-1 bold"><i class="material-icons mr-2">face</i>{{editable
-                                        ? 'Your List' : list.owner.name + '\'s List' | titlecase}}</p>
-                                </div>
+                                <a class="col-12 d-flex justify-content-end align-items-top" id="listOwnerName" [routerLink]="'/wishlists/owner/' + list.owner._id">
+                                    <i class="material-icons mr-2 themeFontColorMuted">face</i>
+                                    <span class="themeFontColorMuted mb-0 mr-1 bold text-center">{{editable
+                                        ? 'Your List' : list.owner.name | titlecase}}</span>
+                                    </a>
                             </div>
                         </div>
                     </div>
