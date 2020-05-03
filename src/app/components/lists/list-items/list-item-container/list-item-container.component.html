@@ -15,10 +15,10 @@
 
 <div class="row mb-4">
     <div class="col-12" id="itemRow">
-        <div *ngFor="let item of list.items; let index = index;">
+        <div *ngFor="let itemm of list.items; let indexx = index;">
             <div class="row mb-3">
                 <div class="col-12">
-                    <app-list-item-single [(item)]="item" [index]="index" [(editable)]="editable" [deleteCallback]="itemDeleted"></app-list-item-single>
+                    <app-list-item-single [item]="itemm" [index]="indexx" [(editable)]="editable" [deleteCallback]="itemDeleted"></app-list-item-single>
                 </div>
             </div>
             <hr>
