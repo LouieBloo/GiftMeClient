@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { WishList } from 'src/app/models/wish-list';
 import { Router } from '@angular/router';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-overview-item',
@@ -13,15 +14,23 @@ export class ListOverviewItemComponent implements OnInit {
   @Input() editable:boolean;
   @Input() deleteCallback: any;
 
+  @ViewChild("editButton",{static:false}) editButton: NgbTooltip;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-
+    if(this.editable && this.list && this.list.showToolTip){
+      setTimeout(this.openTooltip,100)
+    }
   }
 
   delete = ()=>{
     this.deleteCallback(this.list);
   }
 
+  openTooltip = ()=>{
+    console.log(this.editButton)
+    this.editButton.open();
+  }
+  
 }

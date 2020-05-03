@@ -44,3 +44,9 @@ label{
     position: relative;
     top:10px;
 }
+#dateTitle{
+    position: absolute;
+    top:-9px;
+    z-index: 10;
+    left:2px;
+}

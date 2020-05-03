@@ -9,6 +9,7 @@ export interface WishList {
     dateCreated?:Date;
     finishDate?:any;
     datePickerDate?:NgbDate;
+    showToolTip?:boolean;
 }
 
 export interface WishListItem{

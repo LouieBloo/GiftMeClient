@@ -51,7 +51,7 @@ export class MyListsComponent implements OnInit {
     }
   }
 
-  getLists(ownerId:string = null,createList:boolean = false) {
+  getLists(ownerId:string = null,createList:boolean = false,showToolTip:boolean = false) {
     if(ownerId == this.auth.getUserID() || !ownerId){
       this.editable = true;
       ownerId = this.auth.getUserID();
@@ -62,6 +62,8 @@ export class MyListsComponent implements OnInit {
     this.wishListService.get(params).subscribe(result => {
       if (result && result.length > 0) {
         this.allLists = result;
+        //show tooltip when a new list has been created
+        this.allLists[0].showToolTip = showToolTip;
       } else {
         this.allLists = [];
       }
@@ -79,7 +81,7 @@ export class MyListsComponent implements OnInit {
   createList() {
     if(this.auth.isLoggedIn()){
       this.wishListService.create({}).subscribe(result=>{
-        this.getLists();
+        this.getLists(null,false,true);
       },error=>{
         console.log(error);
       })

@@ -35,7 +35,9 @@
                     <div class="row mt-4">
                         <div class="col-12 d-flex justify-content-center mt-2">
                             <app-editable-text default="Tap To Edit Title" [text]="list.name" [finishCallback]="nameEdited"
-                                fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" width="360px"></app-editable-text>
+                                fontSize="2rem" fontColor="#4c4c4c" [editable]="editable" width="360px" #titleTooltip="ngbTooltip"
+                                ngbTooltip="Tap any part of the list to edit" placement="top" triggers="manual"
+                                [autoClose]="true"></app-editable-text>
                         </div>
                     </div>
                     <div class="row" *ngIf="editable || list.address">
@@ -44,12 +46,16 @@
                                 fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable" width="360px"></app-editable-text>
                         </div>
                     </div>
-                    <div class="row mt-4">
+                    <div class="row mt-4 pt-3">
                         <div class="col-6">
                             <div class="row" *ngIf="editable || list.finishDate">
+                                <div class="col-12" id="dateTitle">
+                                    <h6 class="mb-0 ml-2 primaryFontColor">Finish Date:</h6>
+                                </div>
                                 <div class="col-12 d-flex justify-content-start align-items-center">
                                     <!-- <label for="finishDate" class="secondaryFontColor mb-0">Finishing:</label> -->
                                     <div class="">
+
                                         <button id="calendarButton" class="primaryFontColor pl-0" (click)="editable && finishDatePicker.toggle()"
                                             type="button"><i class="material-icons">
                                                 calendar_today
@@ -65,11 +71,12 @@
                         </div>
                         <div class="col-6">
                             <div class="row h-100">
-                                <a class="col-12 d-flex justify-content-end align-items-top" id="listOwnerName" [routerLink]="'/wishlists/owner/' + list.owner._id">
+                                <a class="col-12 d-flex justify-content-end align-items-top" id="listOwnerName"
+                                    [routerLink]="'/wishlists/owner/' + list.owner._id">
                                     <i class="material-icons mr-2 themeFontColorMuted">face</i>
                                     <span class="themeFontColorMuted mb-0 mr-1 bold text-center">{{editable
                                         ? 'Your List' : list.owner.name | titlecase}}</span>
-                                    </a>
+                                </a>
                             </div>
                         </div>
                     </div>
