@@ -23,7 +23,7 @@ export class ProfileDisplayComponent implements OnInit {
   @ViewChild('appLoginComponent',{static:true}) appLoginComponent:LoginSignupModalComponent;
   @ViewChild('appUserAccount',{static:true}) userAccountComponent:UserAccountComponent;
 
-  constructor(private auth:AuthService,public eventService:EventService) { }
+  constructor(public auth:AuthService,public eventService:EventService) { }
 
   ngOnInit() {
     //so we always know the state of the user

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
  
   formData: FormGroup;
-  error: string;
+  error: any;
   get email() { return this.formData.get('email'); }
   get password() { return this.formData.get('password'); }
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
