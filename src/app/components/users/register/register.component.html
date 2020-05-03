@@ -3,7 +3,7 @@
         <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
             <div class="form-group mb-1">
                 <input formControlName="name" required type="text" class="form-control" aria-describedby="nameHelp"
-                    placeholder="Name" ngbAutofocus>
+                    placeholder="Name">
                 <div *ngIf="name.invalid && (name.dirty)" class="alert alert-danger">
                     <div *ngIf="name.errors.required">
                         Name is required.
