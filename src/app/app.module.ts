@@ -27,7 +27,6 @@ import { ListItemSingleComponent } from './components/lists/list-items/list-item
 import { ListItemContainerComponent } from './components/lists/list-items/list-item-container/list-item-container.component';
 import { EditLinkComponent } from './components/modals/edit-link/edit-link.component';
 import { EditIconComponent } from './components/modals/edit-icon/edit-icon.component';
-import { IconPickerComponent } from './components/modal/icon-picker/icon-picker.component';
 import { ClaimModalComponent } from './components/modals/claim-modal/claim-modal.component';
 import { RecentListsComponent } from './components/pages/recent-lists/recent-lists.component';
 import { RecentListItemComponent } from './components/lists/recent-list-item/recent-list-item.component';
@@ -55,7 +54,6 @@ import { DeleteModalComponent } from './components/modals/delete-modal/delete-mo
     ListItemContainerComponent,
     EditLinkComponent,
     EditIconComponent,
-    IconPickerComponent,
     ClaimModalComponent,
     RecentListsComponent,
     RecentListItemComponent,

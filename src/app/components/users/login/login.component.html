@@ -3,7 +3,7 @@
             <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
                 <div class="form-group mb-1">
                     <input formControlName="email" required type="email" class="form-control" aria-describedby="emailHelp"
-                        placeholder="Email" ngbAutofocus>
+                        placeholder="Email">
                     <div *ngIf="email.invalid && (email.dirty )" class="alert alert-danger">
                         <div *ngIf="email.errors.required">
                             Email is required.
