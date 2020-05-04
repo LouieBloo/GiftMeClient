@@ -16,16 +16,23 @@ export class ListOverviewItemComponent implements OnInit {
 
   @ViewChild("editButton",{static:false}) editButton: NgbTooltip;
 
+  canShowToolTip: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
-    if(this.editable && this.list && this.list.showToolTip){
+    if(this.calculateShowTooltip()){
       setTimeout(this.openTooltip,100)
     }
   }
 
   delete = ()=>{
     this.deleteCallback(this.list);
+  }
+
+  calculateShowTooltip = ()=>{
+    this.canShowToolTip = this.editable && this.list && this.list.showToolTip;
+    return this.canShowToolTip;
   }
 
   openTooltip = ()=>{
