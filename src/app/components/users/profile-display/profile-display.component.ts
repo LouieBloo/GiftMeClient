@@ -5,6 +5,7 @@ import { LoginSignupModalComponent } from '../../modals/login-signup-modal/login
 import { EventService } from 'src/app/services/event/event.service';
 import { UserAccountComponent } from '../../modals/user-account/user-account.component';
 import { setDefaultService } from 'selenium-webdriver/chrome';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile-display',
@@ -23,7 +24,7 @@ export class ProfileDisplayComponent implements OnInit {
   @ViewChild('appLoginComponent',{static:true}) appLoginComponent:LoginSignupModalComponent;
   @ViewChild('appUserAccount',{static:true}) userAccountComponent:UserAccountComponent;
 
-  constructor(public auth:AuthService,public eventService:EventService) { }
+  constructor(public auth:AuthService,public eventService:EventService,private modalService: NgbModal) { }
 
   ngOnInit() {
     //so we always know the state of the user
@@ -53,6 +54,7 @@ export class ProfileDisplayComponent implements OnInit {
   }
 
   click(showRegister:boolean){
+    this.modalService.dismissAll();
     if(this.auth.isLoggedIn()){
       this.userAccountComponent.open();
     }else{
