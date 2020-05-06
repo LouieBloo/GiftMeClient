@@ -25,4 +25,9 @@
             </div>
         </div>
     </div>
+    <div *ngIf="!recentLists || recentLists.length < 1" class="row mt-4">
+        <div class="col-12 mt-4">
+            <h5 class="text-center primaryFontColor">- none yet -</h5>
+        </div>
+    </div>
 </ng-template>
