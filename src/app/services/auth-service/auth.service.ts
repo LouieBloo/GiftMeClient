@@ -27,7 +27,7 @@ export class AuthService {
     if (this.checkStaleTokenTimer) {
       clearTimeout(this.checkStaleTokenTimer)
     }
-    this.checkStaleTokenTimer = setTimeout(this.checkIfTokenIsStale, 1000*60*60*24*(6.5));//7days
+    this.checkStaleTokenTimer = setTimeout(this.checkIfTokenIsStale, 1000*60*60*24*(7.5));//7days
   }
 
   private checkIfTokenIsStale = ()=> {
