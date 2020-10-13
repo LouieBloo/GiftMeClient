@@ -34,10 +34,16 @@
                     </app-picture-with-text-small>
                 </div>
                 <div class="col-12 d-flex justify-content-center mt-2 mb-3">
+                    <app-picture-with-text-small icon="settings_phone" text="Contact Us" [fontColor]="'#4c4c4c'"
+                        (callback)="contactUsClicked()">
+                    </app-picture-with-text-small>
+                </div>
+                <div class="col-12 d-flex justify-content-center mt-2 mb-3">
                     <app-picture-with-text-small icon="exit_to_app" text="Logout" [borderColor]="'#ca3939'" [fontColor]="'#ca3939'"
                         (callback)="logout()">
                     </app-picture-with-text-small>
                 </div>
+
             </div>
         </div>
     </div>
