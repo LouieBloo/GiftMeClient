@@ -10,7 +10,7 @@
                         <i class="material-icons primaryFontColor" id="icon">
                             {{item.icon ? item.icon : 'card_giftcard'}}
                         </i>
-                        <h6 class="mb-0">Edit</h6>
+                        <h6 class="mb-0" id="editIconText">Edit Icon</h6>
                     </button>
                 </div>
                 <div *ngIf="!editable">
@@ -32,6 +32,18 @@
                         <app-editable-text default="Tap To Edit Description" [finishCallback]="descriptionEdited"
                             fontSize="1.1rem" fontColor="#ababab" [(text)]="item.description" [editable]="editable"
                             width="250px" [text-align]="'left'" class="leftAlignedText"></app-editable-text>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h6 *ngIf="editable" class="themeFontColorMuted" (click)="linkModal.open()"><u>{{item.link
+                                ? 'Edit Url'
+                                : 'Tap To Add Url'}}</u></h6>
+                        <a *ngIf="!editable && item.link" class="d-flex align-items-center themeFontColorMuted" href="{{item.link}}"
+                            target="_blank">Visit Link</a>
+                        <!-- <button class="btn noBorder btn-themeMuted popupTextSize d-flex align-items-center" (click)="linkModal.open()">
+                            <span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u class="themeFontColorMuted "></u>
+                        </button> -->
                     </div>
                 </div>
             </div>
@@ -77,15 +89,10 @@
                     </div>
                     <!--Editable Menu-->
                     <div *ngIf="editable" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem id="" class="btn noBorder btn-themeMuted popupTextSize d-flex align-items-center"
-                            (click)="linkModal.open()">
-                            <span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u class="themeFontColorMuted ">{{item.link
-                                ? 'Edit Link'
-                                : 'Add Link'}}</u></button>
+
                         <button ngbDropdownItem id="" class="btn noBorder popupTextSize d-flex align-items-center text-danger"
                             (click)="deleteItem()">
-                            <span class="material-icons smallIcon mr-2 ">delete_forever</span><u
-                                class=" ">Delete</u></button>
+                            <span class="material-icons smallIcon mr-2 ">delete_forever</span><u class=" ">Delete</u></button>
                     </div>
                 </div>
             </div>
