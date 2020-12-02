@@ -5,6 +5,7 @@ import { MyListsComponent } from './components/pages/my-lists/my-lists.component
 import { ListPageComponent } from './components/pages/list-page/list-page.component';
 import { RecentListsComponent } from './components/pages/recent-lists/recent-lists.component';
 import { GuardService } from './services/auth-service/guard/guard.service';
+import { ContactComponent } from './components/pages/contact/contact.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path: 'wishlists',component:MyListsComponent, data: {animation: 'MainAnimation'} },
   {path: 'wishlists/owner/:id',component:MyListsComponent, data: {animation: 'MainAnimation4'} },
   {path: 'wishlists/:id',component:ListPageComponent, data: {animation: 'MainAnimation2'} },
-  {path: 'engagement/wishlists',component:RecentListsComponent, data: {animation: 'MainAnimation3'},canActivate:[GuardService] }
+  {path: 'engagement/wishlists',component:RecentListsComponent, data: {animation: 'MainAnimation3'},canActivate:[GuardService] },
+  {path: 'contact',component:ContactComponent, data: {animation: 'MainAnimation'} },
+
 ];
 
 @NgModule({

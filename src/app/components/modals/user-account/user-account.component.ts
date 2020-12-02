@@ -51,4 +51,9 @@ export class UserAccountComponent implements OnInit {
     this.router.navigateByUrl('/wishlists');
     this.modalService.dismissAll();
   }
+
+  contactUsClicked(){
+    this.router.navigateByUrl('/contact');
+    this.modalService.dismissAll();
+  }
 }

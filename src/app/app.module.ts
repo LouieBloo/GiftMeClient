@@ -31,6 +31,7 @@ import { ClaimModalComponent } from './components/modals/claim-modal/claim-modal
 import { RecentListsComponent } from './components/pages/recent-lists/recent-lists.component';
 import { RecentListItemComponent } from './components/lists/recent-list-item/recent-list-item.component';
 import { DeleteModalComponent } from './components/modals/delete-modal/delete-modal.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DeleteModalComponent } from './components/modals/delete-modal/delete-mo
     RecentListsComponent,
     RecentListItemComponent,
     DeleteModalComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
