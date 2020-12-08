@@ -31,9 +31,18 @@ label{
 .readOnlyDate{
     background-color:inherit;
 }
-#copyListIdButton{
+.copyListIdButton{
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    border-bottom:none;
+
+    background: none;
 }
-#copyListIdDiv{
+.copyListIdButton i{
+    font-size:1rem;
+}
+#saveListIdDiv{
     position: absolute;
     top:-48px;
 }

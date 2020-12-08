@@ -7,6 +7,7 @@ import { NgbDate, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { environment } from '../../../../environments/environment';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-list-page',
@@ -22,32 +23,41 @@ export class ListPageComponent implements OnInit {
 
   @ViewChild("titleTooltip", { static: false }) titleTooltip: NgbTooltip;
 
-  constructor(private notifierService: NotifierService, private wishListService: WishListService, private route: ActivatedRoute, private auth: AuthService) { }
+  constructor(private notifierService: NotifierService, private wishListService: WishListService, private route: ActivatedRoute, private auth: AuthService,private eventService: EventService) { }
 
   ngOnInit() {
     this.auth.userDetailsSubject.subscribe(user => {
       this.load();
+    })
+
+    //kinda a hack, when an item is claimed by a user the api also subscribes the user 
+    this.eventService.userClaimedItem.subscribe(event=>{
+      this.list.subscribers.push({userId:this.auth.getUserID()})
     })
   }
 
   load() {
     this.route.params.subscribe(params => {
       this.wishListService.getSingle(params['id']).subscribe(result => {
-        this.list = result[0];
-
-        if (this.list.finishDate) {
-          let parsed = new Date(this.list.finishDate);
-          this.list.datePickerDate = new NgbDate(parsed.getFullYear(), parsed.getMonth() + 1, parsed.getDate());
-        }
-        this.isMyList = this.list.owner && (this.list.owner._id == this.auth.getUserID());
-        //dont set editable to isMyList as we want them to be different references
-        this.editable = this.list.owner && (this.list.owner._id == this.auth.getUserID());
+        this.parseListFromAPI(result[0]);
         this.showTooltip();
         this.loading = false;
       }, error => {
         this.loading = false;
       })
     });
+  }
+
+  parseListFromAPI = (result)=>{
+    this.list = result;
+
+    if (this.list.finishDate) {
+      let parsed = new Date(this.list.finishDate);
+      this.list.datePickerDate = new NgbDate(parsed.getFullYear(), parsed.getMonth() + 1, parsed.getDate());
+    }
+    this.isMyList = this.list.owner && (this.list.owner._id == this.auth.getUserID());
+    //dont set editable to isMyList as we want them to be different references
+    this.editable = this.list.owner && (this.list.owner._id == this.auth.getUserID());
   }
 
   nameEdited = (name: string) => {
@@ -94,6 +104,45 @@ export class ListPageComponent implements OnInit {
         this.titleTooltip.open();
       }, 1000)
     }
+  }
+
+  subscribeClicked = ()=>{
+    if(this.isSubscribed()){
+      this.unSubscribe();
+    }else{
+      this.subscribe();
+    }
+  }
+
+  subscribe = () => {
+    this.wishListService.addSubscriber(this.list).subscribe(result => {
+      this.list.subscribers = result.subscribers;
+      this.notifierService.notify("success", "You are subscribed!");
+    }, error => {
+      console.error(error);
+      this.notifierService.notify("error", "Oops");
+    })
+  }
+
+  unSubscribe = () => {
+    this.wishListService.deleteSubscriber(this.list).subscribe(result => {
+      this.list.subscribers = result.subscribers;
+      this.notifierService.notify("success", "Un-Subscribed Succesfully");
+    }, error => {
+      console.error(error);
+      this.notifierService.notify("error", "Oops");
+    })
+  }
+
+  getSubscribedString = () => {
+    if (this.isSubscribed()) {
+      return "Un-Subscribe"
+    }
+    return "Subscribe";
+  }
+
+  isSubscribed = ()=>{
+    return this.list && this.list.subscribers && this.list.subscribers.length > 0 && this.list.subscribers.filter(sub => sub.userId == this.auth.getUserID()).length > 0;
   }
 
   copyMessage(val: string) {
