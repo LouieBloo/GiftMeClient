@@ -4,6 +4,7 @@
     </i> -->
     <div class="col-12 pl-4">
         <div class="row">
+            <!--Icon-->
             <div class="col-2 d-flex justify-content-center align-items-center ">
                 <div *ngIf="editable">
                     <button type="button" id="editIconButton" class="btn colorSwap " (click)="iconModal.open()">
@@ -19,6 +20,7 @@
                     </i>
                 </div>
             </div>
+            <!--Editable Texts-->
             <div class="col-8 pr-0 d-flex flex-column justify-content-center mt-sm-2 ">
                 <div class="row">
                     <div class="col-12">
@@ -41,110 +43,54 @@
                                 : 'Tap To Add Url'}}</u></h6>
                         <a *ngIf="!editable && item.link" class="d-flex align-items-center themeFontColorMuted" href="{{item.link}}"
                             target="_blank">Visit Link</a>
-                        <!-- <button class="btn noBorder btn-themeMuted popupTextSize d-flex align-items-center" (click)="linkModal.open()">
-                            <span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u class="themeFontColorMuted "></u>
-                        </button> -->
                     </div>
                 </div>
             </div>
-            <div class="col-2  d-flex justify-content-center align-items-center">
+            <!--Claim/Unclaim Button-->
+            <div *ngIf="!editable && (!isItemClaimed() || (isItemClaimed() && isItemClaimedByMe()))" class="col-2 d-flex align-items-center">
+                <button id="" class="btn noBorder d-flex flex-column align-items-center justify-content-center popupTextSize" [ngClass]="{'themeFontColorMuted': !isItemClaimedByMe(), 'text-warning': isItemClaimedByMe()}"
+                    (click)="claimButtonClicked()">
+                    <span class="material-icons smallIcon d-block">how_to_vote</span>
+                    <p class="mb-0 claimButtonText">{{isItemClaimedByMe() ? 'Remove' : 'Claim'}}</p>
+                </button>
+            </div>
+            <!--Toggle Menu to delete Item-->
+            <div *ngIf="editable" class="col-2 d-flex justify-content-center align-items-center">
                 <div ngbDropdown container="body" class="">
                     <!--Dropdown Toggle Button-->
-                    <button type="button" class="colorSwap itemMenuIcon" ngbDropdownToggle id="dropdownBasic1">
+                    <button type="button" class="colorSwap itemMenuIcon claimButtonText" ngbDropdownToggle id="dropdownBasic1">
                         <span class="material-icons themeFontColorMuted">
                             playlist_add
                         </span>
                     </button>
-                    <!--Not editable menu-->
-                    <div *ngIf="!editable" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <div *ngIf="isItemClaimed(); then claimed else notClaimed"></div>
-                        <ng-template #claimed>
-                            <div *ngIf="isItemClaimedByMe(); then byMe else notByMe"></div>
-                            <ng-template #byMe>
-                                <button ngbDropdownItem id="" class="themeFontColorMuted popupTextSize d-flex align-items-center"
-                                    (click)="claimButtonClicked()"><span class="material-icons smallIcon mr-2">how_to_vote</span>Un-Claim</button>
-                            </ng-template>
-                            <ng-template #notByMe>
-                                <div ngbDropdownItem class="disabledFontColor popupTextSize" triggers="click"
-                                    [autoClose]="true" ngbTooltip="{{item.claimedUser && item.claimedUser.name ? 'This item has already been claimed by someone' : 'Log in or create an account to find out who claimed this item'}}">
-                                    <span class="material-icons smallIcon mr-2">how_to_vote</span>
-                                    {{item.claimedUser.name ? 'Claimed By Another' : 'Claimed By Another'}}
-                                </div>
-                            </ng-template>
-                        </ng-template>
-                        <!--Show claim button-->
-                        <ng-template #notClaimed>
-                            <button ngbDropdownItem id="" class="themeFontColorMuted d-flex align-items-center popupTextSize"
-                                (click)="claimButtonClicked()"><span class="material-icons smallIcon mr-2">how_to_vote</span>
-                                Claim</button>
-                        </ng-template>
-                        <!--URL Button-->
-                        <div ngbDropdownItem>
-                            <a id="editLinkButton" *ngIf="item.link" class="popupTextSize  d-flex align-items-center"
-                                href="{{item.link}}" target="_blank"><span class="material-icons smallIcon mr-2 themeFontColorMuted">language</span><u
-                                    class="themeFontColorMuted">Visit Link</u></a>
-                            <div *ngIf="!item.link" class="disabledFontColor popupTextSize d-flex align-items-center"><span
-                                    class="material-icons smallIcon mr-2">language</span> No Link</div>
-                        </div>
-                    </div>
                     <!--Editable Menu-->
                     <div *ngIf="editable" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-
                         <button ngbDropdownItem id="" class="btn noBorder popupTextSize d-flex align-items-center text-danger"
                             (click)="deleteItem()">
                             <span class="material-icons smallIcon mr-2 ">delete_forever</span><u class=" ">Delete</u></button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row" id="claimBanner" *ngIf="isItemClaimedByMe()">
-            <div class="col-12 text-center d-flex justify-content-center align-items-center themeFontColorMuted"
-                (click)="claimButtonClicked()">
-                <span class="material-icons themeFontColorMuted mr-2">
-                    redeem
-                </span> You will buy this gift
+
+            <!--Bottom Status Banners-->
+            <div class="col-12 claimBanner" *ngIf="isItemClaimedByMe()">
+                <div class="text-center d-flex justify-content-center align-items-center themeFontColorMuted" (click)="claimButtonClicked()">
+                    <span class="material-icons themeFontColorMuted mr-2">
+                        redeem
+                    </span> You will buy this gift
+                </div>
             </div>
+            <div class="col-12 claimBanner" *ngIf="isItemClaimed() && !isItemClaimedByMe()">
+                <div class="text-center d-flex justify-content-center align-items-center text-warning">
+                    <span class="material-icons text-warning mr-2">
+                        redeem
+                    </span> {{item.claimedUser.name ? ('Claimed by '+ item.claimedUser.name) : 'Claimed By Another'}}
+                </div>
+            </div>
+
         </div>
 
     </div>
-    <!-- <div *ngIf="editable; then editButtons else noEditButtons"></div>
-    <ng-template #editButtons>
-        <div class="col-12 mt-1 mt-sm-0 mb-2 d-flex justify-content-center align-items-center flex-column">
-            <button id="editLinkButton2" class="btn btn-themeMuted " (click)="linkModal.open()"><u class="themeFontColorMuted">{{item.link ? 'Edit Link'
-                    : 'Add Link'}}</u></button>
-        </div>
-    </ng-template>
-    <ng-template #noEditButtons>
-        <div class="col-12 mt-4">
-            <div class="row">
-                <div class="col-6 d-flex justify-content-center align-items-center btn  doubleButtons" [ngClass]="{'btn-themeMuted':item.link}">
-                    <a id="editLinkButton" *ngIf="item.link" class="" href="{{item.link}}" target="_blank"><u>Visit Link</u></a>
-                    <span *ngIf="!item.link" class="secondaryFontColor">No Link</span>
-                </div>
-                <div class="col-6 mt-0  d-flex justify-content-center align-items-center btn doubleButtons" [ngClass]="{'btn-themeWarning': isItemClaimed() && !isItemClaimedByMe(), 'btn-themeMuted':!isItemClaimed()}">
-                    <div *ngIf="isItemClaimed(); then claimed else notClaimed"></div>
-                    <ng-template #claimed>
-                        <div *ngIf="isItemClaimedByMe(); then byMe else notByMe"></div>
-                        <ng-template #byMe>
-                            <span id="" class="themeFontColorMuted" (click)="claimButtonClicked()">Un-Claim</span>
-                        </ng-template>
-                        <ng-template #notByMe>
-                            <div triggers="click" [autoClose]="true" ngbTooltip="{{item.claimedUser && item.claimedUser.name ? 'This item has already been claimed by someone' : 'Log in or create an account to find out who claimed this item'}}">
-                                <p class="text-warning d-flex align-items-center mb-0 text-center"><span class="material-icons mr-1">
-                                        warning
-                                    </span> {{item.claimedUser.name ? 'Claimed' : 'Claimed'}}</p>
-                            </div>
-                        </ng-template>
-                    </ng-template>
-                    <ng-template #notClaimed>
-                        <span id="" class="" (click)="claimButtonClicked()">Claim</span>
-                    </ng-template>
-                </div>
-            </div>
-        </div>
-    </ng-template> -->
-
-</div>
-<app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>
-<app-edit-icon #iconModal [(item)]="item" [finishCallback]="iconEdited"></app-edit-icon>
-<app-claim-modal #claimModal [(item)]="item"></app-claim-modal>
+    <app-edit-link #linkModal [(item)]="item" [finishCallback]="linkEdited"></app-edit-link>
+    <app-edit-icon #iconModal [(item)]="item" [finishCallback]="iconEdited"></app-edit-icon>
+    <app-claim-modal #claimModal [(item)]="item"></app-claim-modal>
