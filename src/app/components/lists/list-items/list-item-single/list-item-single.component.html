@@ -47,11 +47,11 @@
                 </div>
             </div>
             <!--Claim/Unclaim Button-->
-            <div *ngIf="!editable && (!isItemClaimed() || (isItemClaimed() && isItemClaimedByMe()))" class="col-2 d-flex align-items-center">
-                <button id="" class="btn noBorder d-flex flex-column align-items-center justify-content-center popupTextSize" [ngClass]="{'themeFontColorMuted': !isItemClaimedByMe(), 'text-warning': isItemClaimedByMe()}"
+            <div *ngIf="!editable && (!isItemClaimed() || (isItemClaimed() && isItemClaimedByMe()))" class="col-2 d-flex flex-column justify-content-center">
+                <button id="claimButton" class="btn noBorder p-0 popupTextSize" [ngClass]="{'themeFontColorMuted': !isItemClaimedByMe(), 'text-warning': isItemClaimedByMe()}"
                     (click)="claimButtonClicked()">
                     <span class="material-icons smallIcon d-block">how_to_vote</span>
-                    <p class="mb-0 claimButtonText">{{isItemClaimedByMe() ? 'Remove' : 'Claim'}}</p>
+                    <p class="mb-0 claimButtonText">{{isItemClaimedByMe() ? 'Yield' : 'Claim'}}</p>
                 </button>
             </div>
             <!--Toggle Menu to delete Item-->
