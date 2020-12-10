@@ -38,4 +38,13 @@ export class WishListService {
   public delete(id:string):Observable<any>{
     return this.auth.request('delete','/wishlist/'+id);
   }
+
+
+  public addSubscriber(list:WishList):Observable<any>{
+    return this.auth.request('post','/wishlist/'+list._id+'/subscriber',list);
+  }
+
+  public deleteSubscriber(list:WishList):Observable<any>{
+    return this.auth.request('delete','/wishlist/'+list._id+'/subscriber',list);
+  }
 }

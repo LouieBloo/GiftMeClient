@@ -55,6 +55,15 @@
 .themeFontColorMuted{
     color:#399cca;
 }
+.themeFontColorBold{
+    color:#0095ff;
+}
+.purpleColor{
+    color:rgb(255 88 242);
+}
+.lightPurpleColor{
+    color:rgb(253, 152, 245);
+}
 .bold{
     font-weight: 500;
 }

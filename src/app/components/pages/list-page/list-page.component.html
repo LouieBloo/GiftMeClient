@@ -10,17 +10,7 @@
 
     <div class="row ">
         <div class="col-12" id="main">
-            <div class="row" id="copyListIdDiv">
-                <div class="col-12">
-                    <button class="btn themeFontColorMuted bold d-flex align-items-center" id="copyListIdButton"
-                        (click)="copyMessage(list._id)"><i class="material-icons mr-2">
-                            mobile_screen_share
-                        </i> Share List
-                    </button>
-                </div>
-
-            </div>
-            <div class="row" *ngIf="isMyList">
+            <div class="row" id="saveListIdDiv" *ngIf="isMyList">
                 <div class="col-12">
                     <button class="btn  bold d-flex align-items-center" (click)="toggleEditable()" [ngClass]="{'themeFontColorMuted':!editable,'text-success':editable}"><i
                             class="material-icons mr-2">
@@ -44,6 +34,20 @@
                         <div class="col-12 d-flex justify-content-center align-items-center">
                             <app-editable-text id="address" default="Tap To Edit Address" [finishCallback]="addressEdited"
                                 fontSize="1rem" fontColor="#ababab" [(text)]="list.address" [editable]="editable" width="360px"></app-editable-text>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button class="btn purpleColor bold copyListIdButton" (click)="copyMessage(list._id)"><i
+                                    class="material-icons">
+                                    mobile_screen_share
+                                </i> Share
+                            </button>
+                            <button class="btn themeFontColorBold bold ml-2 copyListIdButton" (click)="subscribeClicked()" [attr.disabled]="isMyList ? '' : null"><i
+                                    class="material-icons">
+                                    add_alert
+                                </i> {{getSubscribedString()}}
+                            </button>
                         </div>
                     </div>
                     <div class="row mt-4 pt-3">
