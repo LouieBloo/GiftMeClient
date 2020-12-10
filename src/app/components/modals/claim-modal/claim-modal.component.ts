@@ -32,6 +32,7 @@ export class ClaimModalComponent implements OnInit {
       this.wishListItemService.claim(this.item).subscribe(result=>{
         this.item.claimedUser = result.claimedUser;
         this.notifierService.notify("success","Item Claimed!");
+        this.eventService.userClaimedItem.next({listId:null});
         this.finishEditing();
       },error=>{
         console.log("Error: ",error);

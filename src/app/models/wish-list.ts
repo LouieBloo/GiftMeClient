@@ -10,6 +10,7 @@ export interface WishList {
     finishDate?:any;
     datePickerDate?:NgbDate;
     showToolTip?:boolean;
+    subscribers?:ListSubscriber[]
 }
 
 export interface WishListItem{
@@ -29,4 +30,9 @@ export interface WishListUser{
     _id?:string;
     name?:string;
     message?:string;
+}
+
+export interface ListSubscriber{
+    userId?:string;
+    subscribedOn?:Date;
 }
