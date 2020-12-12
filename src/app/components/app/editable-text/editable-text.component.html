@@ -1,11 +1,11 @@
-<input *ngIf="editing" #input type="text" class="text-center" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor,'width':width,'text-align':textAlign ? textAlign : 'center'}" [(ngModel)]="text" (focusout)="finishEditing()" (keydown.enter)="finishEditing()" >
+<textarea *ngIf="editing" #input type="text" class="" [readonly]="!editable" [ngClass]="{'editableText':editable}" [ngStyle]="{'font-size': fontSize,'color':fontColor,'width':width,'text-align':textAlign ? textAlign : 'center'}" [(ngModel)]="text" (focusout)="finishEditing()" (keydown.enter)="finishEditing()" ></textarea>
 <h6 *ngIf="!editing" [ngStyle]="{'font-size': fontSize,'color':fontColor,'text-align':textAlign ? textAlign : 'center'}" [ngClass]="{'editableText':editable}" class="mb-0" (click)="clicked()">
     <div *ngIf="text; then showText else showDefault"></div>
     <ng-template #showText>
         <span *ngIf="hyphen">- </span>{{text}}
     </ng-template>
     <ng-template #showDefault>
-        <div *ngIf="editable">{{defaultText}}</div>
+        <div *ngIf="editable">{{defaultText}}j</div>
         <div *ngIf="!editable"></div>
     </ng-template>
 </h6>
