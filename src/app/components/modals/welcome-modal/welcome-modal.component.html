@@ -1,0 +1,38 @@
+<ng-template #content let-modal>
+    <div class="main">
+        <div class="modal-header" style="border: none">
+
+        </div>
+        <div class="modal-body pt-0 mb-1">
+            <div class="row mb-2">
+                <div class="col-12">
+                    <div class="text-center">
+                        <i class="material-icons primaryFontColor" style="font-size: 100px" id="icon">
+                            {{'card_giftcard'}}
+                        </i>
+                        <h1 class="themeFontColorMuted">Welcome</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="text-center primaryFontColor">
+                        Thank you for registering.
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="text-center primaryFontColor">
+                        Enjoy your stay!
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-themeMutedBackground w-50" style="border-radius: 1rem;" (click)="modal.dismiss('Cross click')">Enter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
