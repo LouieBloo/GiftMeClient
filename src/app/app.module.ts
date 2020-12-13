@@ -32,6 +32,7 @@ import { RecentListsComponent } from './components/pages/recent-lists/recent-lis
 import { RecentListItemComponent } from './components/lists/recent-list-item/recent-list-item.component';
 import { DeleteModalComponent } from './components/modals/delete-modal/delete-modal.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
+import { WelcomeModalComponent } from './components/modals/welcome-modal/welcome-modal.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ContactComponent } from './components/pages/contact/contact.component';
     RecentListItemComponent,
     DeleteModalComponent,
     ContactComponent,
+    WelcomeModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { EventService } from 'src/app/services/event/event.service';
 import { UserAccountComponent } from '../../modals/user-account/user-account.component';
 import { setDefaultService } from 'selenium-webdriver/chrome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { WelcomeModalComponent } from '../../modals/welcome-modal/welcome-modal.component';
 
 @Component({
   selector: 'app-profile-display',
@@ -23,6 +24,8 @@ export class ProfileDisplayComponent implements OnInit {
 
   @ViewChild('appLoginComponent',{static:true}) appLoginComponent:LoginSignupModalComponent;
   @ViewChild('appUserAccount',{static:true}) userAccountComponent:UserAccountComponent;
+  @ViewChild('welcomeModalComponent',{static:true}) welcomeModalComponent:WelcomeModalComponent;
+
 
   constructor(public auth:AuthService,public eventService:EventService,private modalService: NgbModal) { }
 
@@ -50,6 +53,10 @@ export class ProfileDisplayComponent implements OnInit {
     this.eventService.loginModalEvent.subscribe(event=>{
       this.userLoggedInOrRegisteredCallback = event.callback;
       this.click(event.showRegister);
+    })
+
+    this.eventService.welcomeModalEvent.subscribe(event=>{
+      this.welcomeModalComponent.open();
     })
   }
 
