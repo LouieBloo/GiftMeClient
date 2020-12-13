@@ -31,6 +31,15 @@
     border: 1px solid #399cca;
     color: #399cca;
 }
+.btn-themeMutedBackground{
+    border: 1px solid #399cca;
+    background-color: #399cca;
+    color: white;
+}
+.btn-themeFont{
+    border: 1px solid #47c5ff;
+    background-color: #47c5ff;
+}
 .btn-themeWarning{
     border: 1px solid #ffd042;
 }
@@ -122,3 +131,7 @@ i{
 notifier-container ul{
     margin-bottom:0px;
 }
+
+.welcomeModalWindowClass .modal-dialog {
+    max-width: 400px;
+  }

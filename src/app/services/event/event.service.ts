@@ -10,6 +10,7 @@ export class EventService {
 
   public loginModalEvent: Subject<LoginModalEvent> = new Subject();
   public userClaimedItem: Subject<ListUpdatedEvent> = new Subject();
+  public welcomeModalEvent: Subject<any> = new Subject();
 
   constructor() { }
 }
