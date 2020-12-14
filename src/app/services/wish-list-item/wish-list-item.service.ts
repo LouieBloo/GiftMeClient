@@ -42,5 +42,15 @@ export class WishListItemService {
     return this.auth.request('patch','/wishlist/item/' + item._id + "/unclaim",item);
   }
   
+  public getClaimed():Observable<any>{
+    return this.auth.request('get','/wishlist/item/claimed');
+  }
 
+  public purchase(item:WishListItem):Observable<any>{
+    return this.auth.request('patch','/wishlist/item/' + item._id + "/purchase",item);
+  }
+  
+  public unPurchase(item:WishListItem):Observable<any>{
+    return this.auth.request('patch','/wishlist/item/' + item._id + "/unpurchase",item);
+  }
 }

@@ -73,6 +73,9 @@
 .lightPurpleColor{
     color:rgb(253, 152, 245);
 }
+.greenColor{
+    color:green;
+}
 .bold{
     font-weight: 500;
 }

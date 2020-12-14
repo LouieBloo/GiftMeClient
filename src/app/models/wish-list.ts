@@ -23,13 +23,13 @@ export interface WishListItem{
     icon?:string;
     claimedUser?:WishListUser;
     dateCreated?:Date;
-    dateClaimed?:Date;
+    purchased?:any;
 }
 
 export interface WishListUser{
     _id?:string;
     name?:string;
-    message?:string;
+    dateClaimed?:Date;
 }
 
 export interface ListSubscriber{

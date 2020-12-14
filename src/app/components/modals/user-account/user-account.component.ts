@@ -56,4 +56,9 @@ export class UserAccountComponent implements OnInit {
     this.router.navigateByUrl('/contact');
     this.modalService.dismissAll();
   }
+
+  claimedItemsClicked(){
+    this.router.navigateByUrl('/items/claimed');
+    this.modalService.dismissAll();
+  }
 }

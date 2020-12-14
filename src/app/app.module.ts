@@ -33,6 +33,7 @@ import { RecentListItemComponent } from './components/lists/recent-list-item/rec
 import { DeleteModalComponent } from './components/modals/delete-modal/delete-modal.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { WelcomeModalComponent } from './components/modals/welcome-modal/welcome-modal.component';
+import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-items.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { WelcomeModalComponent } from './components/modals/welcome-modal/welcome
     DeleteModalComponent,
     ContactComponent,
     WelcomeModalComponent,
+    ClaimedItemsComponent,
   ],
   imports: [
     BrowserModule,
