@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-12 mt-2">
+        <h1 class="text-center primaryFontColor">
+            Claimed Gifts
+        </h1>
+        <h5 class="text-center secondaryFontColor">You will <span class="themeFontColorMuted">buy</span> these gifts</h5>
+        <h6 class="text-center secondaryFontColor">Clicking on the 'buy' button will mark it for your reference only</h6>
+    </div>
+</div>
+
+<div *ngIf="loading; then loadingView else mainView"></div>
+<ng-template #loadingView>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</ng-template>
+<ng-template #mainView>
+    <div class="row mt-3">
+        <div class="col-12" id="itemRow">
+                <hr/>
+            <div *ngFor="let itemm of claimedItems; let indexx = index;">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <app-list-item-single [item]="itemm" [claimedOnly]='true' [claimedList]="itemm.list"></app-list-item-single>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!claimedItems || claimedItems.length < 1" class="row mt-4">
+        <div class="col-12 mt-4">
+            <h5 class="text-center primaryFontColor">- none yet -</h5>
+        </div>
+    </div>
+</ng-template>

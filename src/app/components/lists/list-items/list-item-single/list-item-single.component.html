@@ -14,9 +14,14 @@
                         <h6 class="mb-0" id="editIconText">Edit Icon</h6>
                     </button>
                 </div>
-                <div *ngIf="!editable">
+                <div *ngIf="!claimedOnly && !editable">
                     <i class="material-icons primaryFontColor" id="icon">
                         {{item.icon ? item.icon : 'card_giftcard'}}
+                    </i>
+                </div>
+                <div *ngIf="claimedOnly">
+                    <i class="material-icons primaryFontColor" [ngClass]="{'primaryFontColor':!isItemBought(),'greenColor':isItemBought()}" id="icon">
+                        {{isItemBought() ? 'check_circle' : (item.icon ? item.icon : 'card_giftcard')}}
                     </i>
                 </div>
             </div>
@@ -47,11 +52,20 @@
                 </div>
             </div>
             <!--Claim/Unclaim Button-->
-            <div *ngIf="!editable && (!isItemClaimed() || (isItemClaimed() && isItemClaimedByMe()))" class="col-2 d-flex flex-column justify-content-center">
+            <div *ngIf="!claimedOnly && !editable && (!isItemClaimed() || (isItemClaimed() && isItemClaimedByMe()))"
+                class="col-2 d-flex flex-column justify-content-center">
                 <button id="claimButton" class="btn noBorder p-0 popupTextSize" [ngClass]="{'themeFontColorMuted': !isItemClaimedByMe(), 'text-warning': isItemClaimedByMe()}"
                     (click)="claimButtonClicked()">
                     <span class="material-icons smallIcon d-block">how_to_vote</span>
                     <p class="mb-0 claimButtonText">{{isItemClaimedByMe() ? 'Yield' : 'Claim'}}</p>
+                </button>
+            </div>
+            <!--Purchase-->
+            <div *ngIf="claimedOnly" class="col-2 d-flex flex-column justify-content-center">
+                <button id="claimButton" class="btn noBorder p-0 popupTextSize" [ngClass]="{'themeFontColorMuted': !isItemBought(), 'text-warning': isItemBought()}"
+                    (click)="purchaseButtonClicked()">
+                    <span class="material-icons smallIcon d-block">add_shopping_cart</span>
+                    <p class="mb-0 claimButtonText">{{isItemBought() ? 'Sell' : 'Buy'}}</p>
                 </button>
             </div>
             <!--Toggle Menu to delete Item-->
@@ -73,19 +87,28 @@
             </div>
 
             <!--Bottom Status Banners-->
-            <div class="col-12 claimBanner" *ngIf="isItemClaimedByMe()">
+            <div class="col-12 claimBanner" *ngIf="isItemClaimedByMe() && !claimedOnly">
                 <div class="text-center d-flex justify-content-center align-items-center themeFontColorMuted" (click)="claimButtonClicked()">
                     <span class="material-icons themeFontColorMuted mr-2">
                         redeem
                     </span> You will buy this gift
                 </div>
             </div>
-            <div class="col-12 claimBanner" *ngIf="isItemClaimed() && !isItemClaimedByMe()">
+            <div class="col-12 claimBanner" *ngIf="isItemClaimed() && !isItemClaimedByMe() && !claimedOnly">
                 <div class="text-center d-flex justify-content-center align-items-center text-warning">
                     <span class="material-icons text-warning mr-2">
                         redeem
                     </span> {{item.claimedUser.name ? ('Claimed by '+ item.claimedUser.name) : 'Claimed By Another'}}
                 </div>
+            </div>
+            <div class="col-12 claimBanner" *ngIf="claimedOnly">
+                <a [routerLink]="'/wishlists/' + claimedList._id">
+                    <div class="text-center d-flex justify-content-center align-items-center themeFontColorMuted">
+                        <span class="material-icons themeFontColorMuted mr-2">
+                            view_list
+                        </span> {{item.owner.name}}'s {{claimedList.name}} list
+                    </div>
+                </a>
             </div>
 
         </div>

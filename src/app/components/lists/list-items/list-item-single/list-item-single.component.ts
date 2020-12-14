@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
-import { WishListItem } from 'src/app/models/wish-list';
+import { WishListItem, WishList } from 'src/app/models/wish-list';
 import { WishListItemService } from 'src/app/services/wish-list-item/wish-list-item.service';
 import { NotifierService } from 'angular-notifier';
 import { EditLinkComponent } from 'src/app/components/modals/edit-link/edit-link.component';
@@ -18,6 +18,9 @@ export class ListItemSingleComponent implements OnInit {
   @Input() index: any;
   @Input('editable') editable: boolean;
   @Input('deleteCallback') deleteCallback:any;
+
+  @Input('claimedOnly') claimedOnly: boolean;
+  @Input('claimedList') claimedList: WishList;
 
   @ViewChild('linkModal', null) linkModal: EditLinkComponent;
   @ViewChild('iconModal', null) iconModal: EditIconComponent;
@@ -98,6 +101,34 @@ export class ListItemSingleComponent implements OnInit {
     }
   }
 
+  purchaseButtonClicked(){
+    if(this.isItemBought()){
+      this.unPurchaseItem();
+    }else{
+      this.purchaseItem();
+    }
+  }
+
+  purchaseItem(){
+    this.wishListItemService.purchase(this.item).subscribe(result=>{
+      this.item.purchased = result.purchased;
+      this.notifierService.notify("success","Item Marked as Bought!");
+    },error=>{
+      console.log("Error: ",error);
+      this.notifierService.notify("error","Error purchasing item: " + error.error);
+    })
+  }
+
+  unPurchaseItem(){
+    this.wishListItemService.unPurchase(this.item).subscribe(result=>{
+      this.item.purchased = null;
+      this.notifierService.notify("success","Item Marked as Un-Bought!");
+    },error=>{
+      console.log("Error: ",error);
+      this.notifierService.notify("error","Error un-Purchased item: " + error.error);
+    })
+  }
+
   claimButtonClicked(){
     this.claimModal.open();
   }
@@ -114,4 +145,7 @@ export class ListItemSingleComponent implements OnInit {
     return this.isItemClaimed() && this.item.claimedUser._id && this.item.claimedUser._id == this.userId;
   }
 
+  isItemBought(){
+    return this.item.purchased;
+  }
 }
