@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FindModalComponent } from '../../modals/find-modal/find-modal.component';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('findModal',null) findModal:FindModalComponent;
 
-  constructor() { }
+  constructor(private eventService:EventService) { }
 
   ngOnInit() {
   }
@@ -20,4 +21,7 @@ export class HomeComponent implements OnInit {
     this.findModal.open();
   }
 
+  registerButtonClicked(){
+    this.eventService.loginModalEvent.next({showRegister:true,callback:null});
+  }
 }

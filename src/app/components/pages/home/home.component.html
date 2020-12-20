@@ -11,8 +11,8 @@
                 <div id="main" class="row">
                     <app-picture-with-text routerLink="/wishlists" class="col-12 col-sm-6 mb-4 mb-sm-0" text="My Lists"
                         icon="format_list_bulleted"></app-picture-with-text>
-                    <app-picture-with-text routerLink="/items/claimed" class="col-12 col-sm-6 mt-4 mt-sm-0" text="Claimed Gifts"
-                        icon="shopping_basket"></app-picture-with-text>
+                    <app-picture-with-text (click)="registerButtonClicked()" class="col-12 col-sm-6 mt-4 mt-sm-0" text="Register"
+                        icon="login"></app-picture-with-text>
                 </div>
             </div>
         </div>
