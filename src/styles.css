@@ -86,6 +86,9 @@ i{
 .noBorder{
     border:none; 
 }
+.noBackground{
+    background:none;
+}
 
 /*** Tabs ***/
 #ngb-tab-0{

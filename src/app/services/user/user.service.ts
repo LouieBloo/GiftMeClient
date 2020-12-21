@@ -14,10 +14,18 @@ export class UserService {
     return this.auth.request('get', '/users/' + userId);
   }
 
+  public resetPassword(email:string): Observable<any> {
+    return this.auth.request('post', '/users/reset-password', {
+      email: email
+    });
+  }
+
   public changePassword(token: string, password: string): Observable<any> {
     return this.auth.request('post', '/users/change-password', {
       token: token,
       password: password
     });
   }
+
+ 
 }

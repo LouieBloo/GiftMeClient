@@ -13,7 +13,7 @@
                         {{error.email.msg}}
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="showingPassword">
                     <input formControlName="password" required type="password" class="form-control" placeholder="Password">
                     <div *ngIf="password.invalid && (password.dirty)" class="alert alert-danger">
                         <div *ngIf="password.errors.required">
@@ -24,8 +24,18 @@
                         {{error.password.msg}}
                     </div>
                 </div>
+                <div class="form-group">
+                        <button type="button" class="noBorder noBackground themeFontColorBold" (click)="resetPasswordClicked()">Forgot Password?</button>
+                    </div>
                 <div class="row d-flex justify-content-center">
-                    <button id="submit"  [disabled]="email.invalid || password.invalid" type="submit" class="btn">Login</button>
+                    <button id="submit"  [disabled]="email.invalid || (showingPassword && password.invalid)" type="submit" class="btn">{{submitButtonText}}</button>
+                </div>
+                <div class="row" *ngIf="successMessage">
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            {{successMessage}}
+                        </div>
+                    </div>
                 </div>
     
             </form>
