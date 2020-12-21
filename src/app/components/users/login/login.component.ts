@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
- 
+
   formData: FormGroup;
   error: any;
+  showingPassword: boolean = true;
+  submitButtonText: string = "Login";
+  successMessage: string = "";
+
   get email() { return this.formData.get('email'); }
   get password() { return this.formData.get('password'); }
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
-  @ViewChild("emailInput",null) emailInput:ElementRef;
+  @ViewChild("emailInput", null) emailInput: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private userService: UserService) {
     this.formData = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', [Validators.required]]
@@ -29,17 +34,35 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.auth.login(form).subscribe(result => {
-      if (result.token) {
-        this.finishCallback.emit();
-      }
-    },err=>{
-      if(err.error){
-        console.log(err);
-        this.error = err.error.error;
-      }
-    })
+    if (this.showingPassword) {
+      this.auth.login(form).subscribe(result => {
+        if (result.token) {
+          this.finishCallback.emit();
+        }
+      }, err => {
+        if (err.error) {
+          console.log(err);
+          this.error = err.error.error;
+        }
+      })
+    } else {
+      this.userService.resetPassword(form.email).subscribe(result=>{
+        this.successMessage = "Password Reset Succesfully! Check your email for a link. You can close this window."
+      },error=>{
+        this.error = {
+          email:{
+            msg :"Error Resetting Password"
+          }
+        }
+      })
+    }
+
   }
 
-
+  resetPasswordClicked() {
+    if (this.showingPassword) {
+      this.showingPassword = false;
+      this.submitButtonText = "Reset Password"
+    }
+  }
 }

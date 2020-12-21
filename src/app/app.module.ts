@@ -34,6 +34,7 @@ import { DeleteModalComponent } from './components/modals/delete-modal/delete-mo
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { WelcomeModalComponent } from './components/modals/welcome-modal/welcome-modal.component';
 import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-items.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-
     ContactComponent,
     WelcomeModalComponent,
     ClaimedItemsComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

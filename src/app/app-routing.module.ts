@@ -7,6 +7,7 @@ import { RecentListsComponent } from './components/pages/recent-lists/recent-lis
 import { GuardService } from './services/auth-service/guard/guard.service';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-items.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'items/claimed',component:ClaimedItemsComponent, data: {animation: 'ClaimedItemAnimation'} },
   {path: 'engagement/wishlists',component:RecentListsComponent, data: {animation: 'MainAnimation3'},canActivate:[GuardService] },
   {path: 'contact',component:ContactComponent, data: {animation: 'MainAnimation'} },
+  {path: 'reset-password/:token',component:ResetPasswordComponent, data: {animation: 'ResetPasswordAnimation'} },
 
 ];
 

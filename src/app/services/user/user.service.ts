@@ -8,9 +8,24 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth: AuthService) { }
 
-  public get(userId:string):Observable<any>{
-      return this.auth.request('get','/users/'+userId);
+  public get(userId: string): Observable<any> {
+    return this.auth.request('get', '/users/' + userId);
   }
+
+  public resetPassword(email:string): Observable<any> {
+    return this.auth.request('post', '/users/reset-password', {
+      email: email
+    });
+  }
+
+  public changePassword(token: string, password: string): Observable<any> {
+    return this.auth.request('post', '/users/change-password', {
+      token: token,
+      password: password
+    });
+  }
+
+ 
 }
