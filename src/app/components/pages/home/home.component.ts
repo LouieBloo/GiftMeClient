@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FindModalComponent } from '../../modals/find-modal/find-modal.component';
 import { EventService } from 'src/app/services/event/event.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('findModal',null) findModal:FindModalComponent;
 
-  constructor(private eventService:EventService) { }
+  constructor(private eventService:EventService,private auth:AuthService) { }
 
   ngOnInit() {
   }
