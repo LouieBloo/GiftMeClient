@@ -141,3 +141,7 @@ notifier-container ul{
 .welcomeModalWindowClass .modal-dialog {
     max-width: 400px;
   }
+
+.pointer {
+    cursor: pointer;
+}

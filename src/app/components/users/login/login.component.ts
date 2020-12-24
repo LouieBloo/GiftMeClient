@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
   @ViewChild("emailInput", null) emailInput: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private userService: UserService, private notifierService: NotifierService) {
     this.formData = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', [Validators.required]]
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(form).subscribe(result => {
         if (result.token) {
           this.finishCallback.emit();
+          this.notifierService.notify("success", "Welcome back!");
         }
       }, err => {
         if (err.error) {

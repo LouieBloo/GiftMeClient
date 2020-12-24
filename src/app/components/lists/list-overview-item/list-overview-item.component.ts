@@ -36,7 +36,6 @@ export class ListOverviewItemComponent implements OnInit {
   }
 
   openTooltip = ()=>{
-    console.log(this.editButton)
     this.editButton.open();
   }
   

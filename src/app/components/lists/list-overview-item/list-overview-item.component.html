@@ -8,18 +8,22 @@
                 </a>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row pointer" [routerLink]="'/wishlists/' + list._id">
             <div class="col-12">
-                <h4 class="text-center primaryFontColor">{{list.name ? list.name : 'Untitled List'}}</h4>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-12">
-                <ul id="listSize">
-                    <div *ngFor="let items of list.items">
-                        <li class="secondaryFontColor">{{items.name | titlecase}}</li>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <h4 class="text-center primaryFontColor">{{list.name ? list.name : 'Untitled List'}}</h4>
                     </div>
-                </ul>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <ul id="listSize">
+                            <div *ngFor="let items of list.items">
+                                <li class="secondaryFontColor">{{items.name | titlecase}}</li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div *ngIf="editable; then editButtons else viewButtons"></div>
