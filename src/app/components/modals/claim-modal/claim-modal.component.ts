@@ -13,7 +13,7 @@ import { EventService } from 'src/app/services/event/event.service';
 })
 export class ClaimModalComponent implements OnInit {
 
-  @ViewChild('content',null) input: ElementRef;
+  @ViewChild('content') input: ElementRef;
   @Input('item') item:WishListItem;
   //@Input('finishCallback') finishCallback:any;
 

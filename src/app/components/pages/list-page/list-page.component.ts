@@ -21,7 +21,7 @@ export class ListPageComponent implements OnInit {
   isMyList: boolean = false;
   loading: boolean = true;
 
-  @ViewChild("titleTooltip", { static: false }) titleTooltip: NgbTooltip;
+  @ViewChild("titleTooltip") titleTooltip: NgbTooltip;
 
   constructor(private notifierService: NotifierService, private wishListService: WishListService, private route: ActivatedRoute, private auth: AuthService,private eventService: EventService) { }
 

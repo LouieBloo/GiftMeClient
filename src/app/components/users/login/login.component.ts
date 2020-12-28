@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   get email() { return this.formData.get('email'); }
   get password() { return this.formData.get('password'); }
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
-  @ViewChild("emailInput", null) emailInput: ElementRef;
+  @ViewChild("emailInput") emailInput: ElementRef;
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private userService: UserService, private notifierService: NotifierService) {
     this.formData = this.formBuilder.group({

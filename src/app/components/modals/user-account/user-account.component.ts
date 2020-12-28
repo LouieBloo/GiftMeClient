@@ -12,8 +12,8 @@ import { FindModalComponent } from '../find-modal/find-modal.component';
 })
 export class UserAccountComponent implements OnInit {
 
-  @ViewChild('content',null) input: ElementRef;
-  @ViewChild('findModal',null) findModal:FindModalComponent;
+  @ViewChild('content') input: ElementRef;
+  @ViewChild('findModal') findModal:FindModalComponent;
   activeUser:UserDetails;
 
   constructor(private modalService: NgbModal,public auth:AuthService,private router:Router) { }

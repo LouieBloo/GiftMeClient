@@ -10,7 +10,7 @@ import { WishListService } from 'src/app/services/wish-list/wish-list.service';
 })
 export class FindModalComponent implements OnInit {
 
-  @ViewChild('content', null) input: ElementRef;
+  @ViewChild('content') input: ElementRef;
   listIdInputValue: any;
   findError: string;
 

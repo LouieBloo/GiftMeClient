@@ -8,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DeleteModalComponent implements OnInit {
 
-  @ViewChild('content', null) input: ElementRef;
+  @ViewChild('content') input: ElementRef;
   @Input('callback') callback: any;
 
   constructor(private modalService: NgbModal) { }

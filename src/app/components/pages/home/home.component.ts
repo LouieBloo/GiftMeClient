@@ -11,9 +11,9 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('findModal',null) findModal:FindModalComponent;
+  @ViewChild('findModal') findModal:FindModalComponent;
 
-  constructor(private eventService:EventService,private auth:AuthService) { }
+  constructor(private eventService:EventService,public auth:AuthService) { }
 
   ngOnInit() {
   }

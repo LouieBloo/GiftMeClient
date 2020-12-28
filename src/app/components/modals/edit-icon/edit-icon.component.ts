@@ -10,7 +10,7 @@ import { WishListItem } from 'src/app/models/wish-list';
 })
 export class EditIconComponent implements OnInit {
 
-  @ViewChild('content',null) input: ElementRef;
+  @ViewChild('content') input: ElementRef;
   @Input('finishCallback') finishCallback:any;
   @Input('item') item:WishListItem;
 
