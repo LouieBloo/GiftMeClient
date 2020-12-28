@@ -1,9 +1,17 @@
 <notifier-container></notifier-container>
 <div [@routeAnimations]="prepareRoute(outlet)">
-    <div class="row">
-        <div class="col-12">
-            <app-profile-display></app-profile-display>
-        </div>
-    </div>
-    <router-outlet #outlet="outlet"></router-outlet>
+
+    <mat-sidenav-container class="" fullscreen>
+        <mat-sidenav-content class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <app-profile-display [sidenav]="sidenav"></app-profile-display>
+                </div>
+            </div>
+            <router-outlet #outlet="outlet"></router-outlet>
+        </mat-sidenav-content>
+        <mat-sidenav #sidenav fixedInViewport="true" position="end" [mode]="over" (click)="sidenav.toggle()">
+            <app-menu></app-menu>
+        </mat-sidenav>
+    </mat-sidenav-container>
 </div>
