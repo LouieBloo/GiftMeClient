@@ -17,7 +17,7 @@ export class EditableTextComponent implements OnInit {
   @Input('text-align') textAlign:string;
   
 
-  @ViewChild('input',{static:false}) textEl: ElementRef;
+  @ViewChild('input') textEl: ElementRef;
 
   @Input('text') text:string;
   minWidth: number = 150;

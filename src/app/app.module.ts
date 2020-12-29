@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +21,6 @@ import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProfileDisplayComponent } from './components/users/profile-display/profile-display.component';
-import { UserAccountComponent } from './components/modals/user-account/user-account.component';
 import { ListPageComponent } from './components/pages/list-page/list-page.component';
 import { EditableTextComponent } from './components/app/editable-text/editable-text.component';
 import { NotifierModule } from "angular-notifier";
@@ -35,6 +37,7 @@ import { ContactComponent } from './components/pages/contact/contact.component';
 import { WelcomeModalComponent } from './components/modals/welcome-modal/welcome-modal.component';
 import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-items.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { MenuComponent } from './components/app/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,6 @@ import { ResetPasswordComponent } from './components/pages/reset-password/reset-
     LoginComponent,
     RegisterComponent,
     ProfileDisplayComponent,
-    UserAccountComponent,
     ListPageComponent,
     EditableTextComponent,
     LoadingSpinnerComponent,
@@ -66,6 +68,7 @@ import { ResetPasswordComponent } from './components/pages/reset-password/reset-
     WelcomeModalComponent,
     ClaimedItemsComponent,
     ResetPasswordComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,10 @@ import { ResetPasswordComponent } from './components/pages/reset-password/reset-
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    NotifierModule.withConfig({position:{vertical:{position:"bottom"}},behaviour:{autoHide:2000}}),
+    NotifierModule.withConfig({ position: { vertical: { position: "bottom" } }, behaviour: { autoHide: 2000 } }),
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

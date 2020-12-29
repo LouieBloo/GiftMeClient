@@ -14,7 +14,7 @@ export class ListOverviewItemComponent implements OnInit {
   @Input() editable:boolean;
   @Input() deleteCallback: any;
 
-  @ViewChild("editButton",{static:false}) editButton: NgbTooltip;
+  @ViewChild("editButton") editButton: NgbTooltip;
 
   canShowToolTip: boolean = false;
 
