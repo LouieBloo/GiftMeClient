@@ -10,7 +10,7 @@
             </div>
             <router-outlet #outlet="outlet"></router-outlet>
         </mat-sidenav-content>
-        <mat-sidenav #sidenav fixedInViewport="true" position="end" [mode]="over" (click)="sidenav.toggle()" [autoFocus]="'false'">
+        <mat-sidenav #sidenav fixedInViewport="true" position="end" [mode]="'over'" (click)="sidenav.toggle()" [autoFocus]="'false'">
             <app-menu></app-menu>
         </mat-sidenav>
     </mat-sidenav-container>
