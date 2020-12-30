@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { UserDetails } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { LoginSignupModalComponent } from '../../modals/login-signup-modal/login-signup-modal.component';
 import { EventService } from 'src/app/services/event/event.service';
-import { UserAccountComponent } from '../../modals/user-account/user-account.component';
 import { setDefaultService } from 'selenium-webdriver/chrome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WelcomeModalComponent } from '../../modals/welcome-modal/welcome-modal.component';
@@ -23,9 +22,9 @@ export class ProfileDisplayComponent implements OnInit {
   userLoggedInOrRegisteredCallback:any;
 
   @ViewChild('appLoginComponent',{static:true}) appLoginComponent:LoginSignupModalComponent;
-  @ViewChild('appUserAccount',{static:true}) userAccountComponent:UserAccountComponent;
   @ViewChild('welcomeModalComponent',{static:true}) welcomeModalComponent:WelcomeModalComponent;
 
+  @Input('sidenav') sidenav:any;
 
   constructor(public auth:AuthService,public eventService:EventService,private modalService: NgbModal) { }
 
@@ -63,7 +62,7 @@ export class ProfileDisplayComponent implements OnInit {
   click(showRegister:boolean){
     this.modalService.dismissAll();
     if(this.auth.isLoggedIn()){
-      this.userAccountComponent.open();
+      this.sidenav.toggle()
     }else{
       this.appLoginComponent.open(showRegister ? 'registerTab' : 'loginTab');
     }

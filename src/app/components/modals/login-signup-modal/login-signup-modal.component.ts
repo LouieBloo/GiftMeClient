@@ -8,7 +8,7 @@ import { NgbModal, NgbTabset, NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstr
 })
 export class LoginSignupModalComponent implements OnInit {
 
-  @ViewChild('content',null) input: ElementRef;
+  @ViewChild('content') input: ElementRef;
 
   activeTabId:string = "registerTab";
 

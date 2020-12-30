@@ -8,7 +8,7 @@ import { NgbModal, NgbTabset, NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstr
 })
 export class WelcomeModalComponent implements OnInit {
 
-  @ViewChild('content',null) input: ElementRef;
+  @ViewChild('content') input: ElementRef;
 
   constructor(private modalService: NgbModal) { }
 

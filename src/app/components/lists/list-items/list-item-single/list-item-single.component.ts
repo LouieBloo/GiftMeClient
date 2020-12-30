@@ -22,9 +22,9 @@ export class ListItemSingleComponent implements OnInit {
   @Input('claimedOnly') claimedOnly: boolean;
   @Input('claimedList') claimedList: WishList;
 
-  @ViewChild('linkModal', null) linkModal: EditLinkComponent;
-  @ViewChild('iconModal', null) iconModal: EditIconComponent;
-  @ViewChild('claimModal',null) claimModal:ClaimModalComponent;
+  @ViewChild('linkModal') linkModal: EditLinkComponent;
+  @ViewChild('iconModal') iconModal: EditIconComponent;
+  @ViewChild('claimModal') claimModal:ClaimModalComponent;
   userId:string;
 
   constructor(private wishListItemService: WishListItemService, private notifierService: NotifierService,private auth:AuthService) { }

@@ -20,7 +20,7 @@
                     </i>
                 </div>
                 <div *ngIf="claimedOnly">
-                    <i class="material-icons primaryFontColor" [ngClass]="{'primaryFontColor':!isItemBought(),'greenColor':isItemBought()}" id="icon">
+                    <i class="material-icons primaryFontColor" [ngClass]="{'primaryFontColor':!isItemBought(),'greenColor':isItemBought()}" id="icon" (click)="purchaseButtonClicked()">
                         {{isItemBought() ? 'check_circle' : (item.icon ? item.icon : 'card_giftcard')}}
                     </i>
                 </div>

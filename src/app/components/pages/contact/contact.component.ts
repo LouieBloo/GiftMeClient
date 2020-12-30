@@ -10,7 +10,7 @@ export class ContactComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild("titleTooltip", { static: false }) titleTooltip: NgbTooltip;
+  @ViewChild("titleTooltip") titleTooltip: NgbTooltip;
 
   copyMessage(val: string){
     const selBox = document.createElement('textarea');
