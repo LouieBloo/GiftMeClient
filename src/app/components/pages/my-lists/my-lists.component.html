@@ -29,8 +29,7 @@
     <div class="row mt-2 mt-sm-4 mb-4" id="listRow">
         <div class="col-12">
             <div class="row d-flex justify-content-center">
-                <div class="col-12 col-sm-4 mb-sm-4">
-                <div class="card-columns">
+                <div class="card-columns w-100">
                     <div class="card mb-4" *ngFor="let list of allLists">
                         <div class="modal-header cardTopRow p-0">
                             <button class="close" (click)="listDeleted(list)">
@@ -40,11 +39,8 @@
                             </button>
                         </div>
                         <div class="cardHeadband text-center shadow pointer" [routerLink]="'/wishlists/' + list._id">{{list.name ? list.name : 'Untitled List'}}</div>
-                        <div class="">
-                            <app-list-overview-item [editable]="editable" [list]="list" [deleteCallback]="listDeleted"></app-list-overview-item>
-                        </div>
+                        <app-list-overview-item [editable]="editable" [list]="list" [deleteCallback]="listDeleted"></app-list-overview-item>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
