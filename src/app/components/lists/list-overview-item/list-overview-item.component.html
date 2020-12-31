@@ -1,4 +1,11 @@
-<div class="row animated" [ngClass]="{'fadeIn':canShowToolTip}" id="main">
+<div class="modal-header cardTopRow p-0">
+    <button class="close" (click)="deleteModal.open()">
+        <i class="material-icons deleteListBtn">
+            highlight_off
+        </i>
+    </button>
+</div>
+<div class="cardHeadband text-center shadow pointer" [routerLink]="'/wishlists/' + list._id">{{list.name ? list.name : 'Untitled List'}}</div><div class="row animated" [ngClass]="{'fadeIn':canShowToolTip}" id="main">
     <div class="col-12">
         <div class="row mt- mb-4" *ngIf="!editable">
             <div class="col-12">
@@ -46,5 +53,4 @@
         </ng-template>
     </div>
 </div>
-
 <app-delete-modal #deleteModal [callback]="delete"></app-delete-modal>

@@ -16,10 +16,3 @@
 #createListButton i{
     font-size:2rem;
 }
-.deleteListBtn{
-    font-size: 1.4rem;
-    color:red;
-}
-.card {
-    border-radius: 0px;
-}

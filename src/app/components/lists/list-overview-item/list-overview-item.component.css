@@ -9,3 +9,10 @@ li{
     max-height: 118px;
     overflow:hidden;
 }
+.deleteListBtn{
+    font-size: 1.4rem;
+    color:red;
+}
+.card {
+    border-radius: 0px;
+}
