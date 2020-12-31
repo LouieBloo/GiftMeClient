@@ -144,28 +144,7 @@ notifier-container ul{
 .pointer {
     cursor: pointer;
 }
-.listIconColor {
-    color: #399cca
-}
-.cardTopRow {
-    background-color: white;
-}
-.cardHeadband {
-    background-color: #399cca;
-    padding: .25rem;
-    color: white;
-    font-family: Lato;
-    font-size: 1.3rem;
-}
-.deleteListButton {
-    float: right;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-    color:rgb(253, 152, 245);
-    text-shadow: 0, 1px, 0, #fff;
-    opacity: .5;
-}
+
 .listItem {
     font-family: lato;
     list-style-type: disc!important;
