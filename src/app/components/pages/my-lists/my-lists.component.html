@@ -32,7 +32,7 @@
                 <div class="card-columns w-100">
                     <div class="card mb-4" *ngFor="let list of allLists">
                         <div class="modal-header cardTopRow p-0">
-                            <button class="close" (click)="listDeleted(list)">
+                            <button class="close" (click)="deleteModal.open()">
                                 <i class="material-icons deleteListBtn">
                                     highlight_off
                                 </i>

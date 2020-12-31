@@ -28,7 +28,7 @@
                     <button type="button" [routerLink]="'/wishlists/' + list._id" class="btn doubleButtons btn-themeMuted" #editButton="ngbTooltip" ngbTooltip="Tap to Edit" [autoClose]="false" placement="bottom" >
                         <i class="material-icons">edit</i> Edit
                     </button>
-                    <button type="button" class="btn btn-themeMuted doubleButtons" (click)="deleteModal.open()"><i class="material-icons">
+                    <button type="button" class="btn btn-themeMuted doubleButtons" (click)="copyMessage(list._id)"><i class="material-icons">
                         mobile_screen_share
                         </i> Share</button>
                 </div>
