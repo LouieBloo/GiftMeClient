@@ -1,12 +1,12 @@
 <div class="card mb-4 animated" [ngClass]="{'fadeIn':canShowToolTip}">
-    <div class="modal-header cardTopRow d-flex justify-content-end p-0" style="min-height: 20px">
+    <div class="modal-header cardTopRow d-flex justify-content-end p-0">
         <button *ngIf="editable" class="close" (click)="deleteModal.open()">
             <i class="material-icons">
                 highlight_off
             </i>
         </button>
     </div>
-    <div class="cardHeadband pb-0 align-items-center text-center shadow pointer"
+    <div class="cardHeadband align-items-center text-center shadow pointer" [ngClass]="{'pb-0': !editable}"
         [routerLink]="'/wishlists/' + list._id">{{list.name ? list.name
         : 'Untitled List'}}
         <div><a class="authorText colorSwap" *ngIf="!editable" [routerLink]="'/wishlists/owner/' + list.owner._id">

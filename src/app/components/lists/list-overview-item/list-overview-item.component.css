@@ -19,6 +19,7 @@ li{
 }
 .cardTopRow {
     background-color: white;
+    min-height: 25px;
 }
 .cardHeadband {
     background-color: #399cca;
