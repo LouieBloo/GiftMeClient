@@ -26,3 +26,6 @@ li{
     color: white;
     font-size: 1.3rem;
 }
+.listItem {
+    list-style-type: disc!important;
+}

@@ -29,9 +29,11 @@
     <div class="row mt-2 mt-sm-4 mb-4" id="listRow">
         <div class="col-12">
             <div class="row d-flex justify-content-center">
-                <div class="card-columns w-100">
-                    <app-list-overview-item *ngFor="let list of allLists" [editable]="editable" [list]="list"
-                        [deleteCallback]="listDeleted"></app-list-overview-item>
+                <div class="col-12">
+                    <div class="card-columns">
+                        <app-list-overview-item *ngFor="let list of allLists" [editable]="editable" [list]="list"
+                            [deleteCallback]="listDeleted"></app-list-overview-item>
+                    </div>
                 </div>
             </div>
         </div>

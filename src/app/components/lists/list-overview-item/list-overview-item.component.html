@@ -1,24 +1,20 @@
 <div class="card mb-4 animated" [ngClass]="{'fadeIn':canShowToolTip}">
     <div class="modal-header cardTopRow d-flex justify-content-end p-0">
-        <button class="close" (click)="deleteModal.open()">
+        <button *ngIf="editable" class="close" (click)="deleteModal.open()">
             <i class="material-icons">
                 highlight_off
             </i>
         </button>
+        <a *ngIf="!editable" [routerLink]="'/wishlists/owner/' + list.owner._id">
+            <p class="p-1 mb-0 mr-1" style="color:#ca4539"><i
+                    class="material-icons mr-2">face</i>{{list.owner.name
+                + '\'s List' | titlecase}}</p>
+        </a>
     </div>
     <div class="cardHeadband text-center shadow pointer" [routerLink]="'/wishlists/' + list._id">{{list.name ? list.name
         : 'Untitled List'}}</div>
     <div class="row no-gutters" id="main">
         <div class="col-12">
-            <div class="row no-gutters mt-2 mb-4" *ngIf="!editable">
-                <div class="col-12">
-                    <a [routerLink]="'/wishlists/owner/' + list.owner._id">
-                        <p class="themeFontColorMuted mb-0 mr-1"><i
-                                class="material-icons mr-2">face</i>{{list.owner.name
-                            + '\'s List' | titlecase}}</p>
-                    </a>
-                </div>
-            </div>
             <div class="row no-gutters pointer">
                 <div class="col-12">
                     <div class="row no-gutters mt-3">
