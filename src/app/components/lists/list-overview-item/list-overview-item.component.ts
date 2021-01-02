@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import { WishList } from 'src/app/models/wish-list';
 import { Router } from '@angular/router';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../../../../environments/environment';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-list-overview-item',
@@ -18,7 +20,7 @@ export class ListOverviewItemComponent implements OnInit {
 
   canShowToolTip: boolean = false;
 
-  constructor() { }
+  constructor(private notifierService: NotifierService) { }
 
   ngOnInit() {
     if(this.calculateShowTooltip()){
@@ -28,6 +30,22 @@ export class ListOverviewItemComponent implements OnInit {
 
   delete = ()=>{
     this.deleteCallback(this.list);
+  }
+
+  copyMessage(val: string) {
+    val = environment.appUrl + "/wishlists/" + val;
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this.notifierService.notify("success", "Share Link Copied To Clipboard");
   }
 
   calculateShowTooltip = ()=>{
