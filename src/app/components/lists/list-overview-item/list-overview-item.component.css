@@ -29,3 +29,10 @@ li{
 .listItem {
     list-style-type: disc!important;
 }
+.authorText {
+    color:#ffffff;
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+    text-decoration: none;
+}
