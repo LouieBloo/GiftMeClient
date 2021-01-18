@@ -24,7 +24,7 @@
                         {{error.password.msg}}
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="showingPassword">
                         <button type="button" class="noBorder noBackground themeFontColorBold" (click)="resetPasswordClicked()">Forgot Password?</button>
                     </div>
                 <div class="row d-flex justify-content-center">

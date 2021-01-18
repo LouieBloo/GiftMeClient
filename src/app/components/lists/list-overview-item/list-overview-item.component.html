@@ -1,55 +1,61 @@
-<div class="row shadow mr-1 ml-1 mt-3 mt-sm-0 animated" [ngClass]="{'fadeIn':canShowToolTip}" id="main">
-    <div class="col-12">
-        <div class="row mt-2 mb-4" *ngIf="!editable">
-            <div class="col-12">
-                <a [routerLink]="'/wishlists/owner/' + list.owner._id">
-                    <p class="themeFontColorMuted mb-0 mr-1"><i class="material-icons mr-2">face</i>{{list.owner.name
-                        + '\'s List' | titlecase}}</p>
-                </a>
-            </div>
+<div class="card mb-4 animated" [ngClass]="{'fadeIn':canShowToolTip}">
+    <div class="modal-header cardTopRow d-flex justify-content-end p-0">
+        <button *ngIf="editable" class="close" (click)="deleteModal.open()">
+            <i class="material-icons">
+                highlight_off
+            </i>
+        </button>
+    </div>
+    <div class="cardHeadband align-items-center text-center shadow pointer" [ngClass]="{'pb-0': !editable}"
+        [routerLink]="'/wishlists/' + list._id">{{list.name ? list.name
+        : 'Untitled List'}}
+        <div><a class="authorText colorSwap" *ngIf="!editable" [routerLink]="'/wishlists/owner/' + list.owner._id">
+                <p class="p-1 mb-0 mr-1 ">by {{list.owner.name | titlecase}}</p>
+            </a>
         </div>
-        <div class="row pointer" [routerLink]="'/wishlists/' + list._id">
-            <div class="col-12">
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <h4 class="text-center primaryFontColor">{{list.name ? list.name : 'Untitled List'}}</h4>
+    </div>
+    <div class="row no-gutters" id="main">
+        <div class="col-12">
+            <div class="row no-gutters pointer">
+                <div class="col-12">
+                    <div class="row no-gutters mt-3">
+                        <div class="col-12">
+                            <ul id="listSize">
+                                <div *ngFor="let items of list.items">
+                                    <li class="listItem primaryFontColor">{{items.name | titlecase}}</li>
+                                </div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <ul id="listSize">
-                            <div *ngFor="let items of list.items">
-                                <li class="secondaryFontColor">{{items.name | titlecase}}</li>
-                            </div>
-                        </ul>
+            </div>
+            <div *ngIf="editable; then editButtons else viewButtons"></div>
+            <ng-template #editButtons>
+                <div class="row no-gutters">
+                    <div class="col-12 btn-group d-flex">
+                        <button type="button" [routerLink]="'/wishlists/' + list._id"
+                            class="btn doubleButtons btn-themeMuted" #editButton="ngbTooltip" ngbTooltip="Tap to Edit"
+                            [autoClose]="false" placement="bottom" container="body">
+                            <i class="material-icons">edit</i> Edit
+                        </button>
+                        <button type="button" class="btn btn-themeMuted doubleButtons"
+                            (click)="copyMessage(list._id)"><i class="material-icons">
+                                mobile_screen_share
+                            </i> Share</button>
                     </div>
                 </div>
-            </div>
+            </ng-template>
+            <ng-template #viewButtons>
+                <div class="row no-gutters">
+                    <div class="col-12 p-0 btn-group  d-flex align-items-end">
+                        <button type="button" [routerLink]="'/wishlists/' + list._id"
+                            class="btn btn-themeMuted bold doubleButtons themeFontColorMuted"><i class="material-icons">
+                                remove_red_eye
+                            </i> View </button>
+                    </div>
+                </div>
+            </ng-template>
         </div>
-        <div *ngIf="editable; then editButtons else viewButtons"></div>
-        <ng-template #editButtons>
-            <div class="row">
-                <div class="col-12 p-0 btn-group  d-flex align-items-end">
-                    <button type="button" [routerLink]="'/wishlists/' + list._id" class="btn doubleButtons btn-themeMuted" #editButton="ngbTooltip" ngbTooltip="Tap to Edit" [autoClose]="false" placement="bottom" >
-                        <i class="material-icons">edit</i> Edit
-                    </button>
-                    <button type="button" class="btn btn-danger doubleButtons" (click)="deleteModal.open()"><i class="material-icons">
-                            delete_forever
-                        </i> Delete</button>
-                </div>
-            </div>
-        </ng-template>
-        <ng-template #viewButtons>
-            <div class="row">
-                <div class="col-12 p-0 btn-group  d-flex align-items-end">
-                    <button type="button" [routerLink]="'/wishlists/' + list._id" class="btn btn-themeMuted bold doubleButtons themeFontColorMuted"><i
-                            class="material-icons">
-                            remove_red_eye
-                        </i> View </button>
-                </div>
-            </div>
-        </ng-template>
     </div>
 </div>
-
 <app-delete-modal #deleteModal [callback]="delete"></app-delete-modal>

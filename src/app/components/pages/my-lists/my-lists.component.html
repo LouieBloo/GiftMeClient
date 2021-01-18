@@ -8,8 +8,8 @@
 </div>
 <div class="row" *ngIf="editable">
     <div class="col-12 mt-4 mb-4 d-flex justify-content-center">
-        <button type="button" id="createListButton" class="btn btn-themeMuted d-flex justify-content-center align-items-center"
-            (click)="createList()">
+        <button type="button" id="createListButton"
+            class="btn btn-themeMuted d-flex justify-content-center align-items-center" (click)="createList()">
             <i class="material-icons mr-2">
                 add_circle_outline
             </i>
@@ -28,9 +28,12 @@
 <ng-template #mainView>
     <div class="row mt-2 mt-sm-4 mb-4" id="listRow">
         <div class="col-12">
-            <div class="row  d-flex justify-content-center">
-                <div class="col-12 col-sm-4 mb-sm-4" *ngFor="let list of allLists">
-                    <app-list-overview-item [editable]="editable" [list]="list" [deleteCallback]="listDeleted"></app-list-overview-item>
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                    <div class="card-columns">
+                        <app-list-overview-item *ngFor="let list of allLists" [editable]="editable" [list]="list"
+                            [deleteCallback]="listDeleted"></app-list-overview-item>
+                    </div>
                 </div>
             </div>
         </div>
