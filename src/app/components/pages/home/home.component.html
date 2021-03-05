@@ -11,15 +11,16 @@
             <div class="col-12 mt-4">
                 <div id="main" class="row">
                     <a routerLink="/wishlists" class="col-12 col-sm-6 mb-4 mb-sm-0">
-                        <app-picture-with-text  class="" text="My Lists"
-                        icon="format_list_bulleted"></app-picture-with-text>
+                        <app-picture-with-text class="" text="My Lists" icon="format_list_bulleted"></app-picture-with-text>
                     </a>
-                    
+
 
                     <div *ngIf="auth.isLoggedIn(); then claimedItems else register"></div>
                     <ng-template #claimedItems>
-                        <app-picture-with-text routerLink="/items/claimed" class="col-12 col-sm-6 mb-4 mb-sm-0" text="Claimed Items"
-                            icon="shopping_basket"></app-picture-with-text>
+                        <a routerLink="/items/claimed" class="col-12 col-sm-6 mb-4 mb-sm-0">
+                            <app-picture-with-text  class=""
+                                text="Claimed Items" icon="shopping_basket"></app-picture-with-text>
+                        </a>
                     </ng-template>
                     <ng-template #register>
                         <app-picture-with-text (click)="registerButtonClicked()" class="col-12 col-sm-6 mt-4 mt-sm-0"
