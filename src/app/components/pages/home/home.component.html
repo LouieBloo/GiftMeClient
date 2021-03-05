@@ -10,8 +10,11 @@
             </div>
             <div class="col-12 mt-4">
                 <div id="main" class="row">
-                    <app-picture-with-text routerLink="/wishlists" class="col-12 col-sm-6 mb-4 mb-sm-0" text="My Lists"
+                    <a routerLink="/wishlists" class="col-12 col-sm-6 mb-4 mb-sm-0">
+                        <app-picture-with-text  class="" text="My Lists"
                         icon="format_list_bulleted"></app-picture-with-text>
+                    </a>
+                    
 
                     <div *ngIf="auth.isLoggedIn(); then claimedItems else register"></div>
                     <ng-template #claimedItems>
