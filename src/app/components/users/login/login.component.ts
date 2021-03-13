@@ -40,6 +40,10 @@ export class LoginComponent implements OnInit {
         if (result.token) {
           this.finishCallback.emit();
           this.notifierService.notify("success", "Welcome back!");
+
+          if(this.router.url == '/'){
+            this.router.navigateByUrl("/home");
+          }
         }
       }, err => {
         if (err.error) {

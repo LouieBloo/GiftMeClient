@@ -11,7 +11,7 @@ export class GuardService {
 
   canActivate(){
     if(!this.auth.isLoggedIn()){
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/');
       return false;
     }
 

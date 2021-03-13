@@ -1,4 +1,4 @@
-<div id="main" class="d-flex justify-content-end align-items-center mt-0 mb-2">
+<div id="main" class="d-flex justify-content-end align-items-center mt-0 mb-2" *ngIf="router.url != '/'">
     <div *ngIf="this.auth.isLoggedIn(); then loggedIn else notLoggedIn"></div>
     <ng-template #loggedIn>
         <div class="row">
