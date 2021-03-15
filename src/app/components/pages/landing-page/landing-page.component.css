@@ -1,23 +1,43 @@
 .oversize {
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: 200px;
+    margin-top: 75px;
 }
 
 .bigButton{
     width: 145px;
-    height: 62px;
-    font-size: 1.7rem;
+    font-size: 1.7rem; 
+    color: white;
+    border-style: solid;
+    border-color: #fff;
+    border-radius: 2px;
+
+    
 }
 
-#header{
+#main{
+    margin-left:-15px;
+    margin-right:-15px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.icon{ 
     font-size:1.5rem;
+    color: #0095ff;
+}
+.listText {
+    font-size: 1.5rem;
+    vertical-align: center!important;
 }
 
-#subheader{
-    font-size: 1rem;
-    color:#757575;
+#alwaysFreeText{
+    color: white;
+    font-size: 2rem
 }
-
-#heroImage{
-    margin-top:100px;
+.gimmieList{
+    padding-inline-start: 0px;
 }

@@ -66,6 +66,9 @@
 .themeFontColorBold{
     color:#0095ff;
 }
+.backgroundColorBold {
+    background-color: #0095ff;
+}
 .purpleColor{
     color:rgb(255 88 242);
 }
