@@ -7,16 +7,7 @@
 .bigButton{
     width: 145px;
     font-size: 1.7rem; 
-    color: white
-}
-
-#header{
-    font-size:1.5rem;
-}
-
-#subheader{
-    font-size: 1rem;
-    color:#757575;
+    color: #0095ff
 }
 
 #heroImage{
@@ -24,29 +15,27 @@
     margin-top: 25px
 }
 
-#listSection {
-    background-color: #CFCFCF
-}
 ul{
     list-style-type: none;
 }
-#buttonSection{
-    background: linear-gradient(90deg, rgba(117,117,117,1) 7%, rgba(71,197,255,1) 100%);
-}
+
 .icon-display {
     transform: scale(2);
  }
 
- #icon{
-    font-size:3rem;
-    color: #0095ff
+ .icon{
+    font-size:1.5rem;
+    color: #0095ff;
 }
 .listText {
-    font-size: 3rem
+    font-size: 1.5rem;
+    vertical-align: center!important;
 }
-.screenshot {
-    height: 300px;
+
+#alwaysFreeText{
+    color: white;
+    font-size: 2rem
 }
-.listSection {
-    background-color: #fff;
+.gimmieList{
+    padding-inline-start: 0px;
 }

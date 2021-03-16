@@ -1,71 +1,49 @@
 <div class="container-fluid">
-    <div class="row jumbotron" id="heroImage">
+    <div class="row p-4" id="heroImage">
         <div class="col-12 text-center">
             <img class="oversize" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'  [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
+            <h2 class="pt-3">The Forever Free Gift Registry</h2>
         </div>
     </div>
-    <div class="row listSection pt-4">
-        <div class="col-lg-6 col-sm-12 text-center">
-            <img class="screenshot" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'  src="https://files.slack.com/files-pri/TEL6CALMD-F01R0PQP5BQ/capture.png">
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="row">
-                <div class="col-12 d-flex align-items-center">
-                    <i class="material-icons primaryFontColor text-center" id="icon">
-                        alarm
-                    </i>
-                   <span class="listText pl-4 primaryFontColor">Create lists with haste</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 d-flex align-items-center">
-                    <i class="material-icons primaryFontColor text-center" id="icon">
-                        smart_button
-                    </i>
-                   <span class="listText pl-4 primaryFontColor">Dummy proof interface</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 d-flex align-items-center">
-                    <i class="material-icons primaryFontColor text-center" id="icon">
-                    face
-                    </i>
-                   <span class="listText pl-4 primaryFontColor">Share lists with friends and family</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 d-flex align-items-center">
-                    <i class="material-icons primaryFontColor text-center" id="icon">
-                        sentiment_satisfied_alt
-                    </i>
-                   <span class="listText pl-4 primaryFontColor">Forever Free</span>
-                </div>
-            </div>
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-center">
+            <ul class="primaryFontColor gimmieList">
+                <li>
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center">
+                            <i class="material-icons icon">alarm</i>
+                            <span class="listText pl-3">Create lists with haste</span>
+                        </div>
+                    </div>
 
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center">
+                            <i class="material-icons icon">smart_button</i>
+                            <span class="listText pl-3">Dummy proof interface</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center">
+                            <i class="material-icons icon">face</i>
+                            <span class="listText pl-3">Share lists among friends</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="row jumbotron m-0" id="buttonSection">
+    <div class="row bg-primary mt-4">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <h1 class="m-0 pt-3 pb-3 text-center" id="alwaysFreeText">Always Free</h1>
+        </div>
+    </div>
+    <div class="row  mt-4">
         <div class="col-12 text-center">
-            <a [routerLink]="'/wishlists'" class="btn btn-themeMuted bigButton text-center">Let's Go!</a>
+            <a [routerLink]="'/wishlists'" class="btn bigButton">Let's Go!</a>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-<!-- 
-<div class="d-flex flex-column align-items-center h-100 pr-3 pl-3">
-    <div class="mb-2" id="heroImage">
-        <img class="oversize" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'  [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
-    </div>
-    <div class="d-flex flex-column">
-    </div>
-    <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-end mb-4">
-        <a [routerLink]="'/wishlists'" class="btn btn-themeMuted d-flex align-items-center justify-content-center bigButton">Let's Go!</a>
-    </div>
-</div> -->
