@@ -1,49 +1,30 @@
-<div class="container-fluid">
-    <div class="row p-4" id="heroImage">
-        <div class="col-12 text-center">
-            <img class="oversize" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'  [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
-            <h2 class="pt-3">The Forever Free Gift Registry</h2>
-        </div>
+<div class="d-flex flex-column align-items-center justify-content-center h-100">
+    <img class="oversize" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'  [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
+    <h4 class="pt-4 text-center">The Forever Free Gift Registry</h4>
+    <ul class="primaryFontColor gimmieList m-4">
+        <li>
+            <div class="d-flex flex-row align-items-center">
+                <i class="material-icons icon">alarm</i>
+                <span class="listText pl-3">Create lists with haste</span>
+            </div>
+        </li>
+        <li>
+            <div class="d-flex flex-row align-items-center">
+                <i class="material-icons icon">smart_button</i>
+                <span class="listText pl-3">Dummy proof interface</span>
+            </div>
+        </li>
+        <li>
+            <div class="d-flex flex-row align-items-center">
+                <i class="material-icons icon">face</i>
+                <span class="listText pl-3">Share lists among friends</span>
+            </div>
+        </li>
+    </ul>
+    <div class="d-flex flex-row w-100 justify-content-center align-items-center backgroundColorBold">
+        <h1 class="text-center m-0 p-3" id="alwaysFreeText">Always Free</h1>
     </div>
-    <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-center">
-            <ul class="primaryFontColor gimmieList">
-                <li>
-                    <div class="row">
-                        <div class="col-12 d-flex align-items-center">
-                            <i class="material-icons icon">alarm</i>
-                            <span class="listText pl-3">Create lists with haste</span>
-                        </div>
-                    </div>
-
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-12 d-flex align-items-center">
-                            <i class="material-icons icon">smart_button</i>
-                            <span class="listText pl-3">Dummy proof interface</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-12 d-flex align-items-center">
-                            <i class="material-icons icon">face</i>
-                            <span class="listText pl-3">Share lists among friends</span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row backgroundColorBold mt-4">
-        <div class="col-12 d-flex justify-content-center align-items-center">
-            <h1 class="m-0 pt-3 pb-3 text-center" id="alwaysFreeText">Always Free</h1>
-        </div>
-    </div>
-    <div class="row  mt-4">
-        <div class="col-12 text-center">
-            <a [routerLink]="'/wishlists'" class="btn bigButton">Let's Go!</a>
-        </div>
+    <div class="flex-grow-1 d-flex flex-column align-items-end justify-content-end mb-4 mt-2">
+        <a [routerLink]="'/wishlists'" class="btn btn-themeMuted bigButton align-self-end">Let's Go!</a>
     </div>
 </div>

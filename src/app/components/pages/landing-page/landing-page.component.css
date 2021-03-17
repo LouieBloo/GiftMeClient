@@ -1,7 +1,8 @@
 .oversize {
     max-width: 100%;
     height: auto;
-    max-height: 200px
+    max-height: 200px;
+    margin-top: 75px;
 }
 
 .bigButton{
@@ -10,16 +11,11 @@
     color: #0095ff
 }
 
-#heroImage{
-    background-color: #fff;
-    margin-top: 25px
-}
-
 ul{
     list-style-type: none;
 }
 
- .icon{
+.icon{ 
     font-size:1.5rem;
     color: #0095ff;
 }
