@@ -1,7 +1,8 @@
-<div class="d-flex flex-column align-items-center justify-content-center h-100">
-    <img class="oversize" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'  [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
+<div class="d-flex flex-column align-items-center justify-content-center h-100" id="main">
+    <img class="oversize" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'
+        [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
     <h4 class="pt-4 text-center">The Forever Free Gift Registry</h4>
-    <ul class="primaryFontColor gimmieList m-4">
+    <ul class="primaryFontColor gimmieList mt-4">
         <li>
             <div class="d-flex flex-row align-items-center">
                 <i class="material-icons icon">alarm</i>
@@ -21,10 +22,10 @@
             </div>
         </li>
     </ul>
-    <div class="d-flex flex-row w-100 justify-content-center align-items-center backgroundColorBold">
-        <h1 class="text-center m-0 p-3" id="alwaysFreeText">Always Free</h1>
-    </div>
-    <div class="flex-grow-1 d-flex flex-column align-items-end justify-content-end mb-4 mt-2">
-        <a [routerLink]="'/wishlists'" class="btn btn-themeMuted bigButton align-self-end">Let's Go!</a>
+    <div class="flex-grow-1 d-flex flex-column align-items-end justify-content-end mt-2 w-100">
+        <div class="d-flex flex-column align-items-center backgroundColorBold w-100 p-4">
+            <h1 class="text-center m-0 p-3" id="alwaysFreeText">Always Free</h1>
+            <a [routerLink]="'/wishlists'" class="btn bigButton">Let's go</a>
+        </div>
     </div>
 </div>
