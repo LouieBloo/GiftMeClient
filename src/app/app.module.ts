@@ -39,6 +39,7 @@ import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { MenuComponent } from './components/app/menu/menu.component';
 import { AutofocusDirective } from './directives/autofocus/autofocus.directive';
+import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { AutofocusDirective } from './directives/autofocus/autofocus.directive';
     ResetPasswordComponent,
     MenuComponent,
     AutofocusDirective,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDate, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +9,7 @@ import { NgbDate, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   @ViewChild("titleTooltip") titleTooltip: NgbTooltip;
 
@@ -37,6 +38,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titleService.setTitle("Contact");
   }
 
 }

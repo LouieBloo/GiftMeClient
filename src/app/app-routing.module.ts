@@ -8,14 +8,16 @@ import { GuardService } from './services/auth-service/guard/guard.service';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { ClaimedItemsComponent } from './components/pages/claimed-items/claimed-items.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 
 
 const routes: Routes = [
-  {path: '',component:HomeComponent},
+  {path: '',component:LandingPageComponent, data: {animation: 'Landing'} },
+  {path: 'home',component:HomeComponent, data: {animation: 'Home'} ,canActivate:[GuardService] },
   {path: 'wishlists',component:MyListsComponent, data: {animation: 'MainAnimation'} },
   {path: 'wishlists/owner/:id',component:MyListsComponent, data: {animation: 'MainAnimation4'} },
   {path: 'wishlists/:id',component:ListPageComponent, data: {animation: 'MainAnimation2'} },
-  {path: 'items/claimed',component:ClaimedItemsComponent, data: {animation: 'ClaimedItemAnimation'} },
+  {path: 'items/claimed',component:ClaimedItemsComponent, data: {animation: 'ClaimedItemAnimation'} ,canActivate:[GuardService] },
   {path: 'engagement/wishlists',component:RecentListsComponent, data: {animation: 'MainAnimation3'},canActivate:[GuardService] },
   {path: 'contact',component:ContactComponent, data: {animation: 'MainAnimation'} },
   {path: 'reset-password/:token',component:ResetPasswordComponent, data: {animation: 'ResetPasswordAnimation'} },

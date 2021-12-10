@@ -6,6 +6,7 @@ import { EventService } from 'src/app/services/event/event.service';
 import { setDefaultService } from 'selenium-webdriver/chrome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WelcomeModalComponent } from '../../modals/welcome-modal/welcome-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-display',
@@ -26,7 +27,7 @@ export class ProfileDisplayComponent implements OnInit {
 
   @Input('sidenav') sidenav:any;
 
-  constructor(public auth:AuthService,public eventService:EventService,private modalService: NgbModal) { }
+  constructor(public auth:AuthService,public eventService:EventService,private modalService: NgbModal,public router: Router) { }
 
   ngOnInit() {
     //so we always know the state of the user

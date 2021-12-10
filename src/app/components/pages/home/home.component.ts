@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FindModalComponent } from '../../modals/find-modal/find-modal.component';
 import { EventService } from 'src/app/services/event/event.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,10 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('findModal') findModal:FindModalComponent;
 
-  constructor(private eventService:EventService,public auth:AuthService) { }
+  constructor(private eventService:EventService,public auth:AuthService,private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle("Home");
   }
 
   findButtonClicked(){

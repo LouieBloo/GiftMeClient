@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotifierService } from 'angular-notifier';
 import { EventService } from 'src/app/services/event/event.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reset-password',
@@ -19,13 +20,15 @@ export class ResetPasswordComponent implements OnInit {
   
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder, private router: Router,private route: ActivatedRoute,private userService:UserService,private notifierService: NotifierService,private eventService:EventService) {
+  constructor(private formBuilder: FormBuilder, private router: Router,private route: ActivatedRoute,private userService:UserService,private notifierService: NotifierService,private eventService:EventService,private titleService:Title) {
     this.formData = this.formBuilder.group({
       password: ['', [Validators.required]]
     });
   }
 
   ngOnInit() {
+    this.titleService.setTitle("Reset Password");
+
     this.route.params.subscribe(params => {
       if(params['token']){
         this.token = params['token'];

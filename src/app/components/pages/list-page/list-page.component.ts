@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { environment } from '../../../../environments/environment';
 import { EventService } from 'src/app/services/event/event.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-page',
@@ -23,9 +24,11 @@ export class ListPageComponent implements OnInit {
 
   @ViewChild("titleTooltip") titleTooltip: NgbTooltip;
 
-  constructor(private notifierService: NotifierService, private wishListService: WishListService, private route: ActivatedRoute, private auth: AuthService,private eventService: EventService) { }
+  constructor(private notifierService: NotifierService, private wishListService: WishListService, private route: ActivatedRoute, private auth: AuthService,private eventService: EventService,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle("Gift List");
+
     this.auth.userDetailsSubject.subscribe(user => {
       this.load();
     })

@@ -6,6 +6,7 @@ import { WishListService } from 'src/app/services/wish-list/wish-list.service';
 import { SearchParameter } from 'src/app/models/auth';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-my-lists',
@@ -23,10 +24,12 @@ export class MyListsComponent implements OnInit {
 
   createListOnLoginOrRegister:boolean = false;
 
-  constructor(public auth: AuthService, public eventService: EventService, private wishListService: WishListService,private route: ActivatedRoute,private userService:UserService) {
+  constructor(public auth: AuthService, public eventService: EventService, private wishListService: WishListService,private route: ActivatedRoute,private userService:UserService,private titleService:Title) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle("My Lists");
+
     this.route.params.subscribe(params => {
       this.getParams = params;
       this.auth.userDetailsSubject.subscribe(user=>{

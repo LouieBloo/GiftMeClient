@@ -1,0 +1,31 @@
+<div class="d-flex flex-column align-items-center justify-content-center h-100" id="main">
+    <img class="oversize pl-4 pr-4" alt='Gimmie Gifts - Free Gift Registry' title='Gimmie Gifts - Free Gift Registry'
+        [src]="'./assets/img/branding/gimmie-gifts-gift-registry.png'">
+    <h4 class="pt-4 text-center">The Forever Free Gift Registry</h4>
+    <ul class="primaryFontColor gimmieList mt-4">
+        <li>
+            <div class="d-flex flex-row align-items-center">
+                <i class="material-icons icon">alarm</i>
+                <span class="listText pl-3">Create lists with haste</span>
+            </div>
+        </li>
+        <li>
+            <div class="d-flex flex-row align-items-center">
+                <i class="material-icons icon">smart_button</i>
+                <span class="listText pl-3">Dummy proof interface</span>
+            </div>
+        </li>
+        <li>
+            <div class="d-flex flex-row align-items-center">
+                <i class="material-icons icon">face</i>
+                <span class="listText pl-3">Share lists among friends</span>
+            </div>
+        </li>
+    </ul>
+    <div class="flex-grow-1 d-flex flex-column align-items-end justify-content-end mt-2 w-100">
+        <div class="d-flex flex-column align-items-center backgroundColorBold w-100 p-4">
+            <h1 class="text-center m-0 p-3" id="alwaysFreeText">Always Free</h1>
+            <a [routerLink]="'/wishlists'" class="btn bigButton">Let's go</a>
+        </div>
+    </div>
+</div>
