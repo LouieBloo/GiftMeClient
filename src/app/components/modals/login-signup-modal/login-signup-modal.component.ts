@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { NgbModal, NgbTabset, NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbNavChangeEvent, NgbNavItem } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login-signup-modal',
@@ -22,7 +22,7 @@ export class LoginSignupModalComponent implements OnInit {
     this.modalService.open(this.input, { centered: true });
   }
 
-  onTabChange($event: NgbTabChangeEvent) {
+  onTabChange($event: NgbNavChangeEvent) {
     this.activeTabId = $event.nextId;
     if(this.activeTabId == "loginTab"){
 

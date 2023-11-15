@@ -20,19 +20,22 @@
                 </div>
             </div>
 
-            <ngb-tabset [activeId]="activeTabId" [justify]="'center'" [destroyOnHide]="true" (tabChange)="onTabChange($event)">
-                <ngb-tab title="Register" id="registerTab">
-                    <ng-template ngbTabContent>
+            <div ngbNav [activeId]="activeTabId"  (navChange)="onTabChange($event)" destroyOnHide>
+                <ng-container ngbNavItem>
+                    <a ngbNavLink id="registerTab">Register</a>
+                    <ng-template ngbNavContent>
                         <app-register (finishCallback)="modal.dismiss('Cross click')"></app-register>
                     </ng-template>
-                </ngb-tab>
-
-                <ngb-tab title="Login" id="loginTab">
-                    <ng-template ngbTabContent>
+                </ng-container>
+            
+                <ng-container ngbNavItem>
+                    <a ngbNavLink id="loginTab">Login</a>
+                    <ng-template ngbNavContent>
                         <app-login (finishCallback)="modal.dismiss('Cross click')"></app-login>
                     </ng-template>
-                </ngb-tab>
-            </ngb-tabset>
+                </ng-container>
+            </div>
+            
         </div>
     </div>
 </ng-template>
