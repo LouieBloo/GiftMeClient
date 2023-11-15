@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { NotifierService } from 'angular-notifier';
@@ -13,14 +13,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  formData: FormGroup;
+  formData: UntypedFormGroup;
   token:string;
   error: any;
   get password() { return this.formData.get('password'); }
   
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder, private router: Router,private route: ActivatedRoute,private userService:UserService,private notifierService: NotifierService,private eventService:EventService,private titleService:Title) {
+  constructor(private formBuilder: UntypedFormBuilder, private router: Router,private route: ActivatedRoute,private userService:UserService,private notifierService: NotifierService,private eventService:EventService,private titleService:Title) {
     this.formData = this.formBuilder.group({
       password: ['', [Validators.required]]
     });

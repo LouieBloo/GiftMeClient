@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
@@ -13,7 +13,7 @@ import { NotifierService } from 'angular-notifier';
 export class LoginComponent implements OnInit {
 
 
-  formData: FormGroup;
+  formData: UntypedFormGroup;
   error: any;
   showingPassword: boolean = true;
   submitButtonText: string = "Login";
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
   @ViewChild("emailInput") emailInput: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private userService: UserService, private notifierService: NotifierService) {
+  constructor(private formBuilder: UntypedFormBuilder, private auth: AuthService, private router: Router, private userService: UserService, private notifierService: NotifierService) {
     this.formData = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', [Validators.required]]

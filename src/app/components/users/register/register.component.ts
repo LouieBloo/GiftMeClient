@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('welcome-modal-component',{static:true}) welcomeModalComponent:WelcomeModalComponent;
 
-  formData: FormGroup;
+  formData: UntypedFormGroup;
   error: any;
   get email() { return this.formData.get('email'); }
   get password() { return this.formData.get('password'); }
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   
   @Output() finishCallback: EventEmitter<any> = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private eventService: EventService, private router: Router) {
+  constructor(private formBuilder: UntypedFormBuilder, private auth: AuthService, private eventService: EventService, private router: Router) {
     this.formData = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', [Validators.required]],
